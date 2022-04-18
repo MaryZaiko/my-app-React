@@ -1,0 +1,18 @@
+button {
+  width: 234px;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 5px 15px;
+  font-size: 16px;
+  background-color: blue;
+  color: aliceblue;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.btn-reset {
+  background-color: transparent;
+  color: blue;
+  border: none;
+  text-align: start;
+}

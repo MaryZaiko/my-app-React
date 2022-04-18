@@ -1,0 +1,11 @@
+h1 {
+  font-size: 24px;
+  margin: 15px 0;
+  text-align: center;
+}
+.title-active {
+  color: blue;
+}
+.title {
+  color: gray;
+}

@@ -1,0 +1,31 @@
+.posts-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  height: 340px;
+  border: solid 1px grey;
+  padding: 25px;
+  border-radius: 8px;
+  margin: 15px;
+}
+.posts-img {
+  width: 250px;
+  height: 140px;
+  border-radius: 8px;
+}
+.posts-title {
+  font-size: 18px;
+}
+.posts-text {
+  font-size: 14px;
+  color: grey;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.posts-date {
+  font-size: 14px;
+  color: blue;
+}

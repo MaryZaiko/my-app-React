@@ -1,0 +1,18 @@
+input {
+  width: 200px;
+  height: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px 15px;
+  font-size: 16px;
+  border: solid 2px blue;
+  border-radius: 20px;
+}
+.input-textarea {
+  width: 300px;
+  height: 300px;
+}
+.App {
+  display: flex;
+  max-width: 900px;
+}

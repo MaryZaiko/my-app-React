@@ -1,0 +1,23 @@
+.login {
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+}
+.icon-menu {
+  margin: 35px;
+}
+.input-email,
+.input-password {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+}
+.dash {
+  margin: 0 10px;
+  font-weight: bold;
+}
