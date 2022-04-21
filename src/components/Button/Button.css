@@ -1,4 +1,4 @@
-button {
+.button {
   width: 234px;
   height: 40px;
   margin-top: 20px;
@@ -15,4 +15,30 @@ button {
   color: blue;
   border: none;
   text-align: start;
+}
+.btnTitleActive {
+  font-size: 24px;
+  font-weight: bold;
+  color: blue;
+  background-color: transparent;
+  border-bottom: none;
+  border-left: none;
+  border-top: none;
+  border-right: 3px solid gray;
+  padding-left: 0;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.btnTitleInActive {
+  width: 110px;
+  font-size: 24px;
+  font-weight: bold;
+
+  color: gray;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 10px;
+  cursor: pointer;
+
 }

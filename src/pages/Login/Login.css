@@ -6,18 +6,22 @@
 .icon-menu {
   margin: 35px;
 }
-.input-email,
-.input-password {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-}
+
 
 .title-container {
   display: flex;
   align-items: center;
+  margin: 20px 0;
 }
 .dash {
   margin: 0 10px;
   font-weight: bold;
+}
+.login-container{
+  display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.reset-login{
+margin-top: 25px;
 }

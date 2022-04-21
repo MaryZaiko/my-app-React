@@ -5,4 +5,4 @@ const Button = (props: any) => {
   return <button className={props.className}>{props.btnContent}</button>;
 };
 
-export default Button;
+export default Button

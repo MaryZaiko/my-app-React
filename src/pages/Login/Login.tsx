@@ -1,8 +1,8 @@
 import React from "react";
 import "./Login.css";
-import Input from "../../components/Input";
 import Button from "../../components/Button";
-import Title from "../../components/Title/Title";
+import FormLogin from "../../components/FormLogin";
+// import FormRegistration from "../../components/FormRegistration";
 
 const Login = () => {
   return (
@@ -12,19 +12,11 @@ const Login = () => {
       </div>
       <div className="login-container">
         <div className="title-container">
-          <Title className={"title-active"} titleContent="Login" />
-          <span className="title dash"> | </span>
-          <Title className={"title"} titleContent={"Registration"} />
+          <Button className={'btnTitleActive'} btnContent={'Login'}/>
+          <Button className={'btnTitleInActive'} btnContent={'Registration'}/>
         </div>
-        <div className="input-email">
-          <span>Email</span>
-          <Input type={"email"} className={"input-email"} />
-        </div>
-        <div className="input-password">
-          <span>Password</span>
-          <Input type={"password"} className={"input-password"} />
-        </div>
-        <Button className={"button-login"} btnContent={"Login"} />
+       <FormLogin />
+        
         <div className="reset-login">
           <span>Forgot your password?</span>
           <Button className={"btn-reset"} btnContent={"Reset password"} />
