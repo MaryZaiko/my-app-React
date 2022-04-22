@@ -36,6 +36,7 @@ padding: 0;
   color: blue;
   border: none;
   text-align: start;
+  cursor: pointer;
 }
 
 .btnLogin{

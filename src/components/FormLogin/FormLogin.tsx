@@ -14,7 +14,11 @@ const FormLogin = () => {
       <span>Password</span>
       <Input type="password"/>
     </div>
-    <Button className="button" btnContent="Login" />
+    <Button className="button" btnContent="Login" onClick={() =>{}}/>
+    <div className="resetLogin">
+          <span>Forgot your password?</span>
+          <Button className={"btnReset"} btnContent={"Reset password"} onClick={() =>{}}/>
+        </div>
     </form>
   )
 };

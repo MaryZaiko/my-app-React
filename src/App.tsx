@@ -47,7 +47,7 @@ function App() {
   //     author: 0,
   //   },
   // ];
-  // return <ContentTitle data={MOCK_DATA} />;
+  // return <MyPosts data={MOCK_DATA} />;
 
 
   return <Login/>

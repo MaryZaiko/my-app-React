@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./FormRegistration.css";
 import Input from "../Input";
 import Button from "../Button";
 
 const FormRegistration = () => {
+  const [activeTab, setActiveTab] = useState('login')
+
   return (
     <form>
       <div className="input">
@@ -22,7 +24,11 @@ const FormRegistration = () => {
       <span>Confirm password</span>
       <Input type="password"/>
     </div>
-    <Button className="button" btnContent="Login" />
+    <Button className="button" btnContent="Login" onClick={() =>{}}/>
+    <div className="resetLogin">
+          <span>If you have account you can</span>
+          <Button className={"btnReset"} btnContent={"login"} onClick={() => setActiveTab("login")} />
+        </div>
     </form>
   )
 };

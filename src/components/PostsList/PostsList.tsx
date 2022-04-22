@@ -4,7 +4,6 @@ import PostCard from "../PostCard";
 
 // type PostsProps = {
 //   data: Card[]
-
 // }
 
 // type Card = {

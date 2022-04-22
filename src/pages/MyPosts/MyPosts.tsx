@@ -5,11 +5,12 @@ import HeaderPages from "../../components/HeaderPages";
 import Button from "../../components/Button";
 
 const MyPosts = (props: any) => {
+
   return (
     <div className="MyPosts">
       <HeaderPages />
       <div className="titleContainer">
-      <h1 className="headerTitle">My posts</h1> <Button className={'btnAny'} btnContent={'+Add'}/>
+      <h1 className="headerTitle">My posts</h1> <Button className={'btnAny'} btnContent={'+Add'} onClick={() =>{}}/>
 
       </div>
       <PostsList data={props.data} />

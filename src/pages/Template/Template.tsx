@@ -11,7 +11,7 @@ const Template = (props: any) => {
       <div className="templateContainer">
         <h1 className="titleDark">Template title</h1>
         <p className="templateBodyDark">Template body</p>
-        <Button className={"button buttonDark"} btnContent={"button"} />
+        <Button className={"button buttonDark"} btnContent={"button"} onClick={() =>{}}/>
       </div>
     </div>
   );

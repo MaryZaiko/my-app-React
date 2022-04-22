@@ -3,10 +3,13 @@ import "./Login.css";
 import Button from "../../components/Button";
 import FormLogin from "../../components/FormLogin";
 import FormRegistration from "../../components/FormRegistration";
+import classnames from "classnames";
 
 const Login = () => {
-  const [activeTab, setActiveTab] = useState('login');
+  const [activeTab, setActiveTab] = useState("login");
 
+  const isLoginActive = activeTab === "login";
+  const isRegistrationActive = activeTab !== "login";
 
   return (
     <div className="login">
@@ -16,31 +19,28 @@ const Login = () => {
           alt="iconMenu"
         />
       </div>
-      <div className="loginContainer">
+      <div className={"loginContainer"}>
         <div className="titleContainer">
           <Button
-            className={"btnTitle btnLogin btnTitleActive"}
+            className={classnames(`btnTitle btnLogin`, {
+              ["btnTitleActive"]: isLoginActive,
+            })}
             btnContent={"Login"}
-            onClick={() =>setActiveTab('login')}
+            onClick={() => setActiveTab("login")}
           />
           <Button
-            className={"btnTitle btnRegistration "}
+            className={classnames(`btnTitle btnRegistration `, {
+              ["btnTitleActive"]: isRegistrationActive,
+            })}
             btnContent={"Registration"}
-            onClick={() =>{
-              console.log('')
-              setActiveTab('registration')
+            onClick={() => {
+              setActiveTab("registration");
             }}
-
           />
         </div>
 
         <div className="formContainer">
-          {activeTab === 'login' ? <FormLogin /> : <FormRegistration />}
-        </div>
-
-        <div className="resetLogin">
-          <span>Forgot your password?</span>
-          <Button className={"btnReset"} btnContent={"Reset password"} />
+          {activeTab === "login" ? <FormLogin /> : <FormRegistration />}
         </div>
       </div>
     </div>
