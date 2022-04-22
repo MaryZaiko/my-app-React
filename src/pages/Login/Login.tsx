@@ -5,9 +5,8 @@ import FormLogin from "../../components/FormLogin";
 import FormRegistration from "../../components/FormRegistration";
 
 const Login = () => {
-  // const [loginActive, setLoginActive] = useState(true);
+  const [activeTab, setActiveTab] = useState('login');
 
-  // const [registrationActive, setRegistrationActive] = useState(false);
 
   return (
     <div className="login">
@@ -22,15 +21,21 @@ const Login = () => {
           <Button
             className={"btnTitle btnLogin btnTitleActive"}
             btnContent={"Login"}
+            onClick={() =>setActiveTab('login')}
           />
           <Button
             className={"btnTitle btnRegistration "}
             btnContent={"Registration"}
+            onClick={() =>{
+              console.log('')
+              setActiveTab('registration')
+            }}
+
           />
         </div>
 
         <div className="formContainer">
-          {/* {loginActive} ? <FormLogin /> : <FormRegistration />; */}
+          {activeTab === 'login' ? <FormLogin /> : <FormRegistration />}
         </div>
 
         <div className="resetLogin">
