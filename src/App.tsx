@@ -2,8 +2,11 @@ import React from "react";
 import "./App.css";
 import Confirmation from "./pages/Confirmation";
 import Login from "./pages/Login";
-// import Template from './pages/Template'
+import Template from './pages/Template'
 import PostsList from "./components/PostsList";
+import MyPosts from "./pages/MyPosts";
+import ContentTitle from "./pages/ContentTitle";
+
 
 function App() {
   // const MOCK_DATA = [
@@ -44,7 +47,7 @@ function App() {
   //     author: 0,
   //   },
   // ];
-  // return <PostsList data={MOCK_DATA} />;
+  // return <ContentTitle data={MOCK_DATA} />;
 
 
   return <Login/>

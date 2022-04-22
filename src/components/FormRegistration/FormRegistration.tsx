@@ -1,11 +1,15 @@
 import React from "react";
-import "./FormLogin.css";
+import "./FormRegistration.css";
 import Input from "../Input";
 import Button from "../Button";
 
-const FormLogin = () => {
+const FormRegistration = () => {
   return (
     <form>
+      <div className="input">
+      <span>User name</span>
+      <Input type="text"/>
+    </div>
     <div className="input">
       <span>Email</span>
       <Input type="email"/>
@@ -14,9 +18,13 @@ const FormLogin = () => {
       <span>Password</span>
       <Input type="password"/>
     </div>
+    <div className="input">
+      <span>Confirm password</span>
+      <Input type="password"/>
+    </div>
     <Button className="button" btnContent="Login" />
     </form>
   )
 };
 
-export default FormLogin
+export default FormRegistration

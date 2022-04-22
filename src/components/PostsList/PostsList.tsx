@@ -2,21 +2,21 @@ import React, { FC } from "react";
 import "./PostsList.css";
 import PostCard from "../PostCard";
 
-type PostsProps = {
-  data: Card[]
+// type PostsProps = {
+//   data: Card[]
 
-}
+// }
 
-type Card = {
-id: string
-image: string
-title: string
-text: string
-date: string
-}
+// type Card = {
+// id: string
+// image: string
+// title: string
+// text: string
+// date: string
+// }
 
-const Posts: FC<PostsProps> = (props) => {
-  const cards = props.data.map((item) => {
+const Posts = (props:any) => {
+  const cards = props.data.map((item:any) => {
     return (
       <PostCard
         key={item.id}
