@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import Confirmation from "./pages/Confirmation";
-import Login from "./pages/Login";
-import Template from './pages/Template'
-import PostsList from "./components/PostsList";
-import MyPosts from "./pages/MyPosts";
-import ContentTitle from "./pages/ContentTitle";
+// import Confirmation from "./pages/Confirmation";
+import Authorization from "./pages/Authorization";
+// import Template from './pages/Template'
+// import PostsList from "./components/PostsList";
+// import MyPosts from "./pages/MyPosts";
+// import ContentTitle from "./pages/ContentTitle";
 
 
 function App() {
@@ -50,7 +50,7 @@ function App() {
   // return <MyPosts data={MOCK_DATA} />;
 
 
-  return <Login/>
+  return <Authorization/>
 }
 
 export default App;

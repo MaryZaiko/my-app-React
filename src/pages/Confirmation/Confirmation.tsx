@@ -17,7 +17,7 @@ const Confirmation = () => {
           <a href="mailto:test@gmail.com">test@gmail.com</a> <br />
           Please, check your email.
         </p>
-        <Button className={""} btnContent={"Home"} onClick={() =>{}}/>
+        <Button className={"button"} btnContent={"Home"} onClick={() =>{}}/>
       </div>
     </div>
   );
