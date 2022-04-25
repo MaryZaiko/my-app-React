@@ -1,0 +1,9 @@
+.headerPages{
+margin: 40px 0;
+}
+.headerItem{
+    font-size: 24px;
+    color: blue;
+    margin: 10px;
+    font-weight: bold;
+}

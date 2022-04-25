@@ -5,17 +5,17 @@ const PostCard = (props: any) => {
   const imgPost =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5xPwQFMwqQNGPSrW3NBueZixbwKsnVSogOA&usqp=CAU";
   return (
-    <div className="posts-card" key={props.id}>
-      <div className="posts-content">
+    <div className="postsCard" key={props.id}>
+      <div className="postsContent">
         <img
           src={props.image ? props.image : imgPost}
           alt={props.title}
-          className="posts-img"
+          className="postsImg"
         />
-        <h2 className="posts-title">{props.title}</h2>
-        <p className="posts-text">{props.text}</p>
+        <h2 className="postsTitle">{props.title}</h2>
+        <p className="postsText">{props.text}</p>
       </div>
-      <span className="posts-date">{props.date}</span>
+      <span className="postsDate">{props.date}</span>
     </div>
   );
 };

@@ -10,35 +10,47 @@
   border-radius: 20px;
   cursor: pointer;
 }
-.btn-reset {
+.btnTitle {
+  text-align: left;
+  /* width: 110px; */
+  font-size: 24px;
+  font-weight: bold;
+padding: 0;
+  color: gray;
+  background-color: transparent;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.btnAny {
+  height: 35px;
+  margin: 0 15px;
+  padding: 5px 15px;
+  font-size: 14px;
+  background-color: blue;
+  color: aliceblue;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.btnReset {
   background-color: transparent;
   color: blue;
   border: none;
   text-align: start;
+  cursor: pointer;
 }
-.btnTitleActive {
-  font-size: 24px;
-  font-weight: bold;
-  color: blue;
-  background-color: transparent;
+
+.btnLogin{
   border-bottom: none;
   border-left: none;
   border-top: none;
   border-right: 3px solid gray;
-  padding-left: 0;
-  padding-right: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
+  padding-right: 15px;
 }
-.btnTitleInActive {
-  width: 110px;
-  font-size: 24px;
-  font-weight: bold;
-
-  color: gray;
-  background-color: transparent;
+.btnRegistration{
+  margin-left: 15px;
   border: none;
-  margin-bottom: 10px;
-  cursor: pointer;
+}
+.btnTitleActive {
+  color: blue;
 
 }

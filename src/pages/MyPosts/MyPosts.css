@@ -1,0 +1,12 @@
+.MyPosts{
+    margin: 0 70px;
+}
+.headerTitle{
+margin: 15px 0;
+color: blue;
+font-size: 36px;
+}
+.titleContainer{
+    display: flex;
+    align-items: center;
+}

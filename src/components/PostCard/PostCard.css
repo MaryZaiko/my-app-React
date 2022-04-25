@@ -1,31 +1,31 @@
-.posts-card {
+.postsCard {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 300px;
-  height: 340px;
+  min-height: 340px;
   border: solid 1px grey;
   padding: 25px;
   border-radius: 8px;
   margin: 15px;
 }
-.posts-img {
+.postsImg {
   width: 250px;
   height: 140px;
   border-radius: 8px;
 }
-.posts-title {
+.postsTitle {
   font-size: 18px;
 }
-.posts-text {
+.postsText {
   font-size: 14px;
   color: grey;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.posts-date {
+.postsDate {
   font-size: 14px;
   color: blue;
 }
