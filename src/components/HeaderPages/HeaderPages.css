@@ -1,5 +1,6 @@
 .headerPages{
-margin: 40px 0;
+    padding: 20px 100px;
+    text-align: start;
 }
 .headerItem{
     font-size: 24px;
@@ -7,3 +8,14 @@ margin: 40px 0;
     margin: 10px;
     font-weight: bold;
 }
+
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+  #page-wrap {
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }

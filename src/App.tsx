@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import HeaderPages from "./components/HeaderPages";
 // import Confirmation from "./pages/Confirmation";
 import Authorization from "./pages/Authorization";
 // import Template from './pages/Template'
@@ -50,7 +51,7 @@ function App() {
   // return <MyPosts data={MOCK_DATA} />;
 
 
-  return <Authorization/>
+  return <HeaderPages/>
 }
 
 export default App;
