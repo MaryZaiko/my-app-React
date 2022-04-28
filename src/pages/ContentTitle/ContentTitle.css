@@ -1,16 +1,14 @@
 .contentTitle {
   margin: 0 auto;
   height: 100vh;
-
+  padding: 0 130px;
 }
 .headerTitle {
   margin: 25px 0;
   color: blue;
   font-size: 36px;
 }
-.postCardContainer{
-padding: 0 130px;
-}
+
 /* .postsCard {
   width: 450px;
 }

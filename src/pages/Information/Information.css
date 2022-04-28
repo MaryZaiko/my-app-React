@@ -1,0 +1,27 @@
+.Information{
+    padding: 0 130px;
+    
+    min-height: 100vh;
+}
+.informationTitle{
+color: blue;
+    text-align: left;
+    margin-left: 25px;
+}
+.textContainer{
+width: 550px;
+min-height: 350px;
+background-color:aliceblue;
+border-radius: 12px;
+margin-top: 20px;
+padding: 10px;
+margin-left: 25px;
+}
+.tabsContainer{
+    display: flex;
+    margin-left: 25px;
+}
+.textContainerDark{
+    background-color: darkblue;
+    color: aliceblue;
+}

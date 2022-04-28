@@ -11,7 +11,8 @@ const Confirmation = () => {
   const isLightTheme = theme === Theme.Light;
 
   return (
-    <div className={classnames('confirmation', {['darkContainer']: !isLightTheme})}>
+    <div 
+    className={classnames('confirmation', {['darkContainer']: !isLightTheme})}>
     
       <div className="confirmationContainer">
         <h1 className="title">Registration Confirmation</h1>

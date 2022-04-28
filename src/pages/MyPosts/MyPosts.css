@@ -1,6 +1,8 @@
-.MyPosts{
+.myPosts{
     margin: 0 auto;
     height: 100vh;
+  padding: 0 130px;
+
 }
 .headerTitle{
 margin: 15px 0;
