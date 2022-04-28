@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import HeaderPages from "./components/HeaderPages";
-// import Confirmation from "./pages/Confirmation";
+import Confirmation from "./pages/Confirmation";
 import Authorization from "./pages/Authorization";
-// import Template from './pages/Template'
-// import PostsList from "./components/PostsList";
-// import MyPosts from "./pages/MyPosts";
-// import ContentTitle from "./pages/ContentTitle";
-
+import Template from "./pages/Template";
+import PostsList from "./components/PostsList";
+import MyPosts from "./pages/MyPosts";
+import ContentTitle from "./pages/ContentTitle";
+import { ThemeModeProvider } from "./context/themeModeProvider";
+import { Theme } from "./context/themeModeContext";
 
 function App() {
+  const [theme, setTheme] = useState(Theme.Light);
+
+  const onChangeTheme = (value: Theme) => {
+    setTheme(value);
+  };
+
   // const MOCK_DATA = [
   //   {
   //     id: 1,
@@ -48,10 +55,17 @@ function App() {
   //     author: 0,
   //   },
   // ];
-  // return <MyPosts data={MOCK_DATA} />;
 
+  return (
+    <ThemeModeProvider theme={Theme.Light} onChangeTheme={onChangeTheme}>
+      <div className="App">
+        {/* <MyPosts data={MOCK_DATA} /> */}
+    <Authorization />
 
-  return <HeaderPages/>
+        </div>
+    
+    </ThemeModeProvider>
+  );
 }
 
 export default App;

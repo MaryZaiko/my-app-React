@@ -1,12 +1,17 @@
 .contentTitle {
-  margin: 0 70px;
+  margin: 0 auto;
+  height: 100vh;
+
 }
 .headerTitle {
   margin: 25px 0;
   color: blue;
   font-size: 36px;
 }
-.postsCard {
+.postCardContainer{
+padding: 0 130px;
+}
+/* .postsCard {
   width: 450px;
 }
 .postsImg {
@@ -23,4 +28,4 @@
 }
 .postsDate {
   font-size: 16px;
- }
+ } */

@@ -2,12 +2,22 @@ import React from "react";
 import "./ContentTitle.css";
 import PostCard from "../../components/PostCard";
 import HeaderPages from "../../components/HeaderPages";
+import classnames from "classnames";
+import {Theme, useThemeContext} from './../../context/themeModeContext'
+
 
 const ContentTitle = (props: any) => {
+
+  const { theme, onChangeTheme = () =>{}} = useThemeContext()
+  const isLightTheme = theme === Theme.Light;
+
+
   return (
-    <div className="contentTitle">
+    <div 
+    className={classnames('contentTitle', {['darkContainer']: !isLightTheme})}>
       <HeaderPages />
-      <h1 className="headerTitle">Conteent title</h1>
+      <h1 className="headerTitle">Content title</h1>
+      <div className="postCardContainer">
       <PostCard
         key={props.data[0].id}
         image={props.data[0].image}
@@ -15,6 +25,8 @@ const ContentTitle = (props: any) => {
         text={props.data[0].text}
         date={props.data[0].date}
       />
+      </div>
+     
     </div>
   );
 };

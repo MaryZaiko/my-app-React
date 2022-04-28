@@ -2,6 +2,9 @@ import React, { useState, FC, useEffect } from "react";
 import "./FormRegistration.css";
 import Input from "../Input";
 import Button from "../Button";
+import {Theme, useThemeContext} from './../../context/themeModeContext'
+import classnames from 'classnames';
+
 
 type FormRegistrationProps = {
   onClick: (name: string) => void;
@@ -9,9 +12,21 @@ type FormRegistrationProps = {
 };
 
 const FormRegistration: FC<FormRegistrationProps> = ({
+
   onClick,
   onClickConfirm,
 }) => {
+
+  const { theme, onChangeTheme = () =>{}} = useThemeContext()
+
+
+  const isLightTheme = theme === Theme.Light;
+
+const onClickTheme = () =>{
+  onChangeTheme(Theme.Dark)
+}
+
+
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -114,7 +129,14 @@ useEffect (() =>{
     }
   };
 
+
+
+
+
+
   return (
+    <div className={classnames('container', {['darkContainer']: !isLightTheme})}>
+
     <form>
       <div className="input">
       {userNameDirty && userNameErr && (
@@ -171,7 +193,7 @@ useEffect (() =>{
 
       <Button 
       disabled={!formValid} 
-      className="button" 
+      className={classnames(!isLightTheme ? 'buttonDark': 'button')}  
       btnContent="Login" 
       onClick={onClickConfirm} />
 
@@ -185,6 +207,7 @@ useEffect (() =>{
         />
       </div>
     </form>
+    </div>
   );
 };
 

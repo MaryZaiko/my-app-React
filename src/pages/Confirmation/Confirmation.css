@@ -1,5 +1,7 @@
 .confirmation {
-  margin: 100px auto;
+  margin: 0px auto;
+  padding-top: 100px;
+  height: 100vh;
 }
 .iconMenu {
   margin: 35px;

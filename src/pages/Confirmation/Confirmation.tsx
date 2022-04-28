@@ -1,23 +1,30 @@
 import React from "react";
 import Button from "../../components/Button";
 import "./Confirmation.css";
+import classnames from "classnames";
+import {Theme, useThemeContext} from './../../context/themeModeContext'
+
 
 const Confirmation = () => {
+
+  const { theme, onChangeTheme = () =>{}} = useThemeContext()
+  const isLightTheme = theme === Theme.Light;
+
   return (
-    <div className="confirmation">
-      <div className="iconMenu">
-        <img src="https://img.icons8.com/ios-glyphs/30/000000/menu-rounded.png" />
-      </div>
+    <div className={classnames('confirmation', {['darkContainer']: !isLightTheme})}>
+    
       <div className="confirmationContainer">
         <h1 className="title">Registration Confirmation</h1>
         
         <p className="confirmationMessage">
-          Please activate you account with <br />
+          Please activate you account with 
           the activation link in the email
-          <a href="mailto:test@gmail.com">test@gmail.com</a> <br />
+          <a href="mailto:test@gmail.com">test@gmail.com</a> 
           Please, check your email.
         </p>
-        <Button className={"button"} btnContent={"Home"} onClick={() =>{}}/>
+        <Button 
+        className={classnames(!isLightTheme ? 'buttonDark': 'button')} 
+        btnContent={"Home"} onClick={() =>{}}/>
       </div>
     </div>
   );

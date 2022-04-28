@@ -2,12 +2,22 @@ import React, { FC, useEffect, useState } from "react";
 import "./FormLogin.css";
 import Input from "../Input";
 import Button from "../Button";
+import classnames from "classnames";
+import {Theme, useThemeContext} from './../../context/themeModeContext'
+
+
 
 type FormLoginProps = {
   onClickConfirm: () => void;
 };
 
 const FormLogin: FC<FormLoginProps> = ({ onClickConfirm }) => {
+
+  const { theme, onChangeTheme = () =>{}} = useThemeContext()
+  const isLightTheme = theme === Theme.Light;
+
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -64,7 +74,7 @@ useEffect(() =>{
   };
 
   return (
-    <form>
+    <form className="loginForm">
       <div className="input">
         {emailDirty && emailErr && (
           <div style={{ color: "red" }}>{emailErr}</div>
@@ -92,7 +102,9 @@ useEffect(() =>{
         />
       </div>
 
-      <Button  disabled={!formValid} className="button" btnContent="Login" onClick={onClickConfirm} />
+      <Button  disabled={!formValid} 
+     className={classnames(!isLightTheme ? 'buttonDark': 'button')} 
+      btnContent="Login" onClick={onClickConfirm} />
 
       <div className="resetLogin">
         <span>Forgot your password?</span>

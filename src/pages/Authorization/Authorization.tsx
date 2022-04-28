@@ -7,8 +7,17 @@ import FormLogin from "../../components/FormLogin";
 import FormRegistration from "../../components/FormRegistration";
 import HeaderAuth from "../../components/HeaderAuth";
 import Confirmation from "../Confirmation";
+import {Theme, useThemeContext} from './../../context/themeModeContext'
+import ToggleSwitch from "../../components/ToggleSwitch";
+
 
 const Authorization = () => {
+
+  const { theme, onChangeTheme = () =>{}} = useThemeContext()
+  const isLightTheme = theme === Theme.Light;
+
+
+
   const [activeTab, setActiveTab] = useState("login");
   const [isConfirmed, setConfirmed] = useState(false);
 
@@ -20,8 +29,13 @@ const Authorization = () => {
     setConfirmed(true);
   }
 
+
+
   return !isConfirmed ? (
-    <div className="login">
+    <div className={classnames('login', {['darkContainer']: !isLightTheme})}>
+    
+<ToggleSwitch/>
+
       <div className={"loginContainer"}>
 
         <HeaderAuth onClick={onClickLogin} tabActive={activeTab} />
@@ -34,7 +48,7 @@ const Authorization = () => {
           )}
         </div>
       </div>
-    </div>
+     </div>
   ) :(
     <Confirmation />
   )

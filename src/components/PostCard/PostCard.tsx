@@ -1,11 +1,24 @@
 import React from "react";
 import "./PostCard.css";
+import classnames from "classnames";
+import {Theme, useThemeContext} from './../../context/themeModeContext'
 
 const PostCard = (props: any) => {
   const imgPost =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5xPwQFMwqQNGPSrW3NBueZixbwKsnVSogOA&usqp=CAU";
-  return (
-    <div className="postsCard" key={props.id}>
+  
+  
+    const { theme, onChangeTheme = () =>{}} = useThemeContext()
+    const isLightTheme = theme === Theme.Light;
+  
+  
+  
+  
+  
+    return (
+    <div 
+    className={classnames('postCard', {['darkCard']: !isLightTheme})}
+    key={props.id}>
       <div className="postsContent">
         <img
           src={props.image ? props.image : imgPost}
