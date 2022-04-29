@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-// import Input from "../Input";
 import "./ToggleSwitch.css";
 import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
@@ -22,7 +21,6 @@ const ToggleSwitch = () => {
       <div className="form_toggle-item item-1">
         <input
         onClick={onClickThemeLight}
-		// onClick={() => console.log('light')}
           id="fid-1"
           type="radio"
           name="radio"
@@ -34,7 +32,6 @@ const ToggleSwitch = () => {
       <div className="form_toggle-item item-2">
         <input 
 		onClick={onClickThemeDark}
-		// onClick={() => console.log('dark')}
 		id="fid-2" 
 		type="radio" 
 		name="radio" 

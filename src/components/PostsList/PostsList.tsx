@@ -6,30 +6,30 @@ import {Theme, useThemeContext} from './../../context/themeModeContext'
 
 
 
-// type PostsProps = {
-//   data: Card[]
-// }
+type PostsProps = {
+  data: Card[]
+}
 
-// type Card = {
-// id: string
-// image: string
-// title: string
-// text: string
-// date: string
-// }
+type Card = {
+id: string
+image: string
+title: string
+text: string
+date: string
+}
 
-const Posts = (props:any) => {
+const Posts: FC<PostsProps> = ({data}) => {
   const { theme, onChangeTheme = () =>{}} = useThemeContext()
   const isLightTheme = theme === Theme.Light;
 
-  const cards = props.data.map((item:any) => {
+  const cards = data.map(({id, image, title, text, date}) => {
     return (
       <PostCard
-        key={item.id}
-        image={item.image}
-        title={item.title}
-        text={item.text}
-        date={item.date}
+        key={id}
+        image={image}
+        title={title}
+        text={text}
+        date={date}
       />
     );
   });

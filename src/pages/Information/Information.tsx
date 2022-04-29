@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, {FC, useState } from "react";
 import './Information.css'
 import HeaderPages from "../../components/HeaderPages";
 import classnames from "classnames";
 import {Theme, useThemeContext} from './../../context/themeModeContext'
 import Button from "../../components/Button";
 
+// type InformationProps ={
+// data:Texts[]
+// }
+// type Texts ={
 
+// }
 const Information = ({data}:any) =>{
 
     const { theme, onChangeTheme = () =>{}} = useThemeContext()

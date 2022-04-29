@@ -65,9 +65,9 @@ function App() {
   return (
     <ThemeModeProvider theme={theme} onChangeTheme={onChangeTheme}>
       <div className="App">
-        <MyPosts data={MOCK_DATA} />
+        {/* <ContentTitle data={MOCK_DATA} /> */}
         {/* <Information data={MOCK_DATA} /> */}
-        {/* <Information /> */}
+        <Authorization />
       </div>
     </ThemeModeProvider>
   );

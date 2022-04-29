@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FC} from "react";
 import "./MyPosts.css";
 import PostsList from "../../components/PostsList";
 import HeaderPages from "../../components/HeaderPages";
@@ -6,8 +6,11 @@ import Button from "../../components/Button";
 import classnames from "classnames";
 import {Theme, useThemeContext} from './../../context/themeModeContext'
 
+// type MyPostsProps ={
+//   data:object;
+// }
 
-const MyPosts = (props: any) => {
+const MyPosts = ({data}:any) => {
 
   const { theme, onChangeTheme = () =>{}} = useThemeContext()
   const isLightTheme = theme === Theme.Light;
@@ -21,7 +24,7 @@ const MyPosts = (props: any) => {
       <h1 className="headerTitle">My posts</h1> <Button className={'btnAny'} btnContent={'+Add'} onClick={() =>{}}/>
 
       </div>
-      <PostsList data={props.data} />
+      <PostsList data={data} />
     </div>
 
   );

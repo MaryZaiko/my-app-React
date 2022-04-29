@@ -1,10 +1,13 @@
-import React from "react";
+import React, {FC} from "react";
 import "./Sidebar.css";
 import { slide as Menu } from 'react-burger-menu'
 
+// type SidebarProps ={
+//   pageWrapId:string;
+//   outerContainerId:string;
+// }
 
-
-export default (props: any) => {
+export default (props:any) => {
   return (
     <Menu>
       <div>
