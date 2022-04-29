@@ -1,5 +1,8 @@
-.MyPosts{
-    margin: 0 70px;
+.myPosts{
+    margin: 0 auto;
+    min-height: 100vh;
+  padding-left: 130px;
+
 }
 .headerTitle{
 margin: 15px 0;
@@ -9,4 +12,5 @@ font-size: 36px;
 .titleContainer{
     display: flex;
     align-items: center;
+    margin-left: 145px;
 }

@@ -1,21 +1,42 @@
-import React from "react";
+import React, { FC } from "react";
 import "./PostCard.css";
+import classnames from "classnames";
+import { Theme, useThemeContext } from "./../../context/themeModeContext";
 
-const PostCard = (props: any) => {
+type PostCardProps = {
+  id?: string //???????
+image: string
+title: string
+text: string
+date: string
+};
+
+const PostCard: FC<PostCardProps> = ({id, image, title, text, date}) => {
   const imgPost =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5xPwQFMwqQNGPSrW3NBueZixbwKsnVSogOA&usqp=CAU";
+
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
+  const isLightTheme = theme === Theme.Light;
+
   return (
-    <div className="postsCard" key={props.id}>
+    <div
+      className={classnames(
+        "postCard",
+        { ["cardLight"]: isLightTheme },
+        { ["darkCard"]: !isLightTheme }
+      )}
+      key={id}
+    >
       <div className="postsContent">
         <img
-          src={props.image ? props.image : imgPost}
-          alt={props.title}
+          src={image ? image : imgPost}
+          alt={title}
           className="postsImg"
         />
-        <h2 className="postsTitle">{props.title}</h2>
-        <p className="postsText">{props.text}</p>
+        <h2 className="postsTitle">{title}</h2>
+        <p className="postsText">{text}</p>
       </div>
-      <span className="postsDate">{props.date}</span>
+      <span className="postsDate">{date}</span>
     </div>
   );
 };

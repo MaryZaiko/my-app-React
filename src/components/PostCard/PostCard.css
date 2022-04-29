@@ -1,4 +1,4 @@
-.postsCard {
+.postCard {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   border: solid 1px grey;
   padding: 25px;
   border-radius: 8px;
-  margin: 15px;
+  margin: 20px;
 }
 .postsImg {
   width: 250px;
@@ -28,4 +28,8 @@
 .postsDate {
   font-size: 14px;
   color: blue;
+  text-align: left;
+}
+.cardLight{
+background-color: white;
 }

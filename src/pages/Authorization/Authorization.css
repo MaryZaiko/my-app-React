@@ -1,7 +1,9 @@
 .login {
-  margin: 100px auto;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+
 }
 .iconMenu {
   margin: 35px;
@@ -20,7 +22,7 @@
 .loginContainer{
   display: flex;
     flex-direction: column;
-    margin: 0 auto;
+    margin: 50px auto;
 }
 .resetLogin{
 margin-top: 25px;

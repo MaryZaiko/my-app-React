@@ -1,11 +1,12 @@
 .confirmation {
-  margin: 100px auto;
+  margin: 0px auto;
+  height: 100vh;
 }
 .iconMenu {
   margin: 35px;
 }
 .confirmationContainer {
-  margin: 0px auto;
+  margin: 100px auto;
   width: 400px;
   display: flex;
   flex-direction: column;

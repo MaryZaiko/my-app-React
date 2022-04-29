@@ -3,3 +3,7 @@
   flex-direction: column;
   align-items: start;
 }
+.loginForm{
+  display: flex;
+  flex-direction: column;
+}
