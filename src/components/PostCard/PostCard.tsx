@@ -17,7 +17,7 @@ const PostCard = (props: any) => {
   
     return (
     <div 
-    className={classnames('postCard', {['darkCard']: !isLightTheme})}
+    className={classnames('postCard',{['cardLight']: isLightTheme}, {['darkCard']: !isLightTheme})}
     key={props.id}>
       <div className="postsContent">
         <img

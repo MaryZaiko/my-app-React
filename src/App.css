@@ -43,9 +43,18 @@
   background-color: blue;
   color: rgb(77, 73, 73);
 }
+.container, .container span i {
+  background-color: aliceblue;
+  color:blue;
+}
+
 .darkContainer button, .darkContainer h1, h2{
   color: white;
 }
+.container h1, h2{
+  color: blue;
+}
+
 .buttonDark {
   background-color: rgb(1, 14, 109);
   border: none;

@@ -3,6 +3,7 @@ import Button from "../../components/Button";
 import "./Confirmation.css";
 import classnames from "classnames";
 import {Theme, useThemeContext} from './../../context/themeModeContext'
+import ToggleSwitch from "../../components/ToggleSwitch";
 
 
 const Confirmation = () => {
@@ -13,7 +14,7 @@ const Confirmation = () => {
   return (
     <div 
     className={classnames('confirmation', {['darkContainer']: !isLightTheme})}>
-    
+    <ToggleSwitch />
       <div className="confirmationContainer">
         <h1 className="title">Registration Confirmation</h1>
         

@@ -14,7 +14,7 @@ const ContentTitle = (props: any) => {
 
   return (
     <div 
-    className={classnames('contentTitle', {['darkContainer']: !isLightTheme})}>
+    className={classnames('contentTitle',{['container']: isLightTheme}, {['darkContainer']: !isLightTheme})}>
       <HeaderPages />
       <h1 className="headerTitle">Content title</h1>
       <div className="postCardContainer">

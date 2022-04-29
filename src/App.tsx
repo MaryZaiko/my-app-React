@@ -63,11 +63,11 @@ function App() {
     },
   ];
   return (
-    <ThemeModeProvider theme={Theme.Light} onChangeTheme={onChangeTheme}>
+    <ThemeModeProvider theme={theme} onChangeTheme={onChangeTheme}>
       <div className="App">
-        <ContentTitle data={MOCK_DATA} />
+        <MyPosts data={MOCK_DATA} />
         {/* <Information data={MOCK_DATA} /> */}
-        {/* <Authorization /> */}
+        {/* <Information /> */}
       </div>
     </ThemeModeProvider>
   );

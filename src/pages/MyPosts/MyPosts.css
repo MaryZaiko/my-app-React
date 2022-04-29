@@ -1,7 +1,7 @@
 .myPosts{
     margin: 0 auto;
-    height: 100vh;
-  padding: 0 130px;
+    min-height: 100vh;
+  padding-left: 130px;
 
 }
 .headerTitle{

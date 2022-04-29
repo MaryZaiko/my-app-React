@@ -25,7 +25,7 @@ const isActiveTab3 = activeTab === 'tab3';
 
     return (
         <div 
-        className={classnames('Information', {['darkContainer']: !isLightTheme})} >
+        className={classnames('Information', {['container']: isLightTheme}, {['darkContainer']: !isLightTheme})} >
 <HeaderPages />
 <h1 className="informationTitle">Information</h1>
 <div className="tabsContainer">
@@ -44,7 +44,7 @@ btnContent="Tab 3" onClick={() =>{onClickActiveTab('tab3')}}/>
 
 <div 
 className={classnames('textContainer', {['textContainerDark']: !isLightTheme})}>
-<p>{(activeTab === 'tab1') ? data[0] : activeTab === 'tab2' ? data[1] : data[2] }</p>
+<p>{(activeTab === 'tab1') ? data[0] : (activeTab === 'tab2') ? data[1] : data[2] }</p>
 </div>
 
 

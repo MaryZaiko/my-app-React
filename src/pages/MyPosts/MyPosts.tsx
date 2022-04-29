@@ -15,7 +15,7 @@ const MyPosts = (props: any) => {
 
   return (
     <div 
-    className={classnames('myPosts', {['darkContainer']: !isLightTheme})}>
+    className={classnames('myPosts',{['container']: isLightTheme}, {['darkContainer']: !isLightTheme})}>
       <HeaderPages />
       <div className="titleContainer">
       <h1 className="headerTitle">My posts</h1> <Button className={'btnAny'} btnContent={'+Add'} onClick={() =>{}}/>

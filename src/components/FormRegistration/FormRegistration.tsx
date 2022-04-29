@@ -129,13 +129,8 @@ useEffect (() =>{
     }
   };
 
-
-
-
-
-
   return (
-    <div className={classnames('container', {['darkContainer']: !isLightTheme})}>
+    <div className={classnames({['container']: isLightTheme}, {['darkContainer']: !isLightTheme})}>
 
     <form>
       <div className="input">

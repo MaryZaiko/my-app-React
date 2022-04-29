@@ -9,8 +9,11 @@ const ToggleSwitch = () => {
 
   const onClickThemeDark = () => {
     onChangeTheme(Theme.Dark);
+    console.log(theme);
+    
   };
   const onClickThemeLight = () => {
+    console.log(theme);
     onChangeTheme(Theme.Light);
   };
 
