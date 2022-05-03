@@ -6,21 +6,27 @@ import { Theme, useThemeContext } from "./../../context/themeModeContext";
 const ToggleSwitch = () => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
 
-  const onClickThemeDark = () => {
-    onChangeTheme(Theme.Dark);
+  const onClickTheme = () => {
+    onChangeTheme((theme === 'light') ? Theme.Dark : Theme.Light);
     console.log(theme);
     
   };
-  const onClickThemeLight = () => {
-    console.log(theme);
-    onChangeTheme(Theme.Light);
-  };
+
+  // const onClickThemeDark = () => {
+  //   onChangeTheme(Theme.Dark);
+  //   console.log(theme);
+    
+  // };
+  // const onClickThemeLight = () => {
+  //   console.log(theme);
+  //   onChangeTheme(Theme.Light);
+  // };
 
   return (
     <div className="form_toggle">
       <div className="form_toggle-item item-1">
         <input
-        onClick={onClickThemeLight}
+        onClick={onClickTheme}
           id="fid-1"
           type="radio"
           name="radio"
@@ -31,7 +37,7 @@ const ToggleSwitch = () => {
       </div>
       <div className="form_toggle-item item-2">
         <input 
-		onClick={onClickThemeDark}
+		onClick={onClickTheme}
 		id="fid-2" 
 		type="radio" 
 		name="radio" 

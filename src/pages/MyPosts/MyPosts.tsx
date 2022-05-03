@@ -15,12 +15,13 @@ const MyPosts = ({data}:any) => {
   const { theme, onChangeTheme = () =>{}} = useThemeContext()
   const isLightTheme = theme === Theme.Light;
 
+  
 
   return (
     <div 
     className={classnames('myPosts',{['container']: isLightTheme}, {['darkContainer']: !isLightTheme})}>
-      <HeaderPages />
-      <div className="titleContainer">
+    
+      <div className="titlePostsContainer">
       <h1 className="headerTitle">My posts</h1> <Button className={'btnAny'} btnContent={'+Add'} onClick={() =>{}}/>
 
       </div>

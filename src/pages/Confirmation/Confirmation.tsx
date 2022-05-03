@@ -2,31 +2,41 @@ import React from "react";
 import Button from "../../components/Button";
 import "./Confirmation.css";
 import classnames from "classnames";
-import {Theme, useThemeContext} from './../../context/themeModeContext'
+import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import ToggleSwitch from "../../components/ToggleSwitch";
-
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const Confirmation = () => {
-
-  const { theme, onChangeTheme = () =>{}} = useThemeContext()
+  const { theme} = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
+  const location: any = useLocation();
+
+  const onHomeClick = () => {
+    localStorage.setItem("isLoggedIn", "true");
+    window.location.replace("cards-list");
+  };
+
   return (
-    <div 
-    className={classnames('confirmation', {['darkContainer']: !isLightTheme})}>
-    <ToggleSwitch />
+    <div
+      className={classnames("confirmation", {
+        ["darkContainer"]: !isLightTheme,
+      })}
+    >
+      <ToggleSwitch />
       <div className="confirmationContainer">
         <h1 className="title">Registration Confirmation</h1>
-        
+
         <p className="confirmationMessage">
-          Please activate you account with 
-          the activation link in the email
-          <a href="mailto:test@gmail.com">test@gmail.com</a> 
+          Please activate you account with the activation link in the email
+          <Button btnContent={location?.state?.email ?? ""} />
           Please, check your email.
         </p>
-        <Button 
-        className={classnames(!isLightTheme ? 'buttonDark': 'button')} 
-        btnContent={"Home"} onClick={() =>{}}/>
+        <Button
+          className={classnames(!isLightTheme ? "buttonDark" : "button")}
+          btnContent={"Home"}
+          onClick={onHomeClick}
+        />
       </div>
     </div>
   );

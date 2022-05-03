@@ -1,6 +1,7 @@
 import React, {FC} from "react";
 import "./Sidebar.css";
 import { slide as Menu } from 'react-burger-menu'
+import { NavLink } from 'react-router-dom'
 
 // type SidebarProps ={
 //   pageWrapId:string;
@@ -11,14 +12,14 @@ export default (props:any) => {
   return (
     <Menu>
       <div>
-      <a className="menu-item" href="/">
+      <NavLink className="menu-item" to="/cards-list">
         All posts
-      </a>
+      </NavLink>
       </div>
       <div>
-      <a className="menu-item" href="/salads">
-        My posts
-      </a>
+      <NavLink className="menu-item" to="/info">
+        Information
+      </NavLink>
       <a className="menu-item" href="/pizzas">
         Add posts
       </a>

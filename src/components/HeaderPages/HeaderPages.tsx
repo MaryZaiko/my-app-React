@@ -4,6 +4,7 @@ import Sidebar from "../Sidebar";
 import classnames from "classnames";
 import {Theme, useThemeContext} from './../../context/themeModeContext'
 import ToggleSwitch from "../ToggleSwitch";
+import {Outlet} from 'react-router-dom'
 
 
 const HeaderPages = () => {
@@ -13,9 +14,9 @@ const HeaderPages = () => {
 
 
   return (
-
-    <div 
-    className={classnames('App', {['darkHeader']: !isLightTheme})}
+<div>
+<div 
+    className={classnames('App', {['header']: isLightTheme},{['darkHeader']: !isLightTheme})}
      
     id="outer-container">
       <ToggleSwitch />
@@ -29,6 +30,9 @@ const HeaderPages = () => {
         </div>
       </div>
     </div>
+    <Outlet />
+</div>
+    
   );
 };
 

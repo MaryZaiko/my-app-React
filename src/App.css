@@ -38,7 +38,9 @@
   }
 }
 
-
+*{
+  box-sizing: border-box;
+}
 .darkContainer, .darkContainer a, .darkContainer span i {
   background-color: blue;
   color: rgb(77, 73, 73);
@@ -90,4 +92,8 @@ color: black;
 .darkHeader span, .darkHeader span i, .darkHeader a{
 
   color: white;
+}
+.header{
+  /* position: sticky; */
+  background-color: aliceblue;
 }

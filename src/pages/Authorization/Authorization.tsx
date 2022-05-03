@@ -6,7 +6,7 @@ import Button from "../../components/Button";
 import FormLogin from "../../components/FormLogin";
 import FormRegistration from "../../components/FormRegistration";
 import HeaderAuth from "../../components/HeaderAuth";
-import Confirmation from "../Confirmation";
+// import Confirmation from "../Confirmation";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import ToggleSwitch from "../../components/ToggleSwitch";
 
@@ -25,7 +25,7 @@ const Authorization = () => {
     setConfirmed(true);
   };
 
-  return !isConfirmed ? (
+  return (
     <div
       className={classnames(
         "login",
@@ -40,18 +40,16 @@ const Authorization = () => {
 
         <div className="formContainer">
           {activeTab === "login" ? (
-            <FormLogin onClickConfirm={onClickRegister} />
+            <FormLogin  />
           ) : (
             <FormRegistration
               onClick={onClickLogin}
-              onClickConfirm={onClickRegister}
+             
             />
           )}
         </div>
       </div>
     </div>
-  ) : (
-    <Confirmation />
   );
 };
 
