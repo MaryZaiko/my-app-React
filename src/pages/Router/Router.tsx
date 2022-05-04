@@ -4,6 +4,7 @@ import HeaderPages from "../../components/HeaderPages";
 import PostsList from "../../components/PostsList";
 import Authorization from "../Authorization";
 import Confirmation from "../Confirmation";
+import ContentTitle from "../ContentTitle";
 import Information from "../Information";
 import MyPosts from "../MyPosts";
 
@@ -16,6 +17,8 @@ const Router = () =>{
     {isLoggedIn ? <Routes>
         <Route path={'/'} element={<HeaderPages />}>
             <Route path='cards-list' element={<MyPosts />}></Route>
+            <Route path="cards-list/:id" element={<ContentTitle />} />
+
             <Route path='info' element={<Information/>}></Route>
 
         </Route>

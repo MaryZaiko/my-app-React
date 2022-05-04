@@ -7,19 +7,23 @@ import ToggleSwitch from "../../components/ToggleSwitch";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const Confirmation = () => {
-  const { theme} = useThemeContext();
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
   const location: any = useLocation();
+  console.log(location.state.email);
+  
 
   const onHomeClick = () => {
     localStorage.setItem("isLoggedIn", "true");
-    window.location.replace("cards-list");
+    window.location.replace("/cards-list");
   };
 
   return (
     <div
-      className={classnames("confirmation", {
+      className={classnames('confirmation',
+        {['container']:isLightTheme}, 
+        {
         ["darkContainer"]: !isLightTheme,
       })}
     >
@@ -29,7 +33,7 @@ const Confirmation = () => {
 
         <p className="confirmationMessage">
           Please activate you account with the activation link in the email
-          <Button btnContent={location?.state?.email ?? ""} />
+          <Button className={"btnReset"} btnContent={ location.state.email || ''} />
           Please, check your email.
         </p>
         <Button

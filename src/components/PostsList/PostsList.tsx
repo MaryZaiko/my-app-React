@@ -3,6 +3,8 @@ import "./PostsList.css";
 import PostCard from "../PostCard";
 import classnames from "classnames";
 import {Theme, useThemeContext} from './../../context/themeModeContext'
+import { NavLink } from 'react-router-dom'
+
 
 
 
@@ -63,13 +65,19 @@ const Posts: FC<PostsProps> = () => {
 
   const cards = MOCK_DATA.map(({id, image, title, text, date}) => {
     return (
-      <PostCard
-        key={id}
+      <div 
+      key={id}
+      >
+        <NavLink to="/cards-list/${id}">
+        <PostCard
         image={image}
         title={title}
         text={text}
         date={date}
       />
+        </NavLink>
+      </div>
+      
     );
   });
 

@@ -15,21 +15,25 @@ const HeaderPages = () => {
 
   return (
 <div>
-<div 
-    className={classnames('App', {['header']: isLightTheme},{['darkHeader']: !isLightTheme})}
+<header 
+    className={classnames('App','headerPosition', {['headerLight']: isLightTheme},{['darkHeader']: !isLightTheme})}
      
     id="outer-container">
-      <ToggleSwitch />
+      
       <Sidebar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
       <div id="page-wrap">
+
         <div className="headerPages">
           <span>
             <i className="fa-solid fa-user headerItem"></i>
           </span>
           <span className="headerItem">Username</span>
         </div>
+
+        <ToggleSwitch />
+
       </div>
-    </div>
+    </header>
     <Outlet />
 </div>
     

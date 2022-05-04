@@ -190,7 +190,7 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
         </div>
 
         <Button
-          // disabled={!formValid}
+          disabled={!formValid}
           className={classnames(!isLightTheme ? "buttonDark" : "button")}
           btnContent="Login"
           onClick={onSubmit}

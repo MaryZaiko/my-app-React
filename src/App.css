@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-
 }
 
 .App-logo {
@@ -38,23 +37,31 @@
   }
 }
 
-*{
+* {
   box-sizing: border-box;
 }
-.darkContainer, .darkContainer a, .darkContainer span i {
+
+.darkContainer,
+.darkContainer a,
+.darkContainer span i {
   background-color: blue;
   color: rgb(77, 73, 73);
 }
-.container, .container span i {
-  background-color: aliceblue;
-  color:blue;
+.container,
+.container a,
+.container span i {
+  background-color: #bcb8ce;
+  color: #2e1a1e;
 }
 
-.darkContainer button, .darkContainer h1, h2{
+.darkContainer button,
+.darkContainer h1,
+h2 {
   color: white;
 }
-.container h1, h2{
-  color: blue;
+.container h1,
+h2 {
+  color: #2e1a1e;
 }
 
 .buttonDark {
@@ -69,10 +76,10 @@
   border-radius: 20px;
   cursor: pointer;
 }
-.btnTitleActiveDark{
-color: rgb(139, 0, 130);
+.btnTitleActiveDark {
+  color: rgb(139, 0, 130);
 }
-.darkCard{
+.darkCard {
   background-color: #210097;
   box-sizing: border-box;
   display: flex;
@@ -85,15 +92,27 @@ color: rgb(139, 0, 130);
   border-radius: 8px;
   margin: 15px;
 }
-.darkCard span{
+.darkCard span {
   background-color: #210097;
-color: black;
+  color: black;
 }
-.darkHeader span, .darkHeader span i, .darkHeader a{
-
+.darkHeader span,
+.darkHeader span i,
+.darkHeader a {
   color: white;
 }
-.header{
-  /* position: sticky; */
-  background-color: aliceblue;
+
+.headerLight {
+  background-color: #917898;
+  color: #2e1a1e;
+}
+.darkHeader {
+  background-color: darkBlue;
+  color: white;
+}
+.cardLight {
+  background-color: #d5ddef;
+}
+a {
+  text-decoration: none;
 }

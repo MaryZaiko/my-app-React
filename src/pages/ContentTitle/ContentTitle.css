@@ -4,9 +4,12 @@
   padding-left:130px;
 }
 .headerTitle {
-  margin: 25px 0;
+  /* margin: 25px 0; */
   color: blue;
   font-size: 36px;
+}
+h1{
+  margin-top: 0;
 }
 
 /* .postsCard {

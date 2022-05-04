@@ -5,12 +5,16 @@
 }
 .headerItem{
     font-size: 24px;
-    color: blue;
+    color: #2e1a1e;
     margin: 10px;
     font-weight: bold;
 }
 
 
+.headerPosition{
+  position: sticky;
+  top: 0;
+}
 
 * {
     box-sizing: border-box;
@@ -19,4 +23,7 @@
   #page-wrap {
     padding-bottom: 10px;
     padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   }
