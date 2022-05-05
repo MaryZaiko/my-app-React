@@ -10,7 +10,7 @@ import { NavLink } from 'react-router-dom'
 
 export default (props:any) => {
   const onLogOutClick = () => {
-    localStorage.setItem("isLoggedIn", "false");
+    localStorage.setItem("isLoggedIn", "");
     window.location.replace("/");
   };
   return (
@@ -30,6 +30,7 @@ export default (props:any) => {
       </div>
      <div>
      <NavLink className="menu-item" to='/' onClick={onLogOutClick}>
+       
         Log out  <i className="fa-solid fa-arrow-right-from-bracket"></i>
       </NavLink>
      </div>

@@ -44,8 +44,8 @@
 .darkContainer,
 .darkContainer a,
 .darkContainer span i {
-  background-color: blue;
-  color: rgb(77, 73, 73);
+  background-color: #4c394f;
+  color: #bcb8ce;
 }
 .container,
 .container a,
@@ -57,7 +57,7 @@
 .darkContainer button,
 .darkContainer h1,
 h2 {
-  color: white;
+  color: #d5ddef;
 }
 .container h1,
 h2 {
@@ -65,7 +65,7 @@ h2 {
 }
 
 .buttonDark {
-  background-color: rgb(1, 14, 109);
+  background-color: #2e1a1e;
   border: none;
   width: 234px;
   height: 40px;
@@ -80,7 +80,7 @@ h2 {
   color: rgb(139, 0, 130);
 }
 .darkCard {
-  background-color: #210097;
+  background-color: #bcb8ce;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -93,22 +93,22 @@ h2 {
   margin: 15px;
 }
 .darkCard span {
-  background-color: #210097;
+  background-color: #bcb8ce;
   color: black;
 }
 .darkHeader span,
 .darkHeader span i,
 .darkHeader a {
-  color: white;
+  color: #d5ddef;
 }
 
 .headerLight {
-  background-color: #917898;
+  background-color: #d5ddef;
   color: #2e1a1e;
 }
 .darkHeader {
-  background-color: darkBlue;
-  color: white;
+  background-color: #2e1a1e;
+  color: #d5ddef;
 }
 .cardLight {
   background-color: #d5ddef;

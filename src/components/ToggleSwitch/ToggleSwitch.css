@@ -32,7 +32,7 @@
  
 /* Checked */
 .form_toggle .item-1 input[type=radio]:checked + label {
-	background: #d5ddef;
+	background: #c0b8bf;
 }
 .form_toggle .item-2 input[type=radio]:checked + label {
 	

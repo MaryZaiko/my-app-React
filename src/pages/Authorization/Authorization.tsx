@@ -21,9 +21,9 @@ const Authorization = () => {
     setActiveTab(name);
   };
 
-  const onClickRegister = () => {
-    setConfirmed(true);
-  };
+  // const onClickRegister = () => {
+  //   setConfirmed(true);
+  // };
 
   return (
     <div
