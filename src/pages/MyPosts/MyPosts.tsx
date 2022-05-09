@@ -1,10 +1,10 @@
-import React, {FC} from "react";
+import React, { FC, useState } from "react";
 import "./MyPosts.css";
 import PostsList from "../../components/PostsList";
 import HeaderPages from "../../components/HeaderPages";
 import Button from "../../components/Button";
 import classnames from "classnames";
-import {Theme, useThemeContext} from './../../context/themeModeContext'
+import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import { useParams, Link } from "react-router-dom";
 import PostCard from "../../components/PostCard";
 
@@ -12,10 +12,8 @@ import PostCard from "../../components/PostCard";
 //   data:object;
 // }
 
-
-const MyPosts = ({data}:any) => {
-
-  const { theme, onChangeTheme = () =>{}} = useThemeContext()
+const MyPosts = ({ data }: any) => {
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
   // const { id } = useParams();
@@ -59,33 +57,41 @@ const MyPosts = ({data}:any) => {
     },
   ];
 
-  return (
-    <div 
-    className={classnames('myPosts',{['container']: isLightTheme}, {['darkContainer']: !isLightTheme})}>
-    
-      <div className="titlePostsContainer">
-      <h1 className="headerTitle">My posts</h1> <Button className={'btnAny'} btnContent={'+Add'} onClick={() =>{}}/>
+  // const [singleCard, setSingleCard] = useState('not');
 
+  return (
+    <div
+      className={classnames(
+        "myPosts",
+        { ["container"]: isLightTheme },
+        { ["darkContainer"]: !isLightTheme }
+      )}
+    >
+      <div className="titlePostsContainer">
+        <h1 className="headerTitle">My posts</h1>{" "}
+        <Button className={"btnAny"} btnContent={"+Add"} onClick={() => {}} />
       </div>
       <div className="postsList">
-      {
-      
-      MOCK_DATA.map((card : any) => {
-            
-       return(
-        
-          
-          <Link key={card.id} to={`/cards-list/${card.id}`}>
-            <PostCard image={card.image} title={card.title} text={card.text} date={card.date} />
-          </Link>
-        )
-      })
-      
-      }
-      </div>
-      
-    </div>
+        {MOCK_DATA.map((card: any) => {
+          return (
+            <Link key={card.id} to={`/cards-list/${card.id}`}>
+              <PostCard
+                // className={(singleCard === 'not')? "postCard" : "singleCard"}
 
+                // {classnames(
+                //   { ["postCard"]: singleCard === 'not' },
+                //   { ["singleCard"]: singleCard === 'yes' }
+                // )}
+                image={card.image}
+                title={card.title}
+                text={card.text}
+                date={card.date}
+              />
+            </Link>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 

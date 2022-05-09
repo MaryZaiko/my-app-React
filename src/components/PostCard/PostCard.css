@@ -1,11 +1,11 @@
 .postCard {
+  width: 300px;
+  min-height: 340px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 300px;
-  min-height: 340px;
-  border: solid 1px grey;
+    border: solid 1px grey;
   padding: 25px;
   border-radius: 8px;
   margin: 20px;
@@ -13,6 +13,14 @@
 .singleCard{
   width: 400px;
   min-height: 440px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+    border: solid 1px grey;
+  padding: 25px;
+  border-radius: 8px;
+  margin: 20px;
 }
 .postsImg {
   width: 250px;
