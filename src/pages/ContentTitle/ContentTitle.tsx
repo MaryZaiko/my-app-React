@@ -58,12 +58,10 @@ const ContentTitle = ({ data }: any) => {
     },
   ];
 
-  const { id } = useParams();
+  const { id:cardId } = useParams();
 
-  // const params = useParams();
-  const cardId = id;
 
-  const cardData = MOCK_DATA.find((card: any) =>  cardId == card.id); // почему ==, а не ===?
+  const cardData = MOCK_DATA.find((card: any) =>  cardId == card.id); 
   console.log(cardData);
 
   return (
