@@ -3,13 +3,10 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-
 }
 .iconMenu {
   margin: 35px;
 }
-
-
 .titleContainer {
   display: flex;
   align-items: center;
@@ -19,11 +16,11 @@
   margin: 0 10px;
   font-weight: bold;
 }
-.loginContainer{
+.loginContainer {
   display: flex;
-    flex-direction: column;
-    margin: 50px auto;
+  flex-direction: column;
+  margin: 50px auto;
 }
-.resetLogin{
-margin-top: 25px;
+.resetLogin {
+  margin-top: 25px;
 }

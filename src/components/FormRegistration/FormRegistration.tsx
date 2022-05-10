@@ -2,30 +2,21 @@ import React, { useState, FC, useEffect } from "react";
 import "./FormRegistration.css";
 import Input from "../Input";
 import Button from "../Button";
-import {Theme, useThemeContext} from './../../context/themeModeContext'
-import classnames from 'classnames';
-
+import {Theme,useThemeContext} from "./../../context/themeModeContext";
+import classnames from "classnames";
+import {useNavigate } from "react-router-dom";
 
 type FormRegistrationProps = {
   onClick: (name: string) => void;
-  onClickConfirm: () => void;
 };
 
-const FormRegistration: FC<FormRegistrationProps> = ({
+const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
 
-  onClick,
-  onClickConfirm,
-}) => {
-
-  const { theme, onChangeTheme = () =>{}} = useThemeContext()
+  const navigate = useNavigate();
 
 
   const isLightTheme = theme === Theme.Light;
-
-const onClickTheme = () =>{
-  onChangeTheme(Theme.Dark)
-}
-
 
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -50,32 +41,29 @@ const onClickTheme = () =>{
 
   const [formValid, setFormValid] = useState(false);
 
-useEffect (() =>{
-    if(userNameErr || emailErr || passwordErr || confirmPasswordErr){
-      setFormValid(false)
-    } else{
-      setFormValid(true)
+  useEffect(() => {
+    if (userNameErr || emailErr || passwordErr || confirmPasswordErr) {
+      setFormValid(false);
+    } else {
+      setFormValid(true);
     }
-  
-  }, [userNameErr,emailErr, passwordErr, confirmPasswordErr])
+  }, [userNameErr, emailErr, passwordErr, confirmPasswordErr]);
 
   const userNameHandler = (e: any) => {
     setUserName(e.target.value);
     if (e.target.value.length < 2) {
       setUserNameErr("Name must contain at least 2 symbols");
-      if(!e.target.value){
+      if (!e.target.value) {
         setUserNameErr("This field must not be empty");
       }
     } else {
       setUserNameErr("");
-     
     }
   };
 
   const emailHandler = (e: any) => {
     setEmail(e.target.value);
-    const re =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(String(e.target.value).toLowerCase())) {
       setEmailErr("Email is not correct");
     } else {
@@ -84,12 +72,11 @@ useEffect (() =>{
   };
 
   const passwordHandler = (e: any) => {
-
     setPassword(e.target.value);
 
     if (e.target.value.length < 8 || e.target.value.length > 15) {
       setPasswordErr("Password must contain at least 8 and no more than 15");
-      if(!e.target.value){
+      if (!e.target.value) {
         setPasswordErr("This field must not be empty");
       }
     } else {
@@ -97,19 +84,17 @@ useEffect (() =>{
     }
   };
 
-
   const confirmPasswordHandler = (e: any) => {
     setConfirmPassword(e.target.value);
-    if ( e.target.value !== password) {
+    if (e.target.value !== password) {
       setConfirmPasswordErr("Password not confirmed");
-      if(!e.target.value){
+      if (!e.target.value) {
         setConfirmPasswordErr("This field must not be empty");
       }
     } else {
       setConfirmPasswordErr("");
     }
   };
-
 
   const blurHandler = (e: any) => {
     switch (e.target.name) {
@@ -128,80 +113,94 @@ useEffect (() =>{
         break;
     }
   };
+  const onSubmit = () => {
+    navigate("/confirm", {
+      state: {
+        email,
+      },
+    });
+  };
+
 
   return (
-    <div className={classnames({['container']: isLightTheme}, {['darkContainer']: !isLightTheme})}>
-
-    <form>
-      <div className="input">
-      {userNameDirty && userNameErr && (
-          <div style={{ color: "red" }}>{userNameErr}</div>
-        )}
-        <span>User name</span>
-        <Input
-          value={userName}
-          onBlur={(e: any) => blurHandler(e)}
-          onChange={userNameHandler}
-          type="text"
-          name="userName"
-        />
-      </div>
-      <div className="input">
-      {emailDirty && emailErr && (
-          <div style={{ color: "red" }}>{emailErr}</div>
-        )}
-        <span>Email</span>
-        <Input
-          value={email}
-           onBlur={(e: any) => blurHandler(e)}
+    <div
+      className={classnames(
+        { ["container"]: isLightTheme },
+        { ["darkContainer"]: !isLightTheme }
+      )}
+    >
+      <form
+      // onSubmit={onSubmit}
+      >
+        <div className="input">
+          {userNameDirty && userNameErr && (
+            <div style={{ color: "red" }}>{userNameErr}</div>
+          )}
+          <span>User name</span>
+          <Input
+            value={userName}
+            onBlur={(e: any) => blurHandler(e)}
+            onChange={userNameHandler}
+            type="text"
+            name="userName"
+          />
+        </div>
+        <div className="input">
+          {emailDirty && emailErr && (
+            <div style={{ color: "red" }}>{emailErr}</div>
+          )}
+          <span>Email</span>
+          <Input
+            value={email}
+            onBlur={(e: any) => blurHandler(e)}
             onChange={(e: any) => emailHandler(e)}
-          type="email"
-          name="email"
-        />
-      </div>
-      <div className="input">
-      {passwordDirty && passwordErr && (
-          <div style={{ color: "red" }}>{passwordErr}</div>
-        )}
-        <span>Password</span>
-        <Input
-          value={password}
-           onBlur={(e: any) => blurHandler(e)}
+            type="email"
+            name="email"
+          />
+        </div>
+        <div className="input">
+          {passwordDirty && passwordErr && (
+            <div style={{ color: "red" }}>{passwordErr}</div>
+          )}
+          <span>Password</span>
+          <Input
+            value={password}
+            onBlur={(e: any) => blurHandler(e)}
             onChange={(e: any) => passwordHandler(e)}
-          type="password"
-          name="password"
-        />
-      </div>
-      <div className="input">
-      {confirmPasswordDirty && confirmPasswordErr && (
-          <div style={{ color: "red" }}>{confirmPasswordErr}</div>
-        )}
-        <span>Confirm password</span>
-        <Input
-          value={confirmPassword}
-           onBlur={(e: any) => blurHandler(e)}
+            type="password"
+            name="password"
+          />
+        </div>
+        <div className="input">
+          {confirmPasswordDirty && confirmPasswordErr && (
+            <div style={{ color: "red" }}>{confirmPasswordErr}</div>
+          )}
+          <span>Confirm password</span>
+          <Input
+            value={confirmPassword}
+            onBlur={(e: any) => blurHandler(e)}
             onChange={(e: any) => confirmPasswordHandler(e)}
-          type="password"
-          name="confirmPassword"
-        />
-      </div>
+            type="password"
+            name="confirmPassword"
+          />
+        </div>
 
-      <Button 
-      disabled={!formValid} 
-      className={classnames(!isLightTheme ? 'buttonDark': 'button')}  
-      btnContent="Login" 
-      onClick={onClickConfirm} />
-
-      <div className="resetLogin">
-        <span>If you have account you can</span>
         <Button
-        
-          className={"btnReset"}
-          btnContent={"login"}
-          onClick={() => onClick("login")}
+          disabled={!formValid}
+          className={classnames(!isLightTheme ? "buttonDark" : "button")}
+          btnContent="Login"
+          onClick={onSubmit}
         />
-      </div>
-    </form>
+
+        <div className="resetLogin">
+          <span>If you have account you can</span>
+          <Button
+            className={"btnReset"}
+            btnContent={"login"}
+            onClick={() => onClick("login")}
+          />
+        </div>
+      </form>
     </div>
   );
 };

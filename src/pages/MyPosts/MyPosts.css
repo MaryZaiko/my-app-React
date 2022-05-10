@@ -5,12 +5,17 @@
 
 }
 .headerTitle{
-margin: 15px 0;
+/* margin: 15px 0; */
 color: blue;
 font-size: 36px;
 }
-.titleContainer{
+.titlePostsContainer{
     display: flex;
     align-items: center;
     margin-left: 145px;
+}
+.postsList{
+display: flex;
+justify-content: space-between;
+    flex-wrap: wrap;
 }

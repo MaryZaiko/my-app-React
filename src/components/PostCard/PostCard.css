@@ -1,11 +1,23 @@
 .postCard {
+  width: 300px;
+  min-height: 340px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 300px;
-  min-height: 340px;
-  border: solid 1px grey;
+    border: solid 1px grey;
+  padding: 25px;
+  border-radius: 8px;
+  margin: 20px;
+}
+.singleCard{
+  width: 400px;
+  min-height: 440px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+    border: solid 1px grey;
   padding: 25px;
   border-radius: 8px;
   margin: 20px;
@@ -15,9 +27,9 @@
   height: 140px;
   border-radius: 8px;
 }
-.postsTitle {
+/* .postsTitle {
   font-size: 18px;
-}
+} */
 .postsText {
   font-size: 14px;
   color: grey;
@@ -27,9 +39,6 @@
 }
 .postsDate {
   font-size: 14px;
-  color: blue;
+  color: #2e1a1e;
   text-align: left;
-}
-.cardLight{
-background-color: white;
 }

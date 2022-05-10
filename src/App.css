@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-
 }
 
 .App-logo {
@@ -38,25 +37,35 @@
   }
 }
 
-
-.darkContainer, .darkContainer a, .darkContainer span i {
-  background-color: blue;
-  color: rgb(77, 73, 73);
-}
-.container, .container span i {
-  background-color: aliceblue;
-  color:blue;
+* {
+  box-sizing: border-box;
 }
 
-.darkContainer button, .darkContainer h1, h2{
-  color: white;
+.darkContainer,
+.darkContainer a,
+.darkContainer span i {
+  background-color: #4c394f;
+  color: #bcb8ce;
 }
-.container h1, h2{
-  color: blue;
+.container,
+.container a,
+.container span i {
+  background-color: #bcb8ce;
+  color: #2e1a1e;
+}
+
+.darkContainer button,
+.darkContainer h1,
+h2 {
+  color: #d5ddef;
+}
+.container h1,
+h2 {
+  color: #2e1a1e;
 }
 
 .buttonDark {
-  background-color: rgb(1, 14, 109);
+  background-color: #2e1a1e;
   border: none;
   width: 234px;
   height: 40px;
@@ -67,11 +76,11 @@
   border-radius: 20px;
   cursor: pointer;
 }
-.btnTitleActiveDark{
-color: rgb(139, 0, 130);
+.btnTitleActiveDark {
+  color: rgb(139, 0, 130);
 }
-.darkCard{
-  background-color: #210097;
+.darkCard {
+  background-color: #bcb8ce;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -83,11 +92,27 @@ color: rgb(139, 0, 130);
   border-radius: 8px;
   margin: 15px;
 }
-.darkCard span{
-  background-color: #210097;
-color: black;
+.darkCard span {
+  background-color: #bcb8ce;
+  color: black;
 }
-.darkHeader span, .darkHeader span i, .darkHeader a{
+.darkHeader span,
+.darkHeader span i,
+.darkHeader a {
+  color: #d5ddef;
+}
 
-  color: white;
+.headerLight {
+  background-color: #d5ddef;
+  color: #2e1a1e;
+}
+.darkHeader {
+  background-color: #2e1a1e;
+  color: #d5ddef;
+}
+.cardLight {
+  background-color: #d5ddef;
+}
+a {
+  text-decoration: none;
 }

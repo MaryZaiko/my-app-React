@@ -6,38 +6,44 @@ import { Theme, useThemeContext } from "./../../context/themeModeContext";
 const ToggleSwitch = () => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
 
-  const onClickThemeDark = () => {
-    onChangeTheme(Theme.Dark);
+  const onClickTheme = () => {
+    onChangeTheme(theme === "light" ? Theme.Dark : Theme.Light);
     console.log(theme);
-    
   };
-  const onClickThemeLight = () => {
-    console.log(theme);
-    onChangeTheme(Theme.Light);
-  };
+
+  // const onClickThemeDark = () => {
+  //   onChangeTheme(Theme.Dark);
+  //   console.log(theme);
+
+  // };
+  // const onClickThemeLight = () => {
+  //   console.log(theme);
+  //   onChangeTheme(Theme.Light);
+  // };
 
   return (
     <div className="form_toggle">
       <div className="form_toggle-item item-1">
         <input
-        onClick={onClickThemeLight}
+          onClick={onClickTheme}
           id="fid-1"
           type="radio"
           name="radio"
           value="light"
           defaultChecked
         />
-        <label htmlFor="fid-1">Light</label>
+        <label htmlFor="fid-1">{theme === 'dark' ? 'Light' : 'Dark'}</label>
       </div>
-      <div className="form_toggle-item item-2">
-        <input 
-		onClick={onClickThemeDark}
-		id="fid-2" 
-		type="radio" 
-		name="radio" 
-		value="dark" />
+      {/* <div className="form_toggle-item item-2">
+        <input
+          onClick={onClickThemeDark}
+          id="fid-2"
+          type="radio"
+          name="radio"
+          value="dark"
+        />
         <label htmlFor="fid-2">Dark</label>
-      </div>
+      </div> */}
     </div>
   );
 };

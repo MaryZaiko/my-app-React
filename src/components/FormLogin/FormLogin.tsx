@@ -7,11 +7,9 @@ import {Theme, useThemeContext} from './../../context/themeModeContext'
 
 
 
-type FormLoginProps = {
-  onClickConfirm: () => void;
-};
 
-const FormLogin: FC<FormLoginProps> = ({ onClickConfirm }) => {
+
+const FormLogin = () => {
 
   const { theme, onChangeTheme = () =>{}} = useThemeContext()
   const isLightTheme = theme === Theme.Light;
@@ -104,7 +102,7 @@ useEffect(() =>{
 
       <Button  disabled={!formValid} 
      className={classnames(!isLightTheme ? 'buttonDark': 'button')} 
-      btnContent="Login" onClick={onClickConfirm} />
+      btnContent="Login"/>
 
       <div className="resetLogin">
         <span>Forgot your password?</span>
