@@ -18,10 +18,6 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
 
   const isLightTheme = theme === Theme.Light;
 
-  // const onClickTheme = () => {
-  //   onChangeTheme(Theme.Dark);
-  // };
-
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

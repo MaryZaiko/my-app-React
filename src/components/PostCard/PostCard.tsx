@@ -9,10 +9,17 @@ type PostCardProps = {
   title: string;
   text: string;
   date: string;
-  className?:string;
+  className?: string;
 };
 
-const PostCard: FC<PostCardProps> = ({ className, id, image, title, text, date }) => {
+const PostCard: FC<PostCardProps> = ({
+  className,
+  id,
+  image,
+  title,
+  text,
+  date,
+}) => {
   const imgPost =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5xPwQFMwqQNGPSrW3NBueZixbwKsnVSogOA&usqp=CAU";
 
@@ -22,9 +29,9 @@ const PostCard: FC<PostCardProps> = ({ className, id, image, title, text, date }
   return (
     <div
       className={classnames(
-        // {className},
+        {className},
         "postCard", //сделать className для измения размера
-                { ["cardLight"]: isLightTheme },
+        { ["cardLight"]: isLightTheme },
         { ["darkCard"]: !isLightTheme }
       )}
       key={id}
