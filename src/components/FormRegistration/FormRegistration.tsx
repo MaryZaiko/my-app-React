@@ -49,6 +49,9 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
     }
   }, [userNameErr, emailErr, passwordErr, confirmPasswordErr]);
 
+
+//ВОПРОС ПО ТИПИЗАЦИИ
+
   const userNameHandler = (e: any) => {
     setUserName(e.target.value);
     if (e.target.value.length < 2) {
@@ -139,7 +142,7 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
           <span>User name</span>
           <Input
             value={userName}
-            onBlur={(e: any) => blurHandler(e)}
+            onBlur={(e) => blurHandler(e)}
             onChange={userNameHandler}
             type="text"
             name="userName"
@@ -152,8 +155,8 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
           <span>Email</span>
           <Input
             value={email}
-            onBlur={(e: any) => blurHandler(e)}
-            onChange={(e: any) => emailHandler(e)}
+            onBlur={(e) => blurHandler(e)}
+            onChange={(e) => emailHandler(e)}
             type="email"
             name="email"
           />
@@ -165,8 +168,8 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
           <span>Password</span>
           <Input
             value={password}
-            onBlur={(e: any) => blurHandler(e)}
-            onChange={(e: any) => passwordHandler(e)}
+            onBlur={(e) => blurHandler(e)}
+            onChange={(e) => passwordHandler(e)}
             type="password"
             name="password"
           />
@@ -178,8 +181,8 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
           <span>Confirm password</span>
           <Input
             value={confirmPassword}
-            onBlur={(e: any) => blurHandler(e)}
-            onChange={(e: any) => confirmPasswordHandler(e)}
+            onBlur={(e) => blurHandler(e)}
+            onChange={(e) => confirmPasswordHandler(e)}
             type="password"
             name="confirmPassword"
           />

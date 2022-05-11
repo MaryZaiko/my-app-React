@@ -8,6 +8,9 @@ import { NavLink } from 'react-router-dom'
 //   outerContainerId:string;
 // }
 
+
+//ВОПРОС ПО ТИПИЗАЦИИ
+
 export default (props:any) => {
   const onLogOutClick = () => {
     localStorage.setItem("isLoggedIn", "");

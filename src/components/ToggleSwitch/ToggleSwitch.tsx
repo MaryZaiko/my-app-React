@@ -11,16 +11,6 @@ const ToggleSwitch = () => {
     console.log(theme);
   };
 
-  // const onClickThemeDark = () => {
-  //   onChangeTheme(Theme.Dark);
-  //   console.log(theme);
-
-  // };
-  // const onClickThemeLight = () => {
-  //   console.log(theme);
-  //   onChangeTheme(Theme.Light);
-  // };
-
   return (
     <div className="form_toggle">
       <div className="form_toggle-item item-1">
@@ -32,18 +22,8 @@ const ToggleSwitch = () => {
           value="light"
           defaultChecked
         />
-        <label htmlFor="fid-1">{theme === 'dark' ? 'Light' : 'Dark'}</label>
+        <label htmlFor="fid-1">{theme === "dark" ? "Light" : "Dark"}</label>
       </div>
-      {/* <div className="form_toggle-item item-2">
-        <input
-          onClick={onClickThemeDark}
-          id="fid-2"
-          type="radio"
-          name="radio"
-          value="dark"
-        />
-        <label htmlFor="fid-2">Dark</label>
-      </div> */}
     </div>
   );
 };

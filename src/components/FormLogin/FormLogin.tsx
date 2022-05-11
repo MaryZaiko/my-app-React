@@ -36,7 +36,7 @@ useEffect(() =>{
 
 }, [emailErr, passwordErr])
 
-
+//ВОПРОС ПО ТИПИЗАЦИИ
   const emailHandler = (e: any) => {
     setEmail(e.target.value);
     const re =
@@ -80,8 +80,8 @@ useEffect(() =>{
         <span>Email</span>
         <Input
           value={email}
-          onBlur={(e: any) => blurHandler(e)}
-          onChange={(e: any) => emailHandler(e)}
+          onBlur={(e) => blurHandler(e)}
+          onChange={(e) => emailHandler(e)}
           type="email"
           name="email"
         />
@@ -93,8 +93,8 @@ useEffect(() =>{
         <span>Password</span>
         <Input
           value={password}
-          onBlur={(e: any) => blurHandler(e)}
-          onChange={(e: any) => passwordHandler(e)}
+          onBlur={(e) => blurHandler(e)}
+          onChange={(e) => passwordHandler(e)}
           type="password"
           name="password"
         />

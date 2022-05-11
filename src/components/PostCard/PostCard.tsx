@@ -4,7 +4,7 @@ import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 
 type PostCardProps = {
-  id?: string; //???????
+  id?: string; 
   image: string;
   title: string;
   text: string;

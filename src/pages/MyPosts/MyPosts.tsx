@@ -8,15 +8,9 @@ import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import { useParams, Link } from "react-router-dom";
 import PostCard from "../../components/PostCard";
 
-// type MyPostsProps ={
-//   data:object;
-// }
-
-const MyPosts = ({ data }: any) => {
+const MyPosts = () => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
-
-  // const { id } = useParams();
 
   const MOCK_DATA = [
     {
