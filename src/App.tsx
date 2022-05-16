@@ -11,6 +11,10 @@ import { ThemeModeProvider } from "./context/themeModeProvider";
 import { Theme } from "./context/themeModeContext";
 import Information from "./pages/Information";
 import Router from "./pages/Router";
+import sortCountries from "./common/types";
+
+import {Provider} from 'react-redux'
+import { store } from "./redux/store";
 
 
 // import getCountry from "./common/types";
@@ -108,16 +112,21 @@ function App() {
   //   }
   // ]
 
-  // console.log(getUsersCars(users));
+  // console.log(sortCountries(countries));
 
 
   return (
+    <Provider store={store}> 
+
+   
     <ThemeModeProvider theme={theme} onChangeTheme={onChangeTheme}>
       <div className="App">
         <Router />
         
       </div>
     </ThemeModeProvider>
+
+    </Provider>
   );
 }
 

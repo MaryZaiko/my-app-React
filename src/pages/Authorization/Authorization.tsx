@@ -7,12 +7,14 @@ import FormLogin from "../../components/FormLogin";
 import FormRegistration from "../../components/FormRegistration";
 import HeaderAuth from "../../components/HeaderAuth";
 // import Confirmation from "../Confirmation";
-import { Theme, useThemeContext } from "./../../context/themeModeContext";
+// import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import ToggleSwitch from "../../components/ToggleSwitch";
+import {useSelector } from "react-redux";
 
 const Authorization = () => {
-  const { theme, onChangeTheme = () => {} } = useThemeContext();
-  const isLightTheme = theme === Theme.Light;
+  const theme = useSelector((state: any) => state.theme.theme);
+
+  const isLightTheme = theme === 'light';
 
   const [activeTab, setActiveTab] = useState("login");
   const [isConfirmed, setConfirmed] = useState(false);

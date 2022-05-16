@@ -5,13 +5,28 @@ import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import Button from "../../components/Button";
 
-const Information = () => {
-  const { theme, onChangeTheme = () => {} } = useThemeContext();
-  const isLightTheme = theme === Theme.Light;
+import { useDispatch, useSelector } from "react-redux";
 
-  const [activeTab, setActiveTab] = useState("tab1");
+const Information = () => {
+  const dispatch = useDispatch();
+
+  const theme = useSelector((state: any) => state.theme.theme);
+  const isLightTheme = theme === 'light';
+
+  const activeTab = useSelector((state: any) => state.activeTabs.activeTab);
+
   const onClickActiveTab = (name: string) => {
-    setActiveTab(name);
+    switch (true) {
+      case name === "tab1":
+        dispatch({ type: "activeTab1" });
+        break;
+      case name === "tab2":
+        dispatch({ type: "activeTab2" });
+        break;
+      case name === "tab3":
+        dispatch({ type: "activeTab3" });
+        break;
+    }
   };
 
   const MOCK_DATA = [

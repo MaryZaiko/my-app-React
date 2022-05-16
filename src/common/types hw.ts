@@ -88,8 +88,8 @@ const getCountCar: GetCountCar = (users) => {
 type GetUsersWithEducation = (item: Array<User>) => Array<User>;
 
 const getUsersWithEducation: GetUsersWithEducation = (users) => {
-  let UsersWithEducation = users.filter((user) => user.hasEducation);
-  return UsersWithEducation;
+  let usersWithEducation = users.filter((user) => user.hasEducation);
+  return usersWithEducation;
 };
 // export default getUsersWithEducation;
 
@@ -99,8 +99,8 @@ const getUsersWithEducation: GetUsersWithEducation = (users) => {
 type GetUsersWithAnimals = (item: Array<User>) => Array<User>;
 
 const getUsersWithAnimals: GetUsersWithAnimals = (users) => {
-  let UsersWithAnimals = users.filter((user) => user.animals);
-  return UsersWithAnimals;
+  let usersWithAnimals = users.filter((user) => user.animals);
+  return usersWithAnimals;
 };
 //  export default getUsersWithAnimals;
 

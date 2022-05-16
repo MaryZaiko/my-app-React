@@ -3,6 +3,7 @@ import "./HeaderAuth.css";
 import Button from "../Button";
 import classnames from "classnames";
 import {Theme, useThemeContext} from './../../context/themeModeContext'
+import {useSelector } from "react-redux";
 
 
 type HeaderAuthProps = {
@@ -13,7 +14,8 @@ type HeaderAuthProps = {
 const HeaderAuth: FC<HeaderAuthProps> = ({onClick, tabActive}) => {
 
   const isLoginActive = tabActive === "login"  
-  const { theme, onChangeTheme = () =>{}} = useThemeContext()
+  const theme = useSelector((state: any) => state.theme.theme);
+
   const isLightTheme = theme === Theme.Light;
 
 

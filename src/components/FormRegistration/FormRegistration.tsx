@@ -2,19 +2,18 @@ import React, { useState, FC, useEffect } from "react";
 import "./FormRegistration.css";
 import Input from "../Input";
 import Button from "../Button";
-import {Theme,useThemeContext} from "./../../context/themeModeContext";
+import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import classnames from "classnames";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 type FormRegistrationProps = {
   onClick: (name: string) => void;
 };
 
 const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
-  const { theme, onChangeTheme = () => {} } = useThemeContext();
-
   const navigate = useNavigate();
-
+  const theme = useSelector((state: any) => state.theme.theme);
 
   const isLightTheme = theme === Theme.Light;
 
@@ -49,8 +48,7 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
     }
   }, [userNameErr, emailErr, passwordErr, confirmPasswordErr]);
 
-
-//ВОПРОС ПО ТИПИЗАЦИИ
+  //ВОПРОС ПО ТИПИЗАЦИИ
 
   const userNameHandler = (e: any) => {
     setUserName(e.target.value);
@@ -66,7 +64,8 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
 
   const emailHandler = (e: any) => {
     setEmail(e.target.value);
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(String(e.target.value).toLowerCase())) {
       setEmailErr("Email is not correct");
     } else {
@@ -123,7 +122,6 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
       },
     });
   };
-
 
   return (
     <div

@@ -135,13 +135,15 @@ const getNumberPeople: GetNumberPeople = (countries) => {
 
 //     3. Создать функцию, которая бы принимала массив стран и сортировала бы их по названию.
 
-type SortCountries = (item: Array<Country>) => void;
+type SortCountries = (item: Array<Country>) => Array<Country>;
 
 const sortCountries: SortCountries = (countries) => {
-  countries.sort((a, b) => (a.country > b.country ? 1 : -1));
-  return countries;
+
+  let sortArr = countries.slice().sort((a, b) => (a.country > b.country ? 1 : -1))
+  
+  return sortArr;
 };
-//  export default sortCountries
+ export default sortCountries
 
 //     4. Получить массив валют.
 
@@ -151,7 +153,7 @@ type GetCurrencyName = (item: Array<Country>) => Array<string>;
 
 const getCurrencyName: GetCurrencyName = (countries) => {
 
-  let allCurrencyName: string[] = []; // почему так?
+  let allCurrencyName: string[] = []; 
 
   countries.forEach((i) => {
 
@@ -186,4 +188,4 @@ const getPopulation: GetPopulation = (countries) => {
   });
   return allPop;
 };
- export default getPopulation
+//  export default getPopulation

@@ -5,12 +5,14 @@ import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import ToggleSwitch from "../../components/ToggleSwitch";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import {  useSelector } from "react-redux";
 
 const Confirmation = () => {
-  const { theme, onChangeTheme = () => {} } = useThemeContext();
-  const isLightTheme = theme === Theme.Light;
+  const theme = useSelector((state: any) => state.theme.theme);
 
-  const location: any = useLocation();
+  const isLightTheme = theme === 'light';
+
+  const location: any  = useLocation();
   console.log(location.state.email);
   
 

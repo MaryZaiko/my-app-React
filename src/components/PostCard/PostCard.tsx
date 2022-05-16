@@ -2,9 +2,10 @@ import React, { FC, useState } from "react";
 import "./PostCard.css";
 import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
+import { useSelector } from "react-redux";
 
 type PostCardProps = {
-  id?: string; 
+  id?: string;
   image: string;
   title: string;
   text: string;
@@ -22,14 +23,14 @@ const PostCard: FC<PostCardProps> = ({
 }) => {
   const imgPost =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5xPwQFMwqQNGPSrW3NBueZixbwKsnVSogOA&usqp=CAU";
+  const theme = useSelector((state: any) => state.theme.theme);
 
-  const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
   return (
     <div
       className={classnames(
-        {className},
+        { className },
         "postCard", //сделать className для измения размера
         { ["cardLight"]: isLightTheme },
         { ["darkCard"]: !isLightTheme }

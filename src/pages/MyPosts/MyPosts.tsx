@@ -7,10 +7,13 @@ import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import { useParams, Link } from "react-router-dom";
 import PostCard from "../../components/PostCard";
+import {useSelector } from "react-redux";
+
 
 const MyPosts = () => {
-  const { theme, onChangeTheme = () => {} } = useThemeContext();
-  const isLightTheme = theme === Theme.Light;
+  const theme = useSelector((state: any) => state.theme.theme);
+
+  const isLightTheme = theme === 'light';
 
   const MOCK_DATA = [
     {

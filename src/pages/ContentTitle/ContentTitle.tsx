@@ -6,9 +6,11 @@ import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import { useParams, Link } from "react-router-dom";
 // import {SingleCardCard, setSingleCardCard} from '../../components/PostCard'
+import {useSelector } from "react-redux";
 
 const ContentTitle = () => {
-  const { theme, onChangeTheme = () => {} } = useThemeContext();
+  const theme = useSelector((state: any) => state.theme.theme);
+  
   const isLightTheme = theme === Theme.Light;
 
   const MOCK_DATA = [
