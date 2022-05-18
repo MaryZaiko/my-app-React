@@ -5,16 +5,14 @@ import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import ToggleSwitch from "../../components/ToggleSwitch";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Confirmation = () => {
-  const theme = useSelector((state: any) => state.theme.theme);
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
+  const isLightTheme = theme === Theme.Light;
 
-  const isLightTheme = theme === 'light';
-
-  const location: any  = useLocation();
+  const location: any = useLocation();
   console.log(location.state.email);
-  
 
   const onHomeClick = () => {
     localStorage.setItem("isLoggedIn", "true");
@@ -23,11 +21,13 @@ const Confirmation = () => {
 
   return (
     <div
-      className={classnames('confirmation',
-        {['container']:isLightTheme}, 
+      className={classnames(
+        "confirmation",
+        { ["container"]: isLightTheme },
         {
-        ["darkContainer"]: !isLightTheme,
-      })}
+          ["darkContainer"]: !isLightTheme,
+        }
+      )}
     >
       <ToggleSwitch />
       <div className="confirmationContainer">
@@ -35,7 +35,10 @@ const Confirmation = () => {
 
         <p className="confirmationMessage">
           Please activate you account with the activation link in the email
-          <Button className={"btnReset"} btnContent={ location.state.email || ''} />
+          <Button
+            className={"btnReset"}
+            btnContent={location.state.email || ""}
+          />
           Please, check your email.
         </p>
         <Button

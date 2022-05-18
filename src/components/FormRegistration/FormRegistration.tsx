@@ -13,8 +13,7 @@ type FormRegistrationProps = {
 
 const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
   const navigate = useNavigate();
-  const theme = useSelector((state: any) => state.theme.theme);
-
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
   const [userName, setUserName] = useState("");

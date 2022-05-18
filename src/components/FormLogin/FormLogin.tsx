@@ -3,14 +3,10 @@ import "./FormLogin.css";
 import Input from "../Input";
 import Button from "../Button";
 import classnames from "classnames";
-// import { Theme, useThemeContext } from "./../../context/themeModeContext";
 
 import { useDispatch, useSelector } from "react-redux";
 
 const FormLogin = () => {
-  // const { theme, onChangeTheme = () => {} } = useThemeContext();
-  // const isLightTheme = theme === Theme.Light;
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -32,32 +28,31 @@ const FormLogin = () => {
     }
   }, [emailErr, passwordErr]);
 
-  //ВОПРОС ПО ТИПИЗАЦИИ
-  const emailHandler = (e: any) => {
-    setEmail(e.target.value);
+  const emailHandler = (value: string) => {
+    setEmail(value);
     const re =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!re.test(String(e.target.value).toLowerCase())) {
+    if (!re.test(String(value).toLowerCase())) {
       setEmailErr("Email is not correct");
     } else {
       setEmailErr("");
     }
   };
 
-  const passwordHandler = (e: any) => {
-    setPassword(e.target.value);
-    if (e.target.value.length < 8 || e.target.value.length > 15) {
+  const passwordHandler = (value: string) => {
+    setPassword(value);
+    if (value.length < 8 || value.length > 15) {
       setPasswordErr(
         "Password must contain at least 8 symbols and no more than 15 symbols"
       );
-      if (!e.target.value) {
+      if (!value) {
         setPasswordErr("This field must not be empty");
       }
     } else {
       setPasswordErr("");
     }
   };
-
+  //!!??? не типизируется этот ивент
   const blurHandler = (e: any) => {
     switch (e.target.name) {
       case "email":
@@ -79,8 +74,8 @@ const FormLogin = () => {
           <span>Email</span>
           <Input
             value={email}
-            onBlur={(e) => blurHandler(e)}
-            onChange={(e) => emailHandler(e)}
+            onBlur={blurHandler}
+            onChange={emailHandler}
             type="email"
             name="email"
           />
@@ -92,8 +87,8 @@ const FormLogin = () => {
           <span>Password</span>
           <Input
             value={password}
-            onBlur={(e) => blurHandler(e)}
-            onChange={(e) => passwordHandler(e)}
+            onBlur={blurHandler}
+            onChange={passwordHandler}
             type="password"
             name="password"
           />

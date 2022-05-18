@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import "./ToggleSwitch.css";
 import classnames from "classnames";
-// import { Theme, useThemeContext } from "./../../context/themeModeContext";
+import { Theme, useThemeContext } from "./../../context/themeModeContext";
 
 import { useDispatch, useSelector } from "react-redux";
 

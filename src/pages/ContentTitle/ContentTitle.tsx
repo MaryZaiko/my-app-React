@@ -6,11 +6,10 @@ import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import { useParams, Link } from "react-router-dom";
 // import {SingleCardCard, setSingleCardCard} from '../../components/PostCard'
-import {useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const ContentTitle = () => {
-  const theme = useSelector((state: any) => state.theme.theme);
-  
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
   const MOCK_DATA = [
@@ -69,6 +68,7 @@ const ContentTitle = () => {
         <h1 className="headerTitle">Content title</h1>
         {cardData && (
           <PostCard
+            isBig
             image={cardData.image}
             title={cardData.title}
             text={cardData.text}

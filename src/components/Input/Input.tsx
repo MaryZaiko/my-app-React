@@ -4,7 +4,7 @@ import "./Input.css";
 type InputProps = {
   value: string;
   name: string;
-  onChange?: (e: ChangeEventHandler<HTMLInputElement> | undefined) => void;
+  onChange?: (value: any) => void;
   type: string;
   className?: string;
   onBlur?: (e: FocusEventHandler<HTMLInputElement> | undefined) => void;
@@ -12,8 +12,10 @@ type InputProps = {
 
 const Input: FC<InputProps> = ({ value, name, onChange, type, className, onBlur }: any) => {
   // const onInputChange = (event: any) => {
-  //   onChange(event.target.value);
-  // };
+  //   if (event.target) {
+  //     onChange(event.target.value);
+  //   }
+  // }; СЛЕТАЕТ ИЗ-ЗА ТИПОВ
 
   return (
     <input

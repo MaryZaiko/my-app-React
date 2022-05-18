@@ -9,9 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Information = () => {
   const dispatch = useDispatch();
-
-  const theme = useSelector((state: any) => state.theme.theme);
-  const isLightTheme = theme === 'light';
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
+  const isLightTheme = theme === Theme.Light;
 
   const activeTab = useSelector((state: any) => state.activeTabs.activeTab);
 

@@ -8,19 +8,16 @@ import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 const HeaderPages = () => {
-  const theme = useSelector((state: any) => state.theme.theme);
-
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
   return (
     <div>
       <header
-        className={classnames(
-          "App",
-          "headerPosition",
-          { ["headerLight"]: isLightTheme },
-          { ["darkHeader"]: !isLightTheme }
-        )}
+        className={classnames("App", "headerPosition", {
+          ["headerLight"]: isLightTheme,
+          ["darkHeader"]: !isLightTheme,
+        })}
         id="outer-container"
       >
         <Sidebar

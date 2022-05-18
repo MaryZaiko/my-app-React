@@ -7,13 +7,13 @@ import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import { useParams, Link } from "react-router-dom";
 import PostCard from "../../components/PostCard";
-import {useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { Card } from "../../common/types";
+import { setSelectedPost } from "../../redux/reducers/postsReducer";
 
 const MyPosts = () => {
-  const theme = useSelector((state: any) => state.theme.theme);
-
-  const isLightTheme = theme === 'light';
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
+  const isLightTheme = theme === Theme.Light;
 
   const MOCK_DATA = [
     {
@@ -56,6 +56,11 @@ const MyPosts = () => {
 
   // const [singleCard, setSingleCard] = useState('not');
 
+  const onCardClick = (item: Card) => {
+    disputch(setSelectedPost(item));
+  };
+  const disputch = useDispatch();
+
   return (
     <div
       className={classnames(
@@ -73,16 +78,11 @@ const MyPosts = () => {
           return (
             <Link key={card.id} to={`/cards-list/${card.id}`}>
               <PostCard
-                // className={(singleCard === 'not')? "postCard" : "singleCard"}
-
-                // {classnames(
-                //   { ["postCard"]: singleCard === 'not' },
-                //   { ["singleCard"]: singleCard === 'yes' }
-                // )}
                 image={card.image}
                 title={card.title}
                 text={card.text}
                 date={card.date}
+                onClick={() => onCardClick(card)}
               />
             </Link>
           );

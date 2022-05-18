@@ -1,10 +1,15 @@
 import {
-  legacy_createStore as createStore,
-  combineReducers,
+  // legacy_createStore as createStore,
+  // combineReducers,
   compose,
 } from "redux";
 import {activeInfoTabsReducer} from './reducers/activeInfoTabsReducer'
 import {changeThemeReducer} from './reducers/changeThemeReducer'
+import {configureStore, combineReducers} from '@reduxjs/toolkit'
+
+import postsReducer from './reducers/postsReducer'
+import authReducer from './reducers/authReducer'
+
 
 declare global {
   interface Window {
@@ -29,8 +34,12 @@ function counterReducer(state = { value: 0 }, action: any) {
 const rootReducer = combineReducers({
   theme: changeThemeReducer,
   activeTabs: activeInfoTabsReducer,
+  posts: postsReducer,
+ auth:authReducer
 })
 
 
 
-export const store = createStore(rootReducer);
+export const store = configureStore({
+  reducer: rootReducer,
+});

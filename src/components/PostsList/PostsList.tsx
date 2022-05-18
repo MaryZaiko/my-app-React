@@ -2,28 +2,25 @@ import React, { FC } from "react";
 import "./PostsList.css";
 import PostCard from "../PostCard";
 import classnames from "classnames";
-import {Theme, useThemeContext} from './../../context/themeModeContext'
-import { NavLink } from 'react-router-dom'
+import { Theme, useThemeContext } from "./../../context/themeModeContext";
+import { NavLink } from "react-router-dom";
 
-import {useSelector } from "react-redux";
-
-
+import { useSelector } from "react-redux";
 
 type PostsProps = {
-  data: Card[]
-}
+  data: Card[];
+};
 
 type Card = {
-id: string
-image: string
-title: string
-text: string
-date: string
-}
+  id: string;
+  image: string;
+  title: string;
+  text: string;
+  date: string;
+};
 
 const Posts: FC<PostsProps> = () => {
-  const theme = useSelector((state: any) => state.theme.theme);
-
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
   const MOCK_DATA = [
@@ -65,26 +62,24 @@ const Posts: FC<PostsProps> = () => {
     },
   ];
 
-  const cards = MOCK_DATA.map(({id, image, title, text, date}) => {
+  const cards = MOCK_DATA.map(({ id, image, title, text, date }) => {
     return (
-      <div 
-      key={id}
-      >
+      <div key={id}>
         <NavLink to="/cards-list/${id}">
-        <PostCard
-        image={image}
-        title={title}
-        text={text}
-        date={date}
-      />
+          <PostCard image={image} title={title} text={text} date={date} />
         </NavLink>
       </div>
-      
     );
   });
 
-  return <div 
-  className={classnames('postsContainer', {['darkContainer']: !isLightTheme})}>
-    {cards}</div>;
+  return (
+    <div
+      className={classnames("postsContainer", {
+        ["darkContainer"]: !isLightTheme,
+      })}
+    >
+      {cards}
+    </div>
+  );
 };
 export default Posts;
