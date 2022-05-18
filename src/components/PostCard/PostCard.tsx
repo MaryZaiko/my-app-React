@@ -34,7 +34,7 @@ const PostCard: FC<PostCardProps> = ({
       onClick={onClick}
       className={classnames(
         isBig ? "singleCard" : "postCard",
-   
+
         { ["cardLight"]: isLightTheme, ["darkCard"]: !isLightTheme }
       )}
       key={id}
@@ -42,9 +42,9 @@ const PostCard: FC<PostCardProps> = ({
       <div className="postsContent">
         <img src={image ? image : imgPost} alt={title} className="postsImg" />
         <h2 className="postsTitle">{title}</h2>
-        <p className={classnames(isBig ? 'postTextIsBig' : 'postsText')}>
+        <p className={classnames(isBig ? "postTextIsBig" : "postsText")}>
           {text}
-          </p>
+        </p>
       </div>
       <span className="postsDate">{date}</span>
     </div>

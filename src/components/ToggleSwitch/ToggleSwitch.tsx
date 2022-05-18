@@ -6,22 +6,18 @@ import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import { useDispatch, useSelector } from "react-redux";
 
 const ToggleSwitch = () => {
-  const theme = useSelector((state: any) => state.theme.theme);
-  const dispatch = useDispatch();
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
 
-  const onClickTheme = (themeOfPage: string) => {
-    console.log(themeOfPage);
-
-    const lightTheme = { type: "light" };
-    const darkTheme = { type: "dark" };
-    dispatch(themeOfPage === "light" ? darkTheme : lightTheme);
+  const onClickTheme = () => {
+    onChangeTheme(theme === "light" ? Theme.Dark : Theme.Light);
+    console.log(theme);
   };
 
   return (
     <div className="form_toggle">
       <div className="form_toggle-item item-1">
         <input
-          onClick={() => onClickTheme(theme)}
+          onClick={() => onClickTheme()}
           id="fid-1"
           type="radio"
           name="radio"

@@ -5,20 +5,20 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-    border: solid 1px grey;
+  border: solid 1px grey;
   padding: 25px;
   border-radius: 8px;
   margin: 20px;
 }
 
-.singleCard{
+.singleCard {
   width: 400px;
   min-height: 440px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-    border: solid 1px grey;
+  border: solid 1px grey;
   padding: 25px;
   border-radius: 8px;
   margin: 20px;
@@ -28,9 +28,7 @@
   height: 140px;
   border-radius: 8px;
 }
-/* .postsTitle {
-  font-size: 18px;
-} */
+
 .postsText {
   font-size: 14px;
   color: grey;
@@ -38,7 +36,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.postTextIsBig{
+.postTextIsBig {
   font-size: 16px;
   color: grey;
 }
