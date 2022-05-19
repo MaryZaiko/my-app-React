@@ -14,8 +14,3 @@ font-size: 36px;
     align-items: center;
     margin-left: 145px;
 }
-.postsList{
-display: flex;
-justify-content: space-between;
-    flex-wrap: wrap;
-}

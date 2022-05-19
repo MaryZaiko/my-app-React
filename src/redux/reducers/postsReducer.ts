@@ -27,5 +27,5 @@ export default postsSlice.reducer;
 
 
 export const PostsSelectors = {
-    getSelectedPost:(state:any) => state.post.selectedPost,
+    getSelectedPost:(state:any) => state.posts.selectedPost,
 }

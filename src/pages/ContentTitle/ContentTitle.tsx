@@ -6,7 +6,7 @@ import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import { useParams, Link } from "react-router-dom";
 // import {SingleCardCard, setSingleCardCard} from '../../components/PostCard'
-import { useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 
 const ContentTitle = () => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
@@ -54,7 +54,6 @@ const ContentTitle = () => {
   const { id: cardId } = useParams();
 
   const cardData = MOCK_DATA.find((card: any) => cardId === card.id);
-  console.log(cardData);
 
   return (
     <div
@@ -68,7 +67,7 @@ const ContentTitle = () => {
         <h1 className="headerTitle">Content title</h1>
         {cardData && (
           <PostCard
-            isBig
+          isBig
             image={cardData.image}
             title={cardData.title}
             text={cardData.text}

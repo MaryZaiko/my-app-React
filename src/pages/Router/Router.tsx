@@ -31,7 +31,7 @@ const Router = () => {
           <Route path={"/confirm"} element={<Confirmation />}>
             {" "}
           </Route>
-          <Route path='*'/>
+          <Route path="*" element={<Navigate to={"/auth"} replace />} />
         </Routes>
       )}
     </BrowserRouter>

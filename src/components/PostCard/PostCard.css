@@ -45,3 +45,11 @@
   color: #2e1a1e;
   text-align: left;
 }
+.fa-eye{
+  margin-left: 10px;
+  cursor: pointer;
+  color: #2e1a1e;
+}
+.fa-eye:hover{
+  border: 2px solid red;
+}

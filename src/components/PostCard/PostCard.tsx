@@ -2,7 +2,11 @@ import React, { FC, useState } from "react";
 import "./PostCard.css";
 import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  PostsSelectors,
+  setSelectedPost,
+} from "../../redux/reducers/postsReducer";
 
 type PostCardProps = {
   id?: string;
@@ -21,17 +25,25 @@ const PostCard: FC<PostCardProps> = ({
   title,
   text,
   date,
-  onClick,
+  onClick
 }) => {
   const imgPost =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5xPwQFMwqQNGPSrW3NBueZixbwKsnVSogOA&usqp=CAU";
 
-  const { theme, onChangeTheme = () => {} } = useThemeContext();
+  const { theme} = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
+  const dispatch = useDispatch();
+  const selectedCard = useSelector(PostsSelectors.getSelectedPost)
+
+  const log = (e:any) => {
+    console.log("hi!");
+    e.stopPropagation();
+  };
+
   return (
-    <div
-      onClick={onClick}
+    <div onClick={onClick}
+   
       className={classnames(
         isBig ? "singleCard" : "postCard",
 
@@ -39,6 +51,13 @@ const PostCard: FC<PostCardProps> = ({
       )}
       key={id}
     >
+      {/* <div>
+        {selectedCard && (
+          <div style={{ background: "red", padding: "10px" }}>
+            <PostCard {...selectedCard} />
+          </div>
+        )}
+      </div> */}
       <div className="postsContent">
         <img src={image ? image : imgPost} alt={title} className="postsImg" />
         <h2 className="postsTitle">{title}</h2>
@@ -46,7 +65,10 @@ const PostCard: FC<PostCardProps> = ({
           {text}
         </p>
       </div>
-      <span className="postsDate">{date}</span>
+      <div>
+        <span className="postsDate">{date}</span>
+        <i onClick={log} className="fa-solid fa-eye"></i>
+      </div>
     </div>
   );
 };
