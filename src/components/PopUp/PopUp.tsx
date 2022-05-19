@@ -6,24 +6,25 @@ import { useSelector, useDispatch } from "react-redux";
 import { PostsSelectors } from "../../redux/reducers/postsReducer";
 import { setSelectedPost } from "../../redux/reducers/postsReducer";
 
-const PopUp = () => {
-  const selectedCard = useSelector(PostsSelectors.getSelectedPost);
-
+const PopUp = (el: any) => {
   const dispatch = useDispatch();
 
   const onCardClick = () => {
     dispatch(setSelectedPost(null));
   };
+ 
+
   return (
     <div>
-      {selectedCard && (
+      {el && (
         <div className="popUp">
           <div className="popUpContainer">
             <i
               onClick={onCardClick}
               className="fa-solid fa-xmark popUpClose"
             ></i>
-            <PostCard {...selectedCard} />
+            (typeof el === "string") ? <img src={el} alt="" /> :
+            <PostCard {...el} />
           </div>
         </div>
       )}

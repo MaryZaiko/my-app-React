@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {setSelectedPost} from '../../redux/reducers/postsReducer'
 import {Card} from '../../common/types'
-import { PostsSelectors} from "../../redux/reducers/postsReducer";
+import { PostsSelectors, ImageSelectors} from "../../redux/reducers/postsReducer";
 import PopUp from "../PopUp";
 
 
@@ -27,7 +27,8 @@ const Posts: FC<PostsProps> = ({data}) => {
     
   };
 
- 
+  const selectedCard = useSelector(PostsSelectors.getSelectedPost);
+  const selectedImage = useSelector(ImageSelectors.getSelectedImage);
 
   const cardList = data.map((card) => {
 
@@ -46,7 +47,7 @@ const Posts: FC<PostsProps> = ({data}) => {
     })
 
     return <div className="postsList">
-       <PopUp />
+       <PopUp el={selectedCard || selectedImage}/>
       {cardList}
       </div>;
   };

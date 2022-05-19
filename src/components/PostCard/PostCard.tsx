@@ -4,8 +4,9 @@ import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  ImageSelectors,
   PostsSelectors,
-  setSelectedPost,
+  setSelectedImage,
 } from "../../redux/reducers/postsReducer";
 
 type PostCardProps = {
@@ -25,25 +26,32 @@ const PostCard: FC<PostCardProps> = ({
   title,
   text,
   date,
-  onClick
+  onClick,
 }) => {
   const imgPost =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5xPwQFMwqQNGPSrW3NBueZixbwKsnVSogOA&usqp=CAU";
 
-  const { theme} = useThemeContext();
+  const { theme } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
   const dispatch = useDispatch();
-  const selectedCard = useSelector(PostsSelectors.getSelectedPost)
 
-  const log = (e:any) => {
+
+  const onClickImage = (image: string, e?: { stopPropagation: () => void; } | undefined) => {
+    dispatch(setSelectedImage(image));
+  
+  };
+
+  
+
+  const log = (e: any) => {
     console.log("hi!");
     e.stopPropagation();
   };
 
   return (
-    <div onClick={onClick}
-   
+    <div
+      onClick={onClick}
       className={classnames(
         isBig ? "singleCard" : "postCard",
 
@@ -51,15 +59,14 @@ const PostCard: FC<PostCardProps> = ({
       )}
       key={id}
     >
-      {/* <div>
-        {selectedCard && (
-          <div style={{ background: "red", padding: "10px" }}>
-            <PostCard {...selectedCard} />
-          </div>
-        )}
-      </div> */}
+   
       <div className="postsContent">
-        <img src={image ? image : imgPost} alt={title} className="postsImg" />
+        <img
+          src={image ? image : imgPost}
+          alt={title}
+          onClick={() => onClickImage(image || imgPost)}
+          className="postsImg"
+        />
         <h2 className="postsTitle">{title}</h2>
         <p className={classnames(isBig ? "postTextIsBig" : "postsText")}>
           {text}
@@ -67,7 +74,7 @@ const PostCard: FC<PostCardProps> = ({
       </div>
       <div>
         <span className="postsDate">{date}</span>
-        <i onClick={log} className="fa-solid fa-eye"></i>
+        <i className="fa-solid fa-eye"></i>
       </div>
     </div>
   );
