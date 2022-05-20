@@ -9,7 +9,11 @@ import { useParams, Link } from "react-router-dom";
 import PostCard from "../../components/PostCard";
 import { useDispatch, useSelector } from "react-redux";
 import { Card } from "../../common/types";
-import { PostsSelectors} from "../../redux/reducers/postsReducer";
+import PopUp from "../../components/PopUp";
+import {
+  PostsSelectors,
+  ImageSelectors,
+} from "../../redux/reducers/postsReducer";
 
 const MyPosts = () => {
   const { theme} = useThemeContext();
@@ -55,6 +59,7 @@ const MyPosts = () => {
   ];
   const selectedCard = useSelector(PostsSelectors.getSelectedPost);
 
+  const selectedImage = useSelector(ImageSelectors.getSelectedImage);
  
   return (
     <div
@@ -69,19 +74,15 @@ const MyPosts = () => {
         <Button className={"btnAny"} btnContent={"+Add"} onClick={() => {}} />
       </div>
 
-      {/* <div>
-       
-        {selectedCard && (
-          <div style={{ background: "red", padding: "10px" }}>
-            <PostCard {...selectedCard} />
-          </div>
-        )}
-      </div> */}
+     
 
 
    
       <PostsList data={MOCK_DATA}/>
 
+      {selectedImage &&
+      <PopUp><img src={selectedImage}/></PopUp>}
+    
     </div>
   );
 };

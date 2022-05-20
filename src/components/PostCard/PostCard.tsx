@@ -37,7 +37,7 @@ const PostCard: FC<PostCardProps> = ({
   const dispatch = useDispatch();
 
 
-  const onClickImage = (image: string, e?: { stopPropagation: () => void; } | undefined) => {
+  const onClickImage = (image: string) => {
     dispatch(setSelectedImage(image));
   
   };
@@ -64,8 +64,7 @@ const PostCard: FC<PostCardProps> = ({
         <img
           src={image ? image : imgPost}
           alt={title}
-          onClick={() => onClickImage(image || imgPost)}
-          className="postsImg"
+        className="postsImg"
         />
         <h2 className="postsTitle">{title}</h2>
         <p className={classnames(isBig ? "postTextIsBig" : "postsText")}>
@@ -74,7 +73,7 @@ const PostCard: FC<PostCardProps> = ({
       </div>
       <div>
         <span className="postsDate">{date}</span>
-        <i className="fa-solid fa-eye"></i>
+        <i onClick={() => onClickImage(image || imgPost)} className="fa-solid fa-eye"></i>
       </div>
     </div>
   );

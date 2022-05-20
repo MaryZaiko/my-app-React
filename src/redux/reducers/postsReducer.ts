@@ -31,7 +31,7 @@ export const {setSelectedPost, setSelectedImage} = postsSlice.actions
 export default postsSlice.reducer;
 
 
-export const PostsSelectors = { // 'это для получения значения из стейта?
+export const PostsSelectors = { 
     getSelectedPost:(state:any) => state.posts.selectedPost,
 }
 export const ImageSelectors = {
