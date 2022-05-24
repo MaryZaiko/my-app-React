@@ -75,3 +75,7 @@
 .buttonTabActive{
 background-color: #917898;
 }
+.buttonPostTab{
+  width: 85px;
+    height: 40px;
+}

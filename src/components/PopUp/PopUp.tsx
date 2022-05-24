@@ -3,8 +3,7 @@ import "./PopUp.css";
 import PostCard from "../PostCard";
 
 import { useSelector, useDispatch } from "react-redux";
-import { PostsSelectors } from "../../redux/reducers/postsReducer";
-import { setSelectedPost,setSelectedImage } from "../../redux/reducers/postsReducer";
+import { setSelectedImage } from "../../redux/reducers/postsReducer";
 import { AnyAction } from "redux";
 
 const PopUp = ({children}:any) => {

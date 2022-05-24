@@ -4,10 +4,14 @@ import {
   compose,
 } from "redux";
 import { activeInfoTabsReducer } from "./reducers/activeInfoTabsReducer";
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore, combineReducers, MiddlewareArray } from "@reduxjs/toolkit";
 
 import postsReducer from "./reducers/postsReducer";
 import authReducer from "./reducers/authReducer";
+import createSagaMiddleware from 'redux-saga'
+import { applyMiddleware } from "redux";
+import rootSaga from './sagas/rootSaga'
+
 
 declare global {
   interface Window {
@@ -29,6 +33,10 @@ function counterReducer(state = { value: 0 }, action: any) {
   }
 }
 
+
+
+const sagaMiddleware = createSagaMiddleware()
+
 const rootReducer = combineReducers({
   activeTabs: activeInfoTabsReducer,
   posts: postsReducer,
@@ -37,4 +45,6 @@ const rootReducer = combineReducers({
 
 export const store = configureStore({
   reducer: rootReducer,
+  middleware: [sagaMiddleware]
 });
+sagaMiddleware.run(rootSaga)

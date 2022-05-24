@@ -4,19 +4,23 @@ import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  ImageSelectors,
-  PostsSelectors,
+  setLikePost,
+  setSavedPost,
   setSelectedImage,
 } from "../../redux/reducers/postsReducer";
+import { LikeStatus } from "../../common/types";
+import Button from "../Button";
 
 type PostCardProps = {
-  id?: string;
+  id: string;
   image: string;
   title: string;
   text: string;
   date: string;
   isBig?: boolean;
   onClick?: () => void;
+  likeStatus?: LikeStatus | null;
+  saved?: boolean;
 };
 
 const PostCard: FC<PostCardProps> = ({
@@ -27,6 +31,8 @@ const PostCard: FC<PostCardProps> = ({
   text,
   date,
   onClick,
+  likeStatus,
+  saved,
 }) => {
   const imgPost =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5xPwQFMwqQNGPSrW3NBueZixbwKsnVSogOA&usqp=CAU";
@@ -36,17 +42,18 @@ const PostCard: FC<PostCardProps> = ({
 
   const dispatch = useDispatch();
 
-
-  const onClickImage = (image: string) => {
+  const onClickEye = (image: string) => {
     dispatch(setSelectedImage(image));
-  
   };
 
-  
+  const handleButtonClick = (action: string) => {
+    console.log(action);
 
-  const log = (e: any) => {
-    console.log("hi!");
-    e.stopPropagation();
+    if (action === LikeStatus.Like || action === LikeStatus.Dislike) {
+      dispatch(setLikePost({ id, action }));
+    } else if (action === LikeStatus.Save || action === "unset") {
+      dispatch(setSavedPost({ id, action }));
+    }
   };
 
   return (
@@ -59,21 +66,46 @@ const PostCard: FC<PostCardProps> = ({
       )}
       key={id}
     >
-   
       <div className="postsContent">
-        <img
-          src={image ? image : imgPost}
-          alt={title}
-        className="postsImg"
-        />
+        <img src={image ? image : imgPost} alt={title} className="postsImg" />
         <h2 className="postsTitle">{title}</h2>
         <p className={classnames(isBig ? "postTextIsBig" : "postsText")}>
           {text}
         </p>
       </div>
-      <div>
-        <span className="postsDate">{date}</span>
-        <i onClick={() => onClickImage(image || imgPost)} className="fa-solid fa-eye"></i>
+      <div className="footerCard">
+        <div>
+          <span className="postsDate">{date}</span>
+          <i
+            onClick={() => onClickEye(image || imgPost)}
+            className="fa-solid fa-eye"
+          ></i>
+        </div>
+        <div>
+          <Button
+            onClick={() => handleButtonClick(LikeStatus.Like)}
+            className={classnames("btnIcon", "fa-regular", "fa-thumbs-up", {
+              ["activeLike"]: likeStatus === LikeStatus.Like,
+            })}
+            btnContent=""
+          />
+
+          <Button
+            onClick={() => handleButtonClick(LikeStatus.Dislike)}
+            className={classnames("btnIcon", "fa-regular", "fa-thumbs-down", {
+              ["activeDislike"]: likeStatus === LikeStatus.Dislike,
+            })}
+            btnContent=""
+          />
+
+          <Button
+            onClick={() => handleButtonClick(saved ? "unset" : "save")}
+            className={classnames("btnIcon", "fa-solid", "fa-bookmark", {
+              ["activeSave"]: saved,
+            })}
+            btnContent=""
+          />
+        </div>
       </div>
     </div>
   );

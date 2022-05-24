@@ -6,6 +6,7 @@ import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import classnames from "classnames";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import {registerUser} from '../../redux/reducers/authReducer'
 
 type FormRegistrationProps = {
   onClick: (name: string) => void;
@@ -46,6 +47,8 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
       setFormValid(true);
     }
   }, [userNameErr, emailErr, passwordErr, confirmPasswordErr]);
+
+  const dispatch = useDispatch()
 
   //ВОПРОС ПО ТИПИЗАЦИИ
 
@@ -114,6 +117,9 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
         break;
     }
   };
+  
+  dispatch(registerUser({ name: userName, password: password, email: email }));
+
   const onSubmit = () => {
     navigate("/confirm", {
       state: {
@@ -121,6 +127,8 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
       },
     });
   };
+
+ 
 
   return (
     <div

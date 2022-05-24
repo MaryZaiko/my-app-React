@@ -50,6 +50,28 @@
   cursor: pointer;
   color: #2e1a1e;
 }
-.fa-eye:hover{
-  border: 2px solid red;
+
+.fa-regular, .fa-solid{
+  margin: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  
+}
+
+.footerCard{
+display: flex;
+justify-content: space-between;
+}
+.activeLike {
+  color: green;
+}
+.activeDislike {
+  color: red;
+}
+.activeSave {
+  color: yellow;
+}
+.btnIcon{
+  border: none;
+  background: transparent;
 }

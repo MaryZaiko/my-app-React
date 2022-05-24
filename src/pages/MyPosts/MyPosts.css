@@ -1,7 +1,7 @@
 .myPosts{
     margin: 0 auto;
     min-height: 100vh;
-  padding-left: 130px;
+  /* padding-left: 130px; */
 
 }
 .headerTitle{
@@ -13,4 +13,8 @@ font-size: 36px;
     display: flex;
     align-items: center;
     margin-left: 145px;
+}
+.postsTabs{
+  display: flex;
+  margin-left: 145px;
 }

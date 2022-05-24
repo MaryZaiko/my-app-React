@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 import HeaderPages from "../../components/HeaderPages";
 import PostsList from "../../components/PostsList";
@@ -7,9 +8,10 @@ import Confirmation from "../Confirmation";
 import ContentTitle from "../ContentTitle";
 import Information from "../Information";
 import MyPosts from "../MyPosts";
+import {AuthSelector} from '../../redux/reducers/authReducer'
 
 const Router = () => {
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const isLoggedIn = useSelector(AuthSelector.getLogStatus)
 
   return (
     <BrowserRouter>
@@ -21,7 +23,7 @@ const Router = () => {
 
             <Route path="info" element={<Information />}></Route>
           </Route>
-          <Route path='*' element={<Navigate to={'/'} replace/>}/>
+          <Route path="*" element={<Navigate to={"/"} replace />} />
         </Routes>
       ) : (
         <Routes>
