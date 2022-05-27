@@ -1,4 +1,4 @@
-import { createSlice, Draft } from "@reduxjs/toolkit";
+import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
 import { castDraft } from "immer";
 import { Card } from "./../../common/types";
 
@@ -6,12 +6,14 @@ type PostState = {
   selectedImage: string;
   cardsList: Card[];
   postsTab: string;
+  loadPosts: Card[];
 };
 
 const initialState: PostState = {
   selectedImage: "",
   cardsList: [],
   postsTab: "allPosts",
+  loadPosts: [],
 };
 
 const postsSlice = createSlice({
@@ -21,8 +23,18 @@ const postsSlice = createSlice({
     setSelectedImage: (state: Draft<PostState>, action) => {
       state.selectedImage = action.payload;
     },
-    loadData: (state, action) => {
+    loadData: (state, action:PayloadAction<Card[]>) => {
       state.cardsList = action.payload.map((card: Card) => {
+        return {
+          ...card,
+          likeStatus: null,
+          saved: false,
+        };
+      });
+    },
+    addPosts:(state, action)=>{},
+    loadPosts: (state, action) => {
+      state.loadPosts = action.payload.map((card: Card) => {
         return {
           ...card,
           likeStatus: null,
@@ -55,6 +67,8 @@ export const {
   setLikePost,
   setSavedPost,
   setPostsTab,
+  loadPosts,
+  addPosts
 } = postsSlice.actions;
 
 export default postsSlice.reducer;

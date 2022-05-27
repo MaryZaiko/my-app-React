@@ -1,5 +1,5 @@
 export type Card = {
-  id?: string;
+  id: string;
   image: string;
   title: string;
   text: string;

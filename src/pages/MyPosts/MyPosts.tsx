@@ -12,6 +12,7 @@ import { Card } from "../../common/types";
 import PopUp from "../../components/PopUp";
 import {
   loadData,
+  addPosts,
   PostSelectors,
   setPostsTab,
 } from "../../redux/reducers/postsReducer";
@@ -99,7 +100,9 @@ const MyPosts = () => {
     >
       <div className="titlePostsContainer">
         <h1 className="headerTitle">My posts</h1>
-        <Button className={"btnAny"} btnContent={"+Add"} onClick={() => {}} />
+        <Button className={"btnAny"} btnContent={"+Add"} onClick={() => {
+          dispatch(addPosts({}))
+        }} />
       </div>
       <div className="postsTabs">
         {TABS.map((tab) => {

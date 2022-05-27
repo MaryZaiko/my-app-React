@@ -118,9 +118,10 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
     }
   };
   
-  dispatch(registerUser({ name: userName, password: password, email: email }));
 
   const onSubmit = () => {
+  dispatch(registerUser({ name: userName, password: password, email: email }));
+
     navigate("/confirm", {
       state: {
         email,
