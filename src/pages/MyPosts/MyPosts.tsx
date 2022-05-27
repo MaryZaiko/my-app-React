@@ -66,7 +66,7 @@ const MyPosts = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadData(MOCK_DATA));
+    dispatch(addPosts({}));
   }, []);
 
   const selectedImage = useSelector(PostSelectors.getSelectedImage);
@@ -100,9 +100,7 @@ const MyPosts = () => {
     >
       <div className="titlePostsContainer">
         <h1 className="headerTitle">My posts</h1>
-        <Button className={"btnAny"} btnContent={"+Add"} onClick={() => {
-          dispatch(addPosts({}))
-        }} />
+        <Button className={"btnAny"} btnContent={"+Add"} onClick={() => {}} />
       </div>
       <div className="postsTabs">
         {TABS.map((tab) => {

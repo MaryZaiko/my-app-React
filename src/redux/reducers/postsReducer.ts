@@ -33,15 +33,7 @@ const postsSlice = createSlice({
       });
     },
     addPosts:(state, action)=>{},
-    loadPosts: (state, action) => {
-      state.loadPosts = action.payload.map((card: Card) => {
-        return {
-          ...card,
-          likeStatus: null,
-          saved: false,
-        };
-      });
-    },
+    
 
     setLikePost: (state: any, action) => {
       const card = state.cardsList.find((c: any) => c.id === action.payload.id);
@@ -67,7 +59,6 @@ export const {
   setLikePost,
   setSavedPost,
   setPostsTab,
-  loadPosts,
   addPosts
 } = postsSlice.actions;
 

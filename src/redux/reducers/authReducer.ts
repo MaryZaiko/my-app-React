@@ -16,7 +16,7 @@ const initialState = {
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: {},
+  initialState,
   reducers: {
     registerUser: (state, action: PayloadAction<RegisterUser>) => {},
     setLodStatus: (state: any, action: PayloadAction<boolean>) => {

@@ -1,20 +1,60 @@
-import { all, takeLatest, takeEvery, put,call } from "redux-saga/effects";
+import { all, takeLatest, takeEvery, put, call } from "redux-saga/effects";
 
 import { PayloadAction } from "@reduxjs/toolkit";
 import { RegisterUser, setLodStatus } from "../reducers/authReducer";
-import { loadPosts, addPosts } from "../reducers/postsReducer";
+import { loadData, addPosts } from "../reducers/postsReducer";
 import { Card } from "../../common/types";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-async function getCards() {//ассинхронная функция
-  fetch('https://jsonplaceholder.typicode.com/posts')
-  .then(response => response.json())
-  .then(json => console.log(json))
-}
+// }
+// const getPosts = () =>
+//     fetch("https://studapi.teachmeskills.by/blog/posts/")
+//     .then((response) => ({
+//     response: response,
+//     }))
+//     .catch((err) => ({
+//     err,
+//     }));
 
-async function* postsSagaWorker(action: PayloadAction<Card[]>) {
-  // const data: any =   yield call (getCards);
-  // const json: any = yield call(() => new Promise(res => res(data.json())))
-  yield put(loadPosts(getCards()))
+// function* postsSagaWorker() {
+//   const { response, err } = yield call(getPosts);
+//   if (!err) {
+//     const data = response.json();
+//     console.log(data);
+//     // yield put(loadPosts(data));
+//   }
+// }
+
+
+
+// // let postsApi:Array<Card> = [];
+// const getPosts = () => {
+//   // let result;
+//   const apiUrl = "https://studapi.teachmeskills.by/blog/posts/";
+//   axios.get(apiUrl).then((resp) => {
+//     console.log(resp);
+//     const postsApi = resp.data.results;
+//     setAppState({ posts: postsApi });
+//     // postsApi = resp.data.results
+//     // console.log(result);
+//   });
+//   //  return result
+// };
+
+const getPosts = () => axios.get('https://studapi.teachmeskills.by/blog/posts/')
+
+function* postsSagaWorker() {
+  //@ts-ignore
+  const response = yield call(getPosts)
+  console.log(response)
+  // const { response, err } = yield call(getPosts);
+  // let data:any = [];
+  // yield  data = getPosts();
+  // console.log(data);
+  if (response.status === 200) {
+    yield put(loadData(response.data.results));
+  }
 }
 
 export default function* postWatcher() {

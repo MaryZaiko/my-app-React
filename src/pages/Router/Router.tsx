@@ -18,21 +18,16 @@ const Router = () => {
       {isLoggedIn ? (
         <Routes>
           <Route path={"/"} element={<HeaderPages />}>
-            <Route path="cards-list" element={<MyPosts />}></Route>
-            <Route path="cards-list/:id" element={<ContentTitle />} />
-
-            <Route path="info" element={<Information />}></Route>
+            <Route path="/cards-list" element={<MyPosts />}></Route>
+            <Route path="/cards-list/:id" element={<ContentTitle />} />
+            <Route path={"/confirm"} element={<Confirmation />} />
+            <Route path="/info" element={<Information />}></Route>
           </Route>
-          <Route path="*" element={<Navigate to={"/"} replace />} />
+          <Route path="*" element={<Navigate to={"/cards-list"} replace />} />
         </Routes>
       ) : (
         <Routes>
-          <Route path={"/"} element={<Authorization />}>
-            {" "}
-          </Route>
-          <Route path={"/confirm"} element={<Confirmation />}>
-            {" "}
-          </Route>
+          <Route path={"/auth"} element={<Authorization />} />
           <Route path="*" element={<Navigate to={"/auth"} replace />} />
         </Routes>
       )}
