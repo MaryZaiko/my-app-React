@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import "./ContentTitle.css";
 import PostCard from "../../components/PostCard";
 import HeaderPages from "../../components/HeaderPages";
@@ -6,27 +6,33 @@ import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import { useParams, Link } from "react-router-dom";
 // import {SingleCardCard, setSingleCardCard} from '../../components/PostCard'
-import {useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import {
   loadData,
   PostSelectors,
   setPostsTab,
+  loadPost
 } from "../../redux/reducers/postsReducer";
 
 const ContentTitle = () => {
-  const { theme, onChangeTheme = () => {} } = useThemeContext();
+  const { theme} = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
-
+const  dispatch =  useDispatch();
   const { id: cardId } = useParams();
 
+  useEffect(()=>{
+    if(cardId){
+      dispatch(loadPost(cardId))
+    }
+  },[cardId])
   
-  const activeTab = useSelector(PostSelectors.getPostsTab)
-  const cardsList = useSelector((state) =>
-  PostSelectors.getCards(state, activeTab)
-);
 
-const cardData =cardsList.find((card: any) => cardId === card.id);
+ 
+
+const cardData = useSelector(PostSelectors.getSelectedPost)
+
+
 
   return (
     <div

@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState,useEffect } from "react";
 import "./PostCard.css";
 import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
@@ -42,6 +42,7 @@ const PostCard: FC<PostCardProps> = ({
 
   const dispatch = useDispatch();
 
+ 
   const onClickEye = (image: string) => {
     dispatch(setSelectedImage(image));
   };
@@ -55,6 +56,7 @@ const PostCard: FC<PostCardProps> = ({
       dispatch(setSavedPost({ id, action }));
     }
   };
+
 
   return (
     <div

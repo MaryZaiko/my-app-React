@@ -7,6 +7,11 @@ type PostState = {
   cardsList: Card[];
   postsTab: string;
   loadPosts: Card[];
+  selectedPost: Card | null;
+
+
+
+  isAllPostsLoading: boolean
 };
 
 const initialState: PostState = {
@@ -14,6 +19,8 @@ const initialState: PostState = {
   cardsList: [],
   postsTab: "allPosts",
   loadPosts: [],
+  selectedPost: null,
+  isAllPostsLoading:false
 };
 
 const postsSlice = createSlice({
@@ -23,7 +30,7 @@ const postsSlice = createSlice({
     setSelectedImage: (state: Draft<PostState>, action) => {
       state.selectedImage = action.payload;
     },
-    loadData: (state, action:PayloadAction<Card[]>) => {
+    setPosts: (state, action: PayloadAction<Card[]>) => {
       state.cardsList = action.payload.map((card: Card) => {
         return {
           ...card,
@@ -32,8 +39,7 @@ const postsSlice = createSlice({
         };
       });
     },
-    addPosts:(state, action)=>{},
-    
+    loadData: (state, action: PayloadAction<undefined>) => {},
 
     setLikePost: (state: any, action) => {
       const card = state.cardsList.find((c: any) => c.id === action.payload.id);
@@ -50,16 +56,26 @@ const postsSlice = createSlice({
     setPostsTab: (state, action) => {
       state.postsTab = action.payload;
     },
+    loadPost: (state, action) => {},
+    setPost: (state, action) => {
+      state.selectedPost = action.payload;
+    },
+    setAllPostsLoading:(state, action) =>{ //load all posts from api
+      state.isAllPostsLoading =action.payload
+    }
   },
 });
 
 export const {
   setSelectedImage,
-  loadData,
+  setPosts,
   setLikePost,
   setSavedPost,
   setPostsTab,
-  addPosts
+  loadData,
+  loadPost,
+  setPost,
+  setAllPostsLoading
 } = postsSlice.actions;
 
 export default postsSlice.reducer;
@@ -82,4 +98,6 @@ export const PostSelectors = {
         return cards;
     }
   },
+  getSelectedPost:(state:any) =>state.posts.selectedPost,
+  getAllPostsLoading:(state:any) =>state.posts.isAllPostsLoading,
 };

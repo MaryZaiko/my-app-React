@@ -17,11 +17,14 @@ type PostsProps = {
 };
 
 const Posts: FC<PostsProps> = ({ data }) => {
- 
+ const onClickCard = (id:string) =>{
+   window.location.href =`/cards-list/${id}`
+ }
 
   const cardList = data.map((card) => {
     return (
       // <Link key={card.id} to={`/cards-list/${card.id}`}>
+    <div key={card.id} onClick={() => onClickCard(card.id)}>
       <PostCard
         id={card.id || ''}
         image={card.image}
@@ -32,6 +35,8 @@ const Posts: FC<PostsProps> = ({ data }) => {
         saved={card.saved}
         
       />
+    </div>
+      
       //  </Link>
     );
   });

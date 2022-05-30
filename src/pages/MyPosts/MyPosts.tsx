@@ -12,61 +12,32 @@ import { Card } from "../../common/types";
 import PopUp from "../../components/PopUp";
 import {
   loadData,
-  addPosts,
+ 
   PostSelectors,
   setPostsTab,
+  setAllPostsLoading
 } from "../../redux/reducers/postsReducer";
+
+
+import Lottie from 'react-lottie';
+import animationData from '../../components/Lotties/Fireworks.json';
 
 const MyPosts = () => {
   const { theme } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
-  const MOCK_DATA = [
-    {
-      id: "1",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj4nghXV-ZZygDiTQeH5Z7-Zj5YcVWQHEBzw&usqp=CAU",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      date: "2022-04-18",
-      lesson_num: 0,
-      title: "What is Lorem ipsum?",
-      author: 0,
-    },
-    {
-      id: "2",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMpTuvplHSR3uAXV8OoLZ-1vyAen56RzzTkZrZnsysRyAOrE_LV0kNhZyTovl3uYxZxAc&usqp=CAU",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      date: "2022-02-10",
-      lesson_num: 0,
-      title: "What is Lorem ipsum?",
-      author: 0,
-    },
-    {
-      id: "3",
-      image: "",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      date: "2022-01-01",
-      lesson_num: 0,
-      title: "What is Lorem ipsum?",
-      author: 0,
-    },
-    {
-      id: "4",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUpJzk2Q0eYPP2YVmJbW9txuGW7y1YZKq-K4UGIpXw4Dmx250FNsOgUjuii7K6o54PdKc&usqp=CAU",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      date: "2021-12-18",
-      lesson_num: 0,
-      title: "What is Lorem ipsum?",
-      author: 0,
-    },
-  ];
-
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(addPosts({}));
+    dispatch(setAllPostsLoading(true));
   }, []);
 
   const selectedImage = useSelector(PostSelectors.getSelectedImage);
@@ -75,6 +46,7 @@ const MyPosts = () => {
   const cardsList = useSelector((state) =>
   PostSelectors.getCards(state, activeTab)
 );
+const allPostsLoading = useSelector(PostSelectors.getAllPostsLoading)
 
   const TABS = [
     { tabName: "All", id: "allPosts" },
@@ -120,8 +92,14 @@ const MyPosts = () => {
           );
         })}
       </div>
-
-      <PostsList data={cardsList} />
+{
+  allPostsLoading ? <Lottie 
+  options={defaultOptions}
+    height={400}
+    width={400}
+  /> : <PostsList data={cardsList} />
+}
+      
 
       {selectedImage && (
         <PopUp>
