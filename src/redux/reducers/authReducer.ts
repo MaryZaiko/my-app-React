@@ -22,7 +22,6 @@ const authSlice = createSlice({
     setLodStatus: (state: any, action: PayloadAction<boolean>) => {
       state.isLoggedIn = action.payload;
     },
-    
   },
 });
 

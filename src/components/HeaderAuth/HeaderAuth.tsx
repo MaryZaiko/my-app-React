@@ -3,7 +3,6 @@ import "./HeaderAuth.css";
 import Button from "../Button";
 import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
-import { useSelector } from "react-redux";
 
 type HeaderAuthProps = {
   onClick: (name: string) => void;
@@ -12,23 +11,30 @@ type HeaderAuthProps = {
 
 const HeaderAuth: FC<HeaderAuthProps> = ({ onClick, tabActive }) => {
   const isLoginActive = tabActive === "login";
-  const { theme, onChangeTheme = () => {} } = useThemeContext();
+  const { theme } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
   return (
     <div className="titleContainer">
       <Button
-        className={classnames(`btnTitle btnLogin`, {
-          // ["btnTitleActiveDark"]: !isLightTheme && isLoginActive,
-          ["btnTitleActive"]: isLoginActive,
-        })}
+        className={classnames(
+          ` btnLogin`,
+          isLightTheme ? "btnTitle" : "btnTitleDark",
+          {
+            ["btnTitleActive"]: isLoginActive,
+          }
+        )}
         btnContent={"Login"}
         onClick={() => onClick("login")}
       />
       <Button
-        className={classnames(`btnTitle btnRegistration `, {
-          ["btnTitleActive"]: !isLoginActive,
-        })}
+        className={classnames(
+          `btnRegistration `,
+          isLightTheme ? "btnTitle" : "btnTitleDark",
+          {
+            ["btnTitleActive"]: !isLoginActive,
+          }
+        )}
         btnContent={"Registration"}
         onClick={() => {
           onClick("registration");

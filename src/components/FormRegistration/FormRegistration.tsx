@@ -5,8 +5,8 @@ import Button from "../Button";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import classnames from "classnames";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import {registerUser} from '../../redux/reducers/authReducer'
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../redux/reducers/authReducer";
 
 type FormRegistrationProps = {
   onClick: (name: string) => void;
@@ -14,7 +14,7 @@ type FormRegistrationProps = {
 
 const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
   const navigate = useNavigate();
-  const { theme, onChangeTheme = () => {} } = useThemeContext();
+  const { theme } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
   const [userName, setUserName] = useState("");
@@ -48,7 +48,7 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
     }
   }, [userNameErr, emailErr, passwordErr, confirmPasswordErr]);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   //ВОПРОС ПО ТИПИЗАЦИИ
 
@@ -117,10 +117,11 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
         break;
     }
   };
-  
 
   const onSubmit = () => {
-  dispatch(registerUser({ name: userName, password: password, email: email }));
+    dispatch(
+      registerUser({ name: userName, password: password, email: email })
+    );
 
     navigate("/confirm", {
       state: {
@@ -129,8 +130,6 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
     });
   };
 
- 
-
   return (
     <div
       className={classnames(
@@ -138,9 +137,7 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
         { ["darkContainer"]: !isLightTheme }
       )}
     >
-      <form
-      // onSubmit={onSubmit}
-      >
+      <form onSubmit={onSubmit}>
         <div className="input">
           {userNameDirty && userNameErr && (
             <div style={{ color: "red" }}>{userNameErr}</div>
@@ -196,7 +193,7 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
 
         <Button
           disabled={!formValid}
-          className={classnames(!isLightTheme ? "buttonDark" : "button")}
+          className={classnames("button")}
           btnContent="Login"
           onClick={onSubmit}
         />

@@ -4,10 +4,9 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.postsList{
+.postsList {
   display: flex;
   justify-content: center;
-      flex-wrap: wrap;
-      position: relative;
-  }
-
+  flex-wrap: wrap;
+  position: relative;
+}

@@ -1,4 +1,3 @@
-import { legacy_createStore as createStore } from "redux";
 
 export function activeInfoTabsReducer(
   state = { activeTab: "tab1" },

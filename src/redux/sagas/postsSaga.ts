@@ -4,10 +4,10 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { RegisterUser, setLodStatus } from "../reducers/authReducer";
 import {
   setPosts,
-  loadData,
   setPost,
   loadPost,
-  setAllPostsLoading
+  setAllPostsLoading,
+  setSinglePostLoading
 } from "../reducers/postsReducer";
 import { Card } from "../../common/types";
 
@@ -15,7 +15,6 @@ import React, { useEffect, useState } from "react";
 import { getPosts, getSinglePost } from "../api";
 
 function* postsSagaWorker() {
-  // yield put(setAllPostsLoading(true))
   const { data, status } = yield call(getPosts);
 
   if (status === 200) {
@@ -26,9 +25,11 @@ function* postsSagaWorker() {
 }
 
 function* getSinglePostWorker(action: PayloadAction<string>) {
+  yield put (setSinglePostLoading(true)) //не работате лодинг
   const { data, status } = yield call(getSinglePost, action.payload);
   if (status === 200) {
     yield put(setPost(data));
+    yield put(setSinglePostLoading(false))
   }
 }
 

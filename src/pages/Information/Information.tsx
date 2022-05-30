@@ -1,15 +1,14 @@
-import React, { FC, useState } from "react";
+import React from "react";
 import "./Information.css";
-import HeaderPages from "../../components/HeaderPages";
 import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import Button from "../../components/Button";
-
 import { useDispatch, useSelector } from "react-redux";
 
 const Information = () => {
   const dispatch = useDispatch();
-  const { theme, onChangeTheme = () => {} } = useThemeContext();
+
+  const { theme } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
   const activeTab = useSelector((state: any) => state.activeTabs.activeTab);
@@ -54,10 +53,9 @@ const Information = () => {
           return (
             <Button
               key={tab.id}
-              className={classnames(
-                isLightTheme ? "buttonTab" : "buttonTabDark",
-                { ["buttonTabActive"]: tab.id === activeTab }
-              )}
+              className={classnames(isLightTheme ? "btnTab" : "btnTabDark", {
+                ["btnTabActive"]: tab.id === activeTab,
+              })}
               btnContent={tab.tabName}
               onClick={() => onClickActiveTab(tab.id)}
             />

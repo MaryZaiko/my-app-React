@@ -1,5 +1,4 @@
 import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
-import { castDraft } from "immer";
 import { Card } from "./../../common/types";
 
 type PostState = {
@@ -8,10 +7,9 @@ type PostState = {
   postsTab: string;
   loadPosts: Card[];
   selectedPost: Card | null;
+  isAllPostsLoading: boolean;
+  isSinglePostLoading: boolean;
 
-
-
-  isAllPostsLoading: boolean
 };
 
 const initialState: PostState = {
@@ -20,7 +18,8 @@ const initialState: PostState = {
   postsTab: "allPosts",
   loadPosts: [],
   selectedPost: null,
-  isAllPostsLoading:false
+  isAllPostsLoading: false,
+  isSinglePostLoading:false,
 };
 
 const postsSlice = createSlice({
@@ -39,8 +38,6 @@ const postsSlice = createSlice({
         };
       });
     },
-    loadData: (state, action: PayloadAction<undefined>) => {},
-
     setLikePost: (state: any, action) => {
       const card = state.cardsList.find((c: any) => c.id === action.payload.id);
       if (card) {
@@ -60,9 +57,14 @@ const postsSlice = createSlice({
     setPost: (state, action) => {
       state.selectedPost = action.payload;
     },
-    setAllPostsLoading:(state, action) =>{ //load all posts from api
-      state.isAllPostsLoading =action.payload
-    }
+    setAllPostsLoading: (state, action) => {
+      //load all posts from api
+      state.isAllPostsLoading = action.payload;
+    },
+    setSinglePostLoading: (state, action) => {
+      //load all posts from api
+      state.isSinglePostLoading = action.payload;
+    },
   },
 });
 
@@ -72,10 +74,10 @@ export const {
   setLikePost,
   setSavedPost,
   setPostsTab,
-  loadData,
   loadPost,
   setPost,
-  setAllPostsLoading
+  setAllPostsLoading,
+  setSinglePostLoading
 } = postsSlice.actions;
 
 export default postsSlice.reducer;
@@ -98,6 +100,8 @@ export const PostSelectors = {
         return cards;
     }
   },
-  getSelectedPost:(state:any) =>state.posts.selectedPost,
-  getAllPostsLoading:(state:any) =>state.posts.isAllPostsLoading,
+  getSelectedPost: (state: any) => state.posts.selectedPost,
+  getAllPostsLoading: (state: any) => state.posts.isAllPostsLoading,
+  getSinglePostLoading: (state: any) => state.posts.isAllPostsLoading,
+
 };

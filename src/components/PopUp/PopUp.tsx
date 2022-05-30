@@ -1,30 +1,25 @@
-import React, { Children, FC } from "react";
+import React from "react";
 import "./PopUp.css";
-import PostCard from "../PostCard";
-
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setSelectedImage } from "../../redux/reducers/postsReducer";
-import { AnyAction } from "redux";
 
-const PopUp = ({children}:any) => {
+const PopUp = ({ children }: any) => {
+  
   const dispatch = useDispatch();
 
   const onCardClick = () => {
     dispatch(setSelectedImage(null));
   };
- 
 
   return (
     <div>
-        <div className="popUp">
-          <div className="popUpContainer">
-            <i
-              onClick={onCardClick}
-              className="fa-solid fa-xmark popUpClose"
-            ></i>
-            {children}
-          </div>
+      <div className="popUp">
+        <div className="popUpContainer">
+          <i onClick={onCardClick} className="fa-solid fa-xmark popUpClose"></i>
+          {children} 
+          {/* надо задать размер чилдрену, чтоб картинки не выезжали за границы */}
         </div>
+      </div>
     </div>
   );
 };

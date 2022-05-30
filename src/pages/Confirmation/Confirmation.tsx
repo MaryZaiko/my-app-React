@@ -3,16 +3,13 @@ import Button from "../../components/Button";
 import "./Confirmation.css";
 import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
-import ToggleSwitch from "../../components/ToggleSwitch";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 const Confirmation = () => {
-  const { theme, onChangeTheme = () => {} } = useThemeContext();
+  const { theme } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
   const location: any = useLocation();
-  console.log(location.state.email);
 
   const onHomeClick = () => {
     localStorage.setItem("isLoggedIn", "true");
@@ -29,7 +26,6 @@ const Confirmation = () => {
         }
       )}
     >
-      <ToggleSwitch />
       <div className="confirmationContainer">
         <h1 className="title">Registration Confirmation</h1>
 

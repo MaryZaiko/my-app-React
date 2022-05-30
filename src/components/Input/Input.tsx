@@ -1,4 +1,4 @@
-import React, { FC, ChangeEventHandler, FocusEventHandler } from "react";
+import React, { FC,FocusEventHandler } from "react";
 import "./Input.css";
 
 type InputProps = {

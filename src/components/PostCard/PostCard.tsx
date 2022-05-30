@@ -1,8 +1,8 @@
-import React, { FC, useState,useEffect } from "react";
+import React, { FC } from "react";
 import "./PostCard.css";
 import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   setLikePost,
   setSavedPost,
@@ -42,13 +42,14 @@ const PostCard: FC<PostCardProps> = ({
 
   const dispatch = useDispatch();
 
- 
   const onClickEye = (image: string) => {
     dispatch(setSelectedImage(image));
   };
 
   const handleButtonClick = (action: string) => {
-    console.log(action);
+    // e.stopPropagation() срабатывает всплытие на онклик по самой карточке для перехода на другую страницу
+
+    // сломались лайки
 
     if (action === LikeStatus.Like || action === LikeStatus.Dislike) {
       dispatch(setLikePost({ id, action }));
@@ -56,7 +57,6 @@ const PostCard: FC<PostCardProps> = ({
       dispatch(setSavedPost({ id, action }));
     }
   };
-
 
   return (
     <div

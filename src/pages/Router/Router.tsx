@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 import HeaderPages from "../../components/HeaderPages";
-import PostsList from "../../components/PostsList";
 import Authorization from "../Authorization";
 import Confirmation from "../Confirmation";
 import ContentTitle from "../ContentTitle";
@@ -18,9 +17,9 @@ const Router = () => {
       {isLoggedIn ? (
         <Routes>
           <Route path={"/"} element={<HeaderPages />}>
+            <Route path={"/confirm"} element={<Confirmation />} />
             <Route path={"/cards-list"} element={<MyPosts />}></Route>
             <Route path={"/cards-list/:id"} element={<ContentTitle />} />
-            <Route path={"/confirm"} element={<Confirmation />} />
             <Route path={"/info"} element={<Information />}></Route>
           </Route>
           <Route path={"*"} element={<Navigate to={"/cards-list"} replace />} />

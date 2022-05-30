@@ -1,26 +1,18 @@
 import React, { FC, useEffect, useState } from "react";
 import "./MyPosts.css";
 import PostsList from "../../components/PostsList";
-import HeaderPages from "../../components/HeaderPages";
 import Button from "../../components/Button";
 import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
-import { useParams, Link } from "react-router-dom";
-import PostCard from "../../components/PostCard";
 import { useDispatch, useSelector } from "react-redux";
-import { Card } from "../../common/types";
 import PopUp from "../../components/PopUp";
 import {
-  loadData,
- 
   PostSelectors,
   setPostsTab,
-  setAllPostsLoading
+  setAllPostsLoading,
 } from "../../redux/reducers/postsReducer";
-
-
-import Lottie from 'react-lottie';
-import animationData from '../../components/Lotties/Fireworks.json';
+import Lottie from "react-lottie";
+import animationData from "../../components/Lotties/Fireworks.json";
 
 const MyPosts = () => {
   const { theme } = useThemeContext();
@@ -31,8 +23,8 @@ const MyPosts = () => {
     autoplay: true,
     animationData: animationData,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
   const dispatch = useDispatch();
 
@@ -42,11 +34,11 @@ const MyPosts = () => {
 
   const selectedImage = useSelector(PostSelectors.getSelectedImage);
 
-  const activeTab = useSelector(PostSelectors.getPostsTab)
+  const activeTab = useSelector(PostSelectors.getPostsTab);
   const cardsList = useSelector((state) =>
-  PostSelectors.getCards(state, activeTab)
-);
-const allPostsLoading = useSelector(PostSelectors.getAllPostsLoading)
+    PostSelectors.getCards(state, activeTab)
+  );
+  const allPostsLoading = useSelector(PostSelectors.getAllPostsLoading);
 
   const TABS = [
     { tabName: "All", id: "allPosts" },
@@ -57,7 +49,7 @@ const allPostsLoading = useSelector(PostSelectors.getAllPostsLoading)
     },
     { tabName: <i className="fa-solid fa-bookmark"></i>, id: "savedPosts" },
   ];
-  
+
   const onTabClick = (tab: string) => {
     dispatch(setPostsTab(tab));
   };
@@ -80,10 +72,10 @@ const allPostsLoading = useSelector(PostSelectors.getAllPostsLoading)
             <button
               key={tab.id}
               className={classnames(
-                isLightTheme ? "buttonTab" : "buttonTabDark",
-                "buttonPostTab",
+                isLightTheme ? "btnTab" : "btnTabDark",
+                "btnPostTab",
 
-                { ["buttonTabActive"]: tab.id === activeTab }
+                { ["btnTabActive"]: tab.id === activeTab }
               )}
               onClick={() => onTabClick(`${tab.id}`)}
             >
@@ -92,14 +84,11 @@ const allPostsLoading = useSelector(PostSelectors.getAllPostsLoading)
           );
         })}
       </div>
-{
-  allPostsLoading ? <Lottie 
-  options={defaultOptions}
-    height={400}
-    width={400}
-  /> : <PostsList data={cardsList} />
-}
-      
+      {allPostsLoading ? (
+        <Lottie options={defaultOptions} height={400} width={400} />
+      ) : (
+        <PostsList data={cardsList} />
+      )}
 
       {selectedImage && (
         <PopUp>

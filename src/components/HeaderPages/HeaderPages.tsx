@@ -5,10 +5,9 @@ import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import ToggleSwitch from "../ToggleSwitch";
 import { Outlet } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 
 const HeaderPages = () => {
-  const { theme, onChangeTheme = () => {} } = useThemeContext();
+  const { theme } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
   return (

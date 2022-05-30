@@ -1,28 +1,25 @@
-.Information{
-    padding-left:130px;
-    
-    min-height: 100vh;
+.Information {
+  padding-left: 130px;
+  min-height: 100vh;
 }
-.informationTitle{
-
-    text-align: left;
-    margin: 0 25px;
-    
+.informationTitle {
+  text-align: left;
+  margin: 0 25px;
 }
-.textContainer{
-width: 550px;
-min-height: 350px;
-background-color:#d5ddef;
-border-radius: 12px;
-margin-top: 20px;
-padding: 10px;
-margin-left: 25px;
+.textContainer {
+  width: 550px;
+  min-height: 350px;
+  background-color: #d5ddef;
+  border-radius: 12px;
+  margin-top: 20px;
+  padding: 10px;
+  margin-left: 25px;
 }
-.tabsContainer{
-    display: flex;
-    margin-left: 25px;
+.tabsContainer {
+  display: flex;
+  margin-left: 25px;
 }
-.textContainerDark{
-    background-color: #bcb8ce;
-    color: #493c4c;
+.textContainerDark {
+  background-color: #bcb8ce;
+  color: #493c4c;
 }

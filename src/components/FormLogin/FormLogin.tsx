@@ -1,10 +1,7 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./FormLogin.css";
 import Input from "../Input";
 import Button from "../Button";
-import classnames from "classnames";
-
-import { useDispatch, useSelector } from "react-redux";
 
 const FormLogin = () => {
   const [email, setEmail] = useState("");
@@ -96,7 +93,7 @@ const FormLogin = () => {
 
         <Button
           disabled={!formValid}
-          className={classnames(!true ? "buttonDark" : "button")}
+          className={("button")}
           btnContent="Login"
         />
 
