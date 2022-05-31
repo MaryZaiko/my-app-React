@@ -54,15 +54,14 @@ const postsSlice = createSlice({
       state.postsTab = action.payload;
     },
     loadPost: (state, action) => {},
+    loadData: (state, action) => {},
     setPost: (state, action) => {
       state.selectedPost = action.payload;
     },
     setAllPostsLoading: (state, action) => {
-      //load all posts from api
       state.isAllPostsLoading = action.payload;
     },
     setSinglePostLoading: (state, action) => {
-      //load all posts from api
       state.isSinglePostLoading = action.payload;
     },
   },
@@ -75,6 +74,7 @@ export const {
   setSavedPost,
   setPostsTab,
   loadPost,
+  loadData,
   setPost,
   setAllPostsLoading,
   setSinglePostLoading
@@ -102,6 +102,6 @@ export const PostSelectors = {
   },
   getSelectedPost: (state: any) => state.posts.selectedPost,
   getAllPostsLoading: (state: any) => state.posts.isAllPostsLoading,
-  getSinglePostLoading: (state: any) => state.posts.isAllPostsLoading,
+  getSinglePostLoading: (state: any) => state.posts.isSinglePostLoading,
 
 };

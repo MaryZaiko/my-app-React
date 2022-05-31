@@ -18,7 +18,7 @@ type PostCardProps = {
   text: string;
   date: string;
   isBig?: boolean;
-  onClick?: () => void;
+  onClick?: (e:any) => void;
   likeStatus?: LikeStatus | null;
   saved?: boolean;
 };
@@ -46,8 +46,8 @@ const PostCard: FC<PostCardProps> = ({
     dispatch(setSelectedImage(image));
   };
 
-  const handleButtonClick = (action: string) => {
-    // e.stopPropagation() срабатывает всплытие на онклик по самой карточке для перехода на другую страницу
+  const handleButtonClick = (action: string, e:any) => {
+     e.stopPropagation()// срабатывает всплытие на онклик по самой карточке для перехода на другую страницу
 
     // сломались лайки
 
@@ -85,7 +85,7 @@ const PostCard: FC<PostCardProps> = ({
         </div>
         <div>
           <Button
-            onClick={() => handleButtonClick(LikeStatus.Like)}
+            onClick={(e:any) => handleButtonClick(LikeStatus.Like, e)}
             className={classnames("btnIcon", "fa-regular", "fa-thumbs-up", {
               ["activeLike"]: likeStatus === LikeStatus.Like,
             })}
@@ -93,7 +93,7 @@ const PostCard: FC<PostCardProps> = ({
           />
 
           <Button
-            onClick={() => handleButtonClick(LikeStatus.Dislike)}
+            onClick={(e:any) => handleButtonClick(LikeStatus.Dislike, e)}
             className={classnames("btnIcon", "fa-regular", "fa-thumbs-down", {
               ["activeDislike"]: likeStatus === LikeStatus.Dislike,
             })}
@@ -101,7 +101,7 @@ const PostCard: FC<PostCardProps> = ({
           />
 
           <Button
-            onClick={() => handleButtonClick(saved ? "unset" : "save")}
+            onClick={(e:any) => handleButtonClick(saved ? "unset" : "save", e)}
             className={classnames("btnIcon", "fa-solid", "fa-bookmark", {
               ["activeSave"]: saved,
             })}

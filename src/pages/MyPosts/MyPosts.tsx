@@ -10,6 +10,7 @@ import {
   PostSelectors,
   setPostsTab,
   setAllPostsLoading,
+  loadData
 } from "../../redux/reducers/postsReducer";
 import Lottie from "react-lottie";
 import animationData from "../../components/Lotties/Fireworks.json";
@@ -29,7 +30,7 @@ const MyPosts = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setAllPostsLoading(true));
+    dispatch(loadData(''));
   }, []);
 
   const selectedImage = useSelector(PostSelectors.getSelectedImage);

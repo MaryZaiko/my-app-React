@@ -28,3 +28,7 @@
 .fa-xmark-large {
   color: #2e1a1e;
 }
+.popUpContainer img{
+  height: 300px;
+  width: 300px;
+}
