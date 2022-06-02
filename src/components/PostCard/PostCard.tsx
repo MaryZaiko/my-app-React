@@ -83,6 +83,7 @@ const PostCard: FC<PostCardProps> = ({
             className="fa-solid fa-eye"
           ></i>
         </div>
+        {}
         <div>
           <Button
             onClick={(e:any) => handleButtonClick(LikeStatus.Like, e)}
