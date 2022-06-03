@@ -133,6 +133,7 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
     );
   };
 
+
   return (
     <div
       className={classnames(

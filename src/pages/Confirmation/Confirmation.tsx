@@ -39,7 +39,7 @@ const Confirmation = () => {
           Please, check your email.
         </p>
         <Button
-          className={classnames(!isLightTheme ? "buttonDark" : "button")}
+          className={classnames("button")}
           btnContent={"Home"}
           onClick={onHomeClick}
         />
