@@ -1,26 +1,26 @@
-import React, {FC} from "react";
+import React, { FC,FocusEventHandler } from "react";
 import "./Input.css";
 
-type InputProps ={
-  value:string;
+type InputProps = {
+  value: string;
   name: string;
-  onChange?:(e:any) => void;
-  type:string
-  className?:string;
-  onBlur?:(e:any)=> void;
-}
+  onChange?: (value: any) => void;
+  type: string;
+  className?: string;
+  onBlur?: (e: FocusEventHandler<HTMLInputElement> | undefined) => void;
+};
 
-
-const Input = ({value, name, onChange, type, className, onBlur}:any) => {
-
+const Input: FC<InputProps> = ({ value, name, onChange, type, className, onBlur }: any) => {
   // const onInputChange = (event: any) => {
-  //   onChange(event.target.value);
-  // };
+  //   if (event.target) {
+  //     onChange(event.target.value);
+  //   }
+  // }; СЛЕТАЕТ ИЗ-ЗА ТИПОВ
 
   return (
     <input
-    value={value}
-    name={name}
+      value={value}
+      name={name}
       type={type}
       onChange={onChange}
       className={className}
