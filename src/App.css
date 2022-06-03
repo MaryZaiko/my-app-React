@@ -53,8 +53,6 @@
   background-color: #bcb8ce;
   color: #2e1a1e;
 }
-
-.darkContainer button,
 .darkContainer h1,
 h2 {
   color: #d5ddef;
@@ -63,7 +61,6 @@ h2 {
 h2 {
   color: #2e1a1e;
 }
-
 .buttonDark {
   background-color: #2e1a1e;
   border: none;
@@ -101,7 +98,6 @@ h2 {
 .darkHeader a {
   color: #d5ddef;
 }
-
 .headerLight {
   background-color: #d5ddef;
   color: #2e1a1e;
