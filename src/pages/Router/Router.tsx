@@ -17,7 +17,6 @@ const Router = () => {
       {isLoggedIn ? (
         <Routes>
           <Route path={"/"} element={<HeaderPages />}>
-            <Route path={"/confirm"} element={<Confirmation />} />
             <Route path={"/cards-list"} element={<MyPosts />}></Route>
             <Route path={"/cards-list/:id"} element={<ContentTitle />} />
             <Route path={"/info"} element={<Information />}></Route>
@@ -27,6 +26,8 @@ const Router = () => {
       ) : (
         <Routes>
           <Route path={"/auth"} element={<Authorization />} />
+          <Route path={"/activate/:uuid/:token"} element={<Confirmation />} />
+
           <Route path={"*"} element={<Navigate to={"/auth"} replace />} />
         </Routes>
       )}

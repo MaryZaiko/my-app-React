@@ -9,7 +9,6 @@ import PopUp from "../../components/PopUp";
 import {
   PostSelectors,
   setPostsTab,
-  setAllPostsLoading,
   loadData
 } from "../../redux/reducers/postsReducer";
 import Lottie from "react-lottie";

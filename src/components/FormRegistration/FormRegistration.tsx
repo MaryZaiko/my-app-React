@@ -118,17 +118,21 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
     }
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+    const callback = () => {
+      navigate("/activate");
+    };
     dispatch(
-      registerUser({ name: userName, password: password, email: email })
+      registerUser({
+        name: userName,
+        password: password,
+        email: email,
+        callback,
+      })
     );
-
-    navigate("/confirm", {
-      state: {
-        email,
-      },
-    });
   };
+
 
   return (
     <div
@@ -137,7 +141,7 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
         { ["darkContainer"]: !isLightTheme }
       )}
     >
-      <form onSubmit={onSubmit}>
+      <form>
         <div className="input">
           {userNameDirty && userNameErr && (
             <div style={{ color: "red" }}>{userNameErr}</div>
@@ -194,7 +198,7 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
         <Button
           disabled={!formValid}
           className={classnames("button")}
-          btnContent="Login"
+          btnContent={"Login"}
           onClick={onSubmit}
         />
 
