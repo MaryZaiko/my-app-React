@@ -12,16 +12,27 @@ import { registerUser as registerUserApi } from "../api/index";
 function* registerUserSaga(action: PayloadAction<RegisterUser>) {
   const { callback, email, name, password } = action.payload;
 
-  const { data, status } = yield call(registerUserApi, {
+  const { data, status, problem } = yield call(registerUserApi, {
     email,
     username: name,
     password,
   });
+  
+  console.log(problem)
   if (status === 201) {
     console.log(data);
-    yield put(setTempMail(data.email));
+    yield put(setTempMail(data.email || ''));
     callback();
+  }else {
+    //@ts-ignore
+    const al = yield call(registerUserApi, {
+      email,
+      username: name,
+      password,
+    });
+    console.log(al)
   }
+ 
 }
 export default function* authWatcher() {
   yield all([takeLatest(registerUser, registerUserSaga)]);

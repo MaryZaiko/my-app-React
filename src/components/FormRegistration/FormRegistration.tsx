@@ -121,7 +121,7 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
   const onSubmit = (e: any) => {
     e.preventDefault();
     const callback = () => {
-      navigate("/confirm");
+      navigate("/activate");
     };
     dispatch(
       registerUser({

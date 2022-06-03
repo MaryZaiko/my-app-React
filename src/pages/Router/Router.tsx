@@ -26,7 +26,7 @@ const Router = () => {
       ) : (
         <Routes>
           <Route path={"/auth"} element={<Authorization />} />
-          <Route path={"/confirm"} element={<Confirmation />} />
+          <Route path={"/activate/:uuid/:token"} element={<Confirmation />} />
 
           <Route path={"*"} element={<Navigate to={"/auth"} replace />} />
         </Routes>

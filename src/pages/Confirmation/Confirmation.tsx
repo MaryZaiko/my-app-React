@@ -40,7 +40,7 @@ const Confirmation = () => {
         </p>
         <Button
           className={classnames("button")}
-          btnContent={"Home"}
+          btnContent={"Confirm"}
           onClick={onHomeClick}
         />
       </div>
