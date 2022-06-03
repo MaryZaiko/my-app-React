@@ -1,32 +1,26 @@
-import React from "react";
+import React, { FC, useState } from "react";
 import "./Information.css";
+import HeaderPages from "../../components/HeaderPages";
 import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import Button from "../../components/Button";
-import { useDispatch, useSelector } from "react-redux";
 
+// type InformationProps ={
+// data:Texts[]
+// }
+// type Texts ={
+
+// }
 const Information = () => {
-  const dispatch = useDispatch();
-
-  const { theme } = useThemeContext();
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
-  const activeTab = useSelector((state: any) => state.activeTabs.activeTab);
-
+  const [activeTab, setActiveTab] = useState("tab1");
   const onClickActiveTab = (name: string) => {
-    switch (true) {
-      case name === "tab1":
-        dispatch({ type: "activeTab1" });
-        break;
-      case name === "tab2":
-        dispatch({ type: "activeTab2" });
-        break;
-      case name === "tab3":
-        dispatch({ type: "activeTab3" });
-        break;
-    }
+    setActiveTab(name);
   };
 
+  
   const MOCK_DATA = [
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -53,14 +47,27 @@ const Information = () => {
           return (
             <Button
               key={tab.id}
-              className={classnames(isLightTheme ? "btnTab" : "btnTabDark", {
-                ["btnTabActive"]: tab.id === activeTab,
-              })}
+              className={classnames(
+                isLightTheme ? "buttonTab" : "buttonTabDark",
+                { ["buttonTabActive"]: tab.id === activeTab }
+              )}
               btnContent={tab.tabName}
               onClick={() => onClickActiveTab(tab.id)}
             />
           );
         })}
+
+        {/* <Button 
+className={classnames(isLightTheme ? "buttonTab" : "buttonTabDark", {['buttonTabActive'] : isActiveTab1})} 
+btnContent="Tab 1" onClick={() =>{onClickActiveTab('tab1')}}/>
+
+<Button 
+className={classnames(isLightTheme ? "buttonTab" : "buttonTabDark", {['buttonTabActive'] : isActiveTab2})} 
+btnContent="Tab 2" onClick={() =>{onClickActiveTab('tab2')}}/>
+
+<Button 
+className={classnames(isLightTheme ? "buttonTab" : "buttonTabDark", {['buttonTabActive'] : isActiveTab3})} 
+btnContent="Tab 3" onClick={() =>{onClickActiveTab('tab3')}}/> */}
       </div>
 
       <div

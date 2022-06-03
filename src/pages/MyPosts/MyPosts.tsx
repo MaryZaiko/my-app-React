@@ -1,59 +1,63 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import "./MyPosts.css";
 import PostsList from "../../components/PostsList";
+import HeaderPages from "../../components/HeaderPages";
 import Button from "../../components/Button";
 import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
-import { useDispatch, useSelector } from "react-redux";
-import PopUp from "../../components/PopUp";
-import {
-  PostSelectors,
-  setPostsTab,
-  setAllPostsLoading,
-  loadData
-} from "../../redux/reducers/postsReducer";
-import Lottie from "react-lottie";
-import animationData from "../../components/Lotties/Fireworks.json";
+import { useParams, Link } from "react-router-dom";
+import PostCard from "../../components/PostCard";
 
-const MyPosts = () => {
-  const { theme } = useThemeContext();
+// type MyPostsProps ={
+//   data:object;
+// }
+
+const MyPosts = ({ data }: any) => {
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-  const dispatch = useDispatch();
+  // const { id } = useParams();
 
-  useEffect(() => {
-    dispatch(loadData(''));
-  }, []);
-
-  const selectedImage = useSelector(PostSelectors.getSelectedImage);
-
-  const activeTab = useSelector(PostSelectors.getPostsTab);
-  const cardsList = useSelector((state) =>
-    PostSelectors.getCards(state, activeTab)
-  );
-  const allPostsLoading = useSelector(PostSelectors.getAllPostsLoading);
-
-  const TABS = [
-    { tabName: "All", id: "allPosts" },
-    { tabName: <i className="fa-regular fa-thumbs-up"></i>, id: "likedPosts" },
+  const MOCK_DATA = [
     {
-      tabName: <i className="fa-regular fa-thumbs-down"></i>,
-      id: "dislikedPosts",
+      id: 1,
+      image: "https://tinypng.com/images/social/website.jpg",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      date: "2022-04-18",
+      lesson_num: 0,
+      title: "What is Lorem ipsum?",
+      author: 0,
     },
-    { tabName: <i className="fa-solid fa-bookmark"></i>, id: "savedPosts" },
+    {
+      id: 2,
+      image: "https://tinypng.com/images/social/website.jpg",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      date: "2022-02-10",
+      lesson_num: 0,
+      title: "What is Lorem ipsum?",
+      author: 0,
+    },
+    {
+      id: 3,
+      image: "",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      date: "2022-01-01",
+      lesson_num: 0,
+      title: "What is Lorem ipsum?",
+      author: 0,
+    },
+    {
+      id: 4,
+      image: "https://tinypng.com/images/social/website.jpg",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      date: "2021-12-18",
+      lesson_num: 0,
+      title: "What is Lorem ipsum?",
+      author: 0,
+    },
   ];
 
-  const onTabClick = (tab: string) => {
-    dispatch(setPostsTab(tab));
-  };
+  // const [singleCard, setSingleCard] = useState('not');
 
   return (
     <div
@@ -64,38 +68,29 @@ const MyPosts = () => {
       )}
     >
       <div className="titlePostsContainer">
-        <h1 className="headerTitle">My posts</h1>
+        <h1 className="headerTitle">My posts</h1>{" "}
         <Button className={"btnAny"} btnContent={"+Add"} onClick={() => {}} />
       </div>
-      <div className="postsTabs">
-        {TABS.map((tab) => {
+      <div className="postsList">
+        {MOCK_DATA.map((card: any) => {
           return (
-            <button
-              key={tab.id}
-              className={classnames(
-                isLightTheme ? "btnTab" : "btnTabDark",
-                "btnPostTab",
+            <Link key={card.id} to={`/cards-list/${card.id}`}>
+              <PostCard
+                // className={(singleCard === 'not')? "postCard" : "singleCard"}
 
-                { ["btnTabActive"]: tab.id === activeTab }
-              )}
-              onClick={() => onTabClick(`${tab.id}`)}
-            >
-              {tab.tabName}
-            </button>
+                // {classnames(
+                //   { ["postCard"]: singleCard === 'not' },
+                //   { ["singleCard"]: singleCard === 'yes' }
+                // )}
+                image={card.image}
+                title={card.title}
+                text={card.text}
+                date={card.date}
+              />
+            </Link>
           );
         })}
       </div>
-      {allPostsLoading ? (
-        <Lottie options={defaultOptions} height={400} width={400} />
-      ) : (
-        <PostsList data={cardsList} />
-      )}
-
-      {selectedImage && (
-        <PopUp>
-          <img src={selectedImage} />
-        </PopUp>
-      )}
     </div>
   );
 };

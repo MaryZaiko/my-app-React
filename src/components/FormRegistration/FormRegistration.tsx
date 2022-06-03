@@ -2,19 +2,20 @@ import React, { useState, FC, useEffect } from "react";
 import "./FormRegistration.css";
 import Input from "../Input";
 import Button from "../Button";
-import { Theme, useThemeContext } from "./../../context/themeModeContext";
+import {Theme,useThemeContext} from "./../../context/themeModeContext";
 import classnames from "classnames";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { registerUser } from "../../redux/reducers/authReducer";
+import {useNavigate } from "react-router-dom";
 
 type FormRegistrationProps = {
   onClick: (name: string) => void;
 };
 
 const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
+
   const navigate = useNavigate();
-  const { theme } = useThemeContext();
+
+
   const isLightTheme = theme === Theme.Light;
 
   const [userName, setUserName] = useState("");
@@ -48,10 +49,6 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
     }
   }, [userNameErr, emailErr, passwordErr, confirmPasswordErr]);
 
-  const dispatch = useDispatch();
-
-  //ВОПРОС ПО ТИПИЗАЦИИ
-
   const userNameHandler = (e: any) => {
     setUserName(e.target.value);
     if (e.target.value.length < 2) {
@@ -66,8 +63,7 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
 
   const emailHandler = (e: any) => {
     setEmail(e.target.value);
-    const re =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(String(e.target.value).toLowerCase())) {
       setEmailErr("Email is not correct");
     } else {
@@ -117,18 +113,14 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
         break;
     }
   };
-
   const onSubmit = () => {
-    dispatch(
-      registerUser({ name: userName, password: password, email: email })
-    );
-
     navigate("/confirm", {
       state: {
         email,
       },
     });
   };
+
 
   return (
     <div
@@ -137,7 +129,9 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
         { ["darkContainer"]: !isLightTheme }
       )}
     >
-      <form onSubmit={onSubmit}>
+      <form
+      // onSubmit={onSubmit}
+      >
         <div className="input">
           {userNameDirty && userNameErr && (
             <div style={{ color: "red" }}>{userNameErr}</div>
@@ -145,7 +139,7 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
           <span>User name</span>
           <Input
             value={userName}
-            onBlur={(e) => blurHandler(e)}
+            onBlur={(e: any) => blurHandler(e)}
             onChange={userNameHandler}
             type="text"
             name="userName"
@@ -158,8 +152,8 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
           <span>Email</span>
           <Input
             value={email}
-            onBlur={(e) => blurHandler(e)}
-            onChange={(e) => emailHandler(e)}
+            onBlur={(e: any) => blurHandler(e)}
+            onChange={(e: any) => emailHandler(e)}
             type="email"
             name="email"
           />
@@ -171,8 +165,8 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
           <span>Password</span>
           <Input
             value={password}
-            onBlur={(e) => blurHandler(e)}
-            onChange={(e) => passwordHandler(e)}
+            onBlur={(e: any) => blurHandler(e)}
+            onChange={(e: any) => passwordHandler(e)}
             type="password"
             name="password"
           />
@@ -184,8 +178,8 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
           <span>Confirm password</span>
           <Input
             value={confirmPassword}
-            onBlur={(e) => blurHandler(e)}
-            onChange={(e) => confirmPasswordHandler(e)}
+            onBlur={(e: any) => blurHandler(e)}
+            onChange={(e: any) => confirmPasswordHandler(e)}
             type="password"
             name="confirmPassword"
           />
@@ -193,7 +187,7 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
 
         <Button
           disabled={!formValid}
-          className={classnames("button")}
+          className={classnames(!isLightTheme ? "buttonDark" : "button")}
           btnContent="Login"
           onClick={onSubmit}
         />
