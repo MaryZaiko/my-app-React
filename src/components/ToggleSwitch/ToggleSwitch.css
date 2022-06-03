@@ -1,28 +1,41 @@
 .form_toggle {
-  display: flex;
-  justify-content: end;
-  overflow: hidden;
+	display: flex;
+    justify-content: end;
+    overflow: hidden;
 }
 .form_toggle-item {
-  display: inline-block;
+	/* float: left; */
+	display: inline-block;
 }
-.form_toggle-item input[type="radio"] {
-  display: none;
+.form_toggle-item input[type=radio] {
+	display: none;
 }
 .form_toggle-item label {
-  display: inline-block;
-  font-size: 10px;
-  color: #514141;
-  padding: 0px 15px;
-  line-height: 20px;
-  border: 1px solid #999;
-  cursor: pointer;
-  user-select: none;
+	display: inline-block;
+    font-size: 10px;
+    color: #514141;
+	padding: 0px 15px;   
+	line-height: 20px;    
+	border: 1px solid #999;
+	/* border-right: none; */
+	cursor: pointer;
+	user-select: none;   
 }
+ 
 .form_toggle .item-1 label {
-  border-radius: 6px;
-  margin: 5px;
+	border-radius: 6px ;
+	margin: 5px;
 }
-.form_toggle .item-1 input[type="radio"]:checked + label {
-  background: #c0b8bf;
+/* .form_toggle .item-2 label {
+	border-radius: 0 6px 6px 0;
+	border-right: 1px solid #999;
+} */
+ 
+/* Checked */
+.form_toggle .item-1 input[type=radio]:checked + label {
+	background: #c0b8bf;
 }
+/* .form_toggle .item-2 input[type=radio]:checked + label {
+	
+	background: #74488a;
+} */

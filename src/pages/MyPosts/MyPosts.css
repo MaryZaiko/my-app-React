@@ -1,17 +1,21 @@
-.myPosts {
-  margin: 0 auto;
-  min-height: 100vh;
+.myPosts{
+    margin: 0 auto;
+    min-height: 100vh;
+  padding-left: 130px;
+
 }
-.headerTitle {
-  color: blue;
-  font-size: 36px;
+.headerTitle{
+/* margin: 15px 0; */
+color: blue;
+font-size: 36px;
 }
-.titlePostsContainer {
-  display: flex;
-  align-items: center;
-  margin-left: 145px;
+.titlePostsContainer{
+    display: flex;
+    align-items: center;
+    margin-left: 145px;
 }
-.postsTabs {
-  display: flex;
-  margin-left: 145px;
+.postsList{
+display: flex;
+justify-content: space-between;
+    flex-wrap: wrap;
 }
