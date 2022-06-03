@@ -12,7 +12,16 @@
 }
 .btnTitle {
   text-align: left;
-  /* width: 110px; */
+  font-size: 24px;
+  font-weight: bold;
+  padding: 0;
+  color: gray;
+  background-color: transparent;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.btnTitleDark {
+  text-align: left;
   font-size: 24px;
   font-weight: bold;
   padding: 0;
@@ -51,9 +60,9 @@
   border: none;
 }
 .btnTitleActive {
-  color: #4c394f;
+  color: #2e2330;
 }
-.buttonTab {
+.btnTab {
   margin-right: 20px;
   padding: 5px 15px;
   font-size: 16px;
@@ -63,7 +72,7 @@
   cursor: pointer;
 }
 
-.buttonTabDark {
+.btnTabDark {
   margin-right: 20px;
   padding: 5px 15px;
   font-size: 16px;
@@ -72,6 +81,11 @@
   border-radius: 20px;
   cursor: pointer;
 }
-.buttonTabActive{
-background-color: #917898;
+.btnTabActive {
+  background-color: #917898;
+}
+
+.btnPostTab {
+  width: 85px;
+  height: 40px;
 }
