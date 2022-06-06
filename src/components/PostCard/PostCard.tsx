@@ -18,7 +18,7 @@ type PostCardProps = {
   text: string;
   date: string;
   isBig?: boolean;
-  onClick?: (e:any) => void;
+  onClick?: (e: any) => void;
   likeStatus?: LikeStatus | null;
   saved?: boolean;
 };
@@ -46,13 +46,13 @@ const PostCard: FC<PostCardProps> = ({
     dispatch(setSelectedImage(image));
   };
 
-  const handleButtonClick = (action: string, e:any) => {
-     e.stopPropagation()// срабатывает всплытие на онклик по самой карточке для перехода на другую страницу
-
-    // сломались лайки
+  const handleButtonClick = (action: string, e: any) => {
+    e.stopPropagation();
 
     if (action === LikeStatus.Like || action === LikeStatus.Dislike) {
-      dispatch(setLikePost({ id, action }));
+      dispatch(
+        setLikePost({ id, action: likeStatus === action ? null : action })
+      );
     } else if (action === LikeStatus.Save || action === "unset") {
       dispatch(setSavedPost({ id, action }));
     }
@@ -86,7 +86,7 @@ const PostCard: FC<PostCardProps> = ({
         {}
         <div>
           <Button
-            onClick={(e:any) => handleButtonClick(LikeStatus.Like, e)}
+            onClick={(e: any) => handleButtonClick(LikeStatus.Like, e)}
             className={classnames("btnIcon", "fa-regular", "fa-thumbs-up", {
               ["activeLike"]: likeStatus === LikeStatus.Like,
             })}
@@ -94,7 +94,7 @@ const PostCard: FC<PostCardProps> = ({
           />
 
           <Button
-            onClick={(e:any) => handleButtonClick(LikeStatus.Dislike, e)}
+            onClick={(e: any) => handleButtonClick(LikeStatus.Dislike, e)}
             className={classnames("btnIcon", "fa-regular", "fa-thumbs-down", {
               ["activeDislike"]: likeStatus === LikeStatus.Dislike,
             })}
@@ -102,7 +102,7 @@ const PostCard: FC<PostCardProps> = ({
           />
 
           <Button
-            onClick={(e:any) => handleButtonClick(saved ? "unset" : "save", e)}
+            onClick={(e: any) => handleButtonClick(saved ? "unset" : "save", e)}
             className={classnames("btnIcon", "fa-solid", "fa-bookmark", {
               ["activeSave"]: saved,
             })}
