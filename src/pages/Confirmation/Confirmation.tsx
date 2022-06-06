@@ -4,19 +4,21 @@ import "./Confirmation.css";
 import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import ToggleSwitch from "../../components/ToggleSwitch";
-import { useSelector } from "react-redux";
-import { AuthSelector } from "../../redux/reducers/authReducer";
-import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { AuthSelector, userActivate } from "../../redux/reducers/authReducer";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Confirmation = () => {
   const { theme } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const email = useSelector(AuthSelector.getTempMail);
+  const { uuid, token } = useParams();
 
   const onHomeClick = () => {
-    navigate("/auth");
+    dispatch(userActivate({ uuid, token, callback: () => navigate("/auth") }));
   };
 
   return (

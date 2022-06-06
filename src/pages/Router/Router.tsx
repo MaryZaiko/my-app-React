@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 import HeaderPages from "../../components/HeaderPages";
 import Authorization from "../Authorization";
@@ -7,11 +7,16 @@ import Confirmation from "../Confirmation";
 import ContentTitle from "../ContentTitle";
 import Information from "../Information";
 import MyPosts from "../MyPosts";
-import { AuthSelector } from "../../redux/reducers/authReducer";
+import { AuthSelector,getUserInfo } from "../../redux/reducers/authReducer";
 
 const Router = () => {
   const isLoggedIn = useSelector(AuthSelector.getLogStatus);
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(getUserInfo(''))
+    }
+}, [isLoggedIn]);
   return (
     <BrowserRouter>
       {isLoggedIn ? (

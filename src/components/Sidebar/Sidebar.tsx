@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import "./Sidebar.css";
 import { slide as Menu } from "react-burger-menu";
 import { NavLink } from "react-router-dom";
+import { setLogStatus } from "../../redux/reducers/authReducer";
 
 // type SidebarProps ={
 //   pageWrapId:string;
@@ -12,7 +13,9 @@ import { NavLink } from "react-router-dom";
 
 export default (props: any) => {
   const onLogOutClick = () => {
-    localStorage.setItem("isLoggedIn", "");
+    localStorage.setItem("jwtAccessToken", "");
+    localStorage.setItem("jwtRefreshToken", "");
+    setLogStatus(false);
     window.location.replace("/");
   };
   return (

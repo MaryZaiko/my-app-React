@@ -6,12 +6,26 @@ import FormRegistration from "../../components/FormRegistration";
 import HeaderAuth from "../../components/HeaderAuth";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import ToggleSwitch from "../../components/ToggleSwitch";
+import Lottie from "react-lottie";
+import animationData from "../../components/Lotties/Fireworks.json";
+
+import { useSelector } from "react-redux";
+import { AuthSelector } from "../../redux/reducers/authReducer";
 
 const Authorization = () => {
   const { theme } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
   const [activeTab, setActiveTab] = useState("login");
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const loginUserLoading = useSelector(AuthSelector.getIsLoginUserLoading);
 
   const onClickLogin = (name: string) => {
     setActiveTab(name);
@@ -26,18 +40,21 @@ const Authorization = () => {
       )}
     >
       <ToggleSwitch />
+      {loginUserLoading ? (
+        <Lottie options={defaultOptions} height={400} width={400} />
+      ) : (
+        <div className={"loginContainer"}>
+          <HeaderAuth onClick={onClickLogin} tabActive={activeTab} />
 
-      <div className={"loginContainer"}>
-        <HeaderAuth onClick={onClickLogin} tabActive={activeTab} />
-
-        <div className="formContainer">
-          {activeTab === "login" ? (
-            <FormLogin />
-          ) : (
-            <FormRegistration onClick={onClickLogin} />
-          )}
+          <div className="formContainer">
+            {activeTab === "login" ? (
+              <FormLogin />
+            ) : (
+              <FormRegistration onClick={onClickLogin} />
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
