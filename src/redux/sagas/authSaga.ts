@@ -58,6 +58,7 @@ function* loginUserWorker(action: any) {
   }
   yield put( setIsLoginUserLoading(false));
 }
+
 function* getUserInfoWorker(action: any) {
   const accessToken = localStorage.getItem("jwtAccessToken");
   const { status, data, problem } = yield call(getUserInfoApi, accessToken);
@@ -66,10 +67,6 @@ if(status === 200){
   yield put(setAuthUserName(data.username))
 }
 console.log(data.username);
-
-
-
-
 }
 export default function* authWatcher() {
   yield all([

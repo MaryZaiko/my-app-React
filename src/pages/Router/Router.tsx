@@ -7,16 +7,16 @@ import Confirmation from "../Confirmation";
 import ContentTitle from "../ContentTitle";
 import Information from "../Information";
 import MyPosts from "../MyPosts";
-import { AuthSelector,getUserInfo } from "../../redux/reducers/authReducer";
+import { AuthSelector, getUserInfo } from "../../redux/reducers/authReducer";
 
 const Router = () => {
   const isLoggedIn = useSelector(AuthSelector.getLogStatus);
   const dispatch = useDispatch();
   useEffect(() => {
     if (isLoggedIn) {
-      dispatch(getUserInfo(''))
+      dispatch(getUserInfo(""));
     }
-}, [isLoggedIn]);
+  }, [isLoggedIn]);
   return (
     <BrowserRouter>
       {isLoggedIn ? (
