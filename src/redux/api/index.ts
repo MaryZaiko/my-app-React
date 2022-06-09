@@ -21,19 +21,37 @@ const registerUserApi = (userData: UserType) => {
   return API.post("/auth/users/", userData);
 };
 
-const userActivateApi = (uid: string, token: string ) => {
+const userActivateApi = (uid: string, token: string) => {
   return API.post("/auth/users/activation/", { uid, token });
 };
-const loginUserApi = (data: { email: string, password: string}) => {
-  return API.post("/auth/jwt/create/", data)
-}
+const loginUserApi = (data: { email: string; password: string }) => {
+  return API.post("/auth/jwt/create/", data);
+};
 
-const getUserInfoApi = ( token: any) => {
-  return API.get('/auth/users/me/', {}, { headers: {
-      "Authorization": `Bearer ${token}`,
-    } });
+const getUserInfoApi = (token: any) => {
+  return API.get(
+    "/auth/users/me/",
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 };
 const verifyToken = (token: string) => {
-  return API.post('/auth/jwt/verify/', { token })
-}
-export { getPosts, getSinglePost, registerUserApi, userActivateApi, loginUserApi, getUserInfoApi, verifyToken};
+  return API.post("/auth/jwt/verify/", { token });
+};
+const getNexAccessToken = (refresh: string) => {
+  return API.post("/auth/jwt/refresh/", { refresh });
+};
+export {
+  getPosts,
+  getSinglePost,
+  registerUserApi,
+  userActivateApi,
+  loginUserApi,
+  getUserInfoApi,
+  verifyToken,
+  getNexAccessToken,
+};

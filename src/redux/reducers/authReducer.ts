@@ -42,12 +42,9 @@ const authSlice = createSlice({
     setIsLoginUserLoading: (state, action) => {
       state.isLoginUserLoading = action.payload;
     },
+    logOut: (state: any, action: any) => {},
 
-
-    // getUserInfo: (state, action: any) => {},
-    // setAuthUserName: (state, action: PayloadAction<string>) => {
-    //   state.authUserName = action.payload;
-    // },
+  
   },
 });
 
@@ -57,14 +54,11 @@ export const {
   setTempMail,
   userActivate,
   loginUser,
-  // getUserInfo,
-  // setAuthUserName,
-  setIsLoginUserLoading
+  logOut,
+  setIsLoginUserLoading,
 } = authSlice.actions;
 export default authSlice.reducer;
 export const AuthSelector = {
   getLogStatus: (state: any) => state.auth.isLoggedIn,
   getTempMail: (state: any) => state.auth.tempMail,
-  // getAuthUserName: (state: any) => state.auth.authUserName,
-  // getIsLoginUserLoading:(state:any) =>state.auth.isLoginUserLoading
 };

@@ -1,8 +1,13 @@
 import React, { FC } from "react";
 import "./Sidebar.css";
+
 import { slide as Menu } from "react-burger-menu";
 import { NavLink } from "react-router-dom";
-import { setLogStatus } from "../../redux/reducers/authReducer";
+import { logOut, setLogStatus } from "../../redux/reducers/authReducer";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+
 
 // type SidebarProps ={
 //   pageWrapId:string;
@@ -12,11 +17,14 @@ import { setLogStatus } from "../../redux/reducers/authReducer";
 //ВОПРОС ПО ТИПИЗАЦИИ
 
 export default (props: any) => {
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch()
   const onLogOutClick = () => {
-    localStorage.setItem("jwtAccessToken", "");
-    localStorage.setItem("jwtRefreshToken", "");
-    setLogStatus(false);
-    window.location.replace("/");
+    const callback = () => {
+      navigate("/auth");
+    };
+    dispatch(logOut({callback}))
   };
   return (
     <Menu>
