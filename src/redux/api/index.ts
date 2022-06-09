@@ -33,4 +33,7 @@ const getUserInfoApi = ( token: any) => {
       "Authorization": `Bearer ${token}`,
     } });
 };
-export { getPosts, getSinglePost, registerUserApi, userActivateApi, loginUserApi, getUserInfoApi };
+const verifyToken = (token: string) => {
+  return API.post('/auth/jwt/verify/', { token })
+}
+export { getPosts, getSinglePost, registerUserApi, userActivateApi, loginUserApi, getUserInfoApi, verifyToken};

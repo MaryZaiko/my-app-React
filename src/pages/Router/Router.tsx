@@ -7,7 +7,9 @@ import Confirmation from "../Confirmation";
 import ContentTitle from "../ContentTitle";
 import Information from "../Information";
 import MyPosts from "../MyPosts";
-import { AuthSelector, getUserInfo } from "../../redux/reducers/authReducer";
+import { AuthSelector } from "../../redux/reducers/authReducer";
+import {getUserInfo } from "../../redux/reducers/userReducer";
+
 
 const Router = () => {
   const isLoggedIn = useSelector(AuthSelector.getLogStatus);

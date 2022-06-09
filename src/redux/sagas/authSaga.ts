@@ -8,15 +8,12 @@ import {
   userActivate,
   loginUser,
   setLogStatus,
-  getUserInfo,
-  setAuthUserName,
   setIsLoginUserLoading,
 } from "../reducers/authReducer";
 import {
   registerUserApi,
   userActivateApi,
   loginUserApi,
-  getUserInfoApi,
 } from "../api/index";
 
 function* registerUserWorker(action: PayloadAction<RegisterUser>) {
@@ -59,20 +56,11 @@ function* loginUserWorker(action: any) {
   yield put( setIsLoginUserLoading(false));
 }
 
-function* getUserInfoWorker(action: any) {
-  const accessToken = localStorage.getItem("jwtAccessToken");
-  const { status, data, problem } = yield call(getUserInfoApi, accessToken);
-console.log(status);
-if(status === 200){
-  yield put(setAuthUserName(data.username))
-}
-console.log(data.username);
-}
+
 export default function* authWatcher() {
   yield all([
     takeLatest(registerUser, registerUserWorker),
     takeLatest(userActivate, userActivateWorker),
     takeLatest(loginUser, loginUserWorker),
-    takeLatest(getUserInfo, getUserInfoWorker),
   ]);
 }

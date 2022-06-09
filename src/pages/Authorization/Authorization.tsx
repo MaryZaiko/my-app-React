@@ -10,7 +10,7 @@ import Lottie from "react-lottie";
 import animationData from "../../components/Lotties/Fireworks.json";
 
 import { useSelector } from "react-redux";
-import { AuthSelector } from "../../redux/reducers/authReducer";
+import { UserSelector } from "../../redux/reducers/userReducer";
 
 const Authorization = () => {
   const { theme } = useThemeContext();
@@ -25,7 +25,7 @@ const Authorization = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-  const loginUserLoading = useSelector(AuthSelector.getIsLoginUserLoading);
+  const loginUserLoading = useSelector(UserSelector.getIsLoginUserLoading);
 
   const onClickLogin = (name: string) => {
     setActiveTab(name);
