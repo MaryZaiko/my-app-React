@@ -17,8 +17,23 @@ const getSinglePost = (id: string) => {
   return API.get(`/blog/posts/${id}/`);
 };
 
-const registerUser = (userData: UserType) => {
+const registerUserApi = (userData: UserType) => {
   return API.post("/auth/users/", userData);
 };
 
-export { getPosts, getSinglePost,registerUser };
+const userActivateApi = (uid: string, token: string ) => {
+  return API.post("/auth/users/activation/", { uid, token });
+};
+const loginUserApi = (data: { email: string, password: string}) => {
+  return API.post("/auth/jwt/create/", data)
+}
+
+const getUserInfoApi = ( token: any) => {
+  return API.get('/auth/users/me/', {}, { headers: {
+      "Authorization": `Bearer ${token}`,
+    } });
+};
+const verifyToken = (token: string) => {
+  return API.post('/auth/jwt/verify/', { token })
+}
+export { getPosts, getSinglePost, registerUserApi, userActivateApi, loginUserApi, getUserInfoApi, verifyToken};
