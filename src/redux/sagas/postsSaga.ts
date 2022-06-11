@@ -8,9 +8,14 @@ import {
   loadData,
   setAllPostsLoading,
   setSinglePostLoading,
+  loadMyPosts,
+  // setMyPostsLoading,
+  setMyPosts,
 } from "../reducers/postsReducer";
 
-import { getPosts, getSinglePost } from "../api";
+import { getPosts, getSinglePost, getMyPosts } from "../api";
+import { callCheckingAuth } from "./callCheckingAuth";
+
 
 function* postsSagaWorker() {
   yield put(setAllPostsLoading(true));
@@ -30,10 +35,21 @@ function* getSinglePostWorker(action: PayloadAction<string>) {
   }
   yield put(setSinglePostLoading(false));
 }
+function* getMyPostsWorker(action: PayloadAction<string>) {
+  yield put(setAllPostsLoading(true));
+  const { data, status } = yield callCheckingAuth(getMyPosts);
+  console.log(data  );
+  
+  if (status === 200) {
+    yield put(setMyPosts(data.results));
+  }
+  yield put(setAllPostsLoading(false));
+}
 
 export default function* postWatcher() {
   yield all([
     takeLatest(loadData, postsSagaWorker),
     takeLatest(loadPost, getSinglePostWorker),
+    takeLatest(loadMyPosts, getMyPostsWorker),
   ]);
 }

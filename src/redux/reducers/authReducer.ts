@@ -42,7 +42,7 @@ const authSlice = createSlice({
     setIsLoginUserLoading: (state, action) => {
       state.isLoginUserLoading = action.payload;
     },
-    logOut: (state: any, action: any) => {},
+    logout: (state: any, action: any) => {},
 
   
   },
@@ -54,7 +54,7 @@ export const {
   setTempMail,
   userActivate,
   loginUser,
-  logOut,
+  logout,
   setIsLoginUserLoading,
 } = authSlice.actions;
 export default authSlice.reducer;

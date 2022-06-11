@@ -9,7 +9,7 @@ import {
   loginUser,
   setLogStatus,
   setIsLoginUserLoading,
-  logOut
+  logout
 } from "../reducers/authReducer";
 import {
   registerUserApi,
@@ -57,13 +57,13 @@ function* loginUserWorker(action: any) {
   }
   yield put( setIsLoginUserLoading(false));
 }
-export function* logOutWorker(action: any) {
+export function* logoutWorker(action: any) {
   
-  const {callback} = action.payload;
-  localStorage.setItem("jwtAccessToken", "");
-  localStorage.setItem("jwtRefreshToken", "");
+  // const {callback} = action.payload;
+  localStorage.removeItem("jwtAccessToken");
+  localStorage.removeItem("jwtRefreshToken");
    yield put( setLogStatus(false));
-  callback()
+  // callback()
   }
 
 export default function* authWatcher() {
@@ -71,7 +71,7 @@ export default function* authWatcher() {
     takeLatest(registerUser, registerUserWorker),
     takeLatest(userActivate, userActivateWorker),
     takeLatest(loginUser, loginUserWorker),
-    takeLatest(logOut, logOutWorker),
+    takeLatest(logout, logoutWorker),
 
   ]);
 }

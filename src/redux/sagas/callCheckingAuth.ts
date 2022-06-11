@@ -1,15 +1,17 @@
 // @ts-nocheck
 
-import { call } from "redux-saga/effects";
-import { verifyToken, getNexAccessToken } from "../api/index";
+import { call, put } from "redux-saga/effects";
+import { verifyToken, getNewAccessToken } from "../api/index";
+import {logout} from '../reducers/authReducer'
 
-export function* callCheckingAuth(api: string, ...rest: string[]) {
-    const accessToken = localStorage.getItem("jwtAccessToken");
+type ApiType = (params: any) => response;
 
-
-
-  const response = yield call(api,accessToken, ...rest);
+export function* callCheckingAuth(api: ApiType, ...rest:any) {
+  const accessToken = localStorage.getItem("jwtAccessToken");
+  const response = yield call(api, accessToken, ...rest);
   const code = response.status;
+  console.log(response);
+  
 
   if (code === 401) {
     const refreshToken = localStorage.getItem("jwtRefreshToken");
@@ -17,15 +19,15 @@ export function* callCheckingAuth(api: string, ...rest: string[]) {
     const { status: refreshStatus } = yield call(verifyToken, refreshToken);
 
     if (refreshStatus === 401) {
-      //yield call(logout)
+      yield put(logout({}));
     } else if (accessStatus === 401) {
-      const { status, data } = yield call(getNexAccessToken, refreshToken);
+      const { status, data } = yield call(getNewAccessToken, refreshToken);
       if (status === 200 && data.access && data.access.length > 0) {
         localStorage.setItem("jwtAccessToken", data.access);
-        const refreshedResponse = yield call(api,data.access, ...rest)
-        return refreshedResponse
-      }else{
-      //yield call(logout)
+        const refreshedResponse = yield call(api, data.access, ...rest);
+        return refreshedResponse;
+      } else {
+        yield put(logout({}));
       }
     } else {
       return response;

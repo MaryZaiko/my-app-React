@@ -28,7 +28,7 @@ const loginUserApi = (data: { email: string; password: string }) => {
   return API.post("/auth/jwt/create/", data);
 };
 
-const getUserInfoApi = (token: any) => {
+const getUserInfoApi = (token: string) => {
   return API.get(
     "/auth/users/me/",
     {},
@@ -42,8 +42,19 @@ const getUserInfoApi = (token: any) => {
 const verifyToken = (token: string) => {
   return API.post("/auth/jwt/verify/", { token });
 };
-const getNexAccessToken = (refresh: string) => {
+const getNewAccessToken = (refresh: string) => {
   return API.post("/auth/jwt/refresh/", { refresh });
+};
+const getMyPosts = (token: string) => {
+  return (
+    API.get("/blog/posts/my_posts/"),
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 };
 export {
   getPosts,
@@ -53,5 +64,6 @@ export {
   loginUserApi,
   getUserInfoApi,
   verifyToken,
-  getNexAccessToken,
+  getNewAccessToken,
+  getMyPosts,
 };

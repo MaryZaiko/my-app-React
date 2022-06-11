@@ -9,12 +9,13 @@ import PopUp from "../../components/PopUp";
 import {
   PostSelectors,
   setPostsTab,
-  loadData
+  loadData,
+  loadMyPosts
 } from "../../redux/reducers/postsReducer";
 import Lottie from "react-lottie";
 import animationData from "../../components/Lotties/Fireworks.json";
 
-const MyPosts = () => {
+const MyPosts = ({isPersonal}:any) => {
   const { theme } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
 
@@ -29,14 +30,15 @@ const MyPosts = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadData(''));
-  }, []);
+  
+    dispatch(isPersonal ? loadMyPosts('') : loadData(''));
+  }, [isPersonal]);
 
   const selectedImage = useSelector(PostSelectors.getSelectedImage);
 
   const activeTab = useSelector(PostSelectors.getPostsTab);
   const cardsList = useSelector((state) =>
-    PostSelectors.getCards(state, activeTab)
+    PostSelectors.getCards(state, activeTab, isPersonal)
   );
   const allPostsLoading = useSelector(PostSelectors.getAllPostsLoading);
 
@@ -63,7 +65,7 @@ const MyPosts = () => {
       )}
     >
       <div className="titlePostsContainer">
-        <h1 className="headerTitle">My posts</h1>
+        <h1 className="headerTitle">{isPersonal ? 'My Posts' : 'All posts'}</h1>
         <Button className={"btnAny"} btnContent={"+Add"} onClick={() => {}} />
       </div>
       <div className="postsTabs">

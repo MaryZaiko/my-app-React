@@ -3,7 +3,7 @@ import "./Sidebar.css";
 
 import { slide as Menu } from "react-burger-menu";
 import { NavLink } from "react-router-dom";
-import { logOut, setLogStatus } from "../../redux/reducers/authReducer";
+import { logout, setLogStatus } from "../../redux/reducers/authReducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -24,7 +24,7 @@ export default (props: any) => {
     const callback = () => {
       navigate("/auth");
     };
-    dispatch(logOut({callback}))
+    dispatch(logout({callback}))
   };
   return (
     <Menu>
@@ -37,8 +37,8 @@ export default (props: any) => {
         <NavLink className="menu-item" to="/info">
           Information
         </NavLink>
-        <a className="menu-item" href="/add-posts">
-          Add posts
+        <a className="menu-item" href="/cards-list-my">
+        My posts
         </a>
       </div>
       <div>
