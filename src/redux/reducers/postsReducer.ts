@@ -9,7 +9,6 @@ type PostState = {
   selectedPost: Card | null;
   isAllPostsLoading: boolean;
   isSinglePostLoading: boolean;
-  // isMyPostsLoading: boolean;
   myCardsList: Card[];
 
 
@@ -24,7 +23,7 @@ const initialState: PostState = {
   selectedPost: null,
   isAllPostsLoading: false,
   isSinglePostLoading:false,
-  // isMyPostsLoading: false,
+
   myCardsList:[]
 
 };
@@ -73,9 +72,6 @@ const postsSlice = createSlice({
     },
 
     loadMyPosts: (state, action) => {},
-    // setMyPostsLoading: (state, action) => {
-    //   state.isMyPostsLoading = action.payload;
-    // },
     setMyPosts: (state, action: PayloadAction<Card[]>) => {
       state.myCardsList = action.payload.map((card: Card) => {
         return {
@@ -101,7 +97,6 @@ export const {
   setSinglePostLoading,
 
   loadMyPosts,
-  // setMyPostsLoading,
   setMyPosts
 } = postsSlice.actions;
 
@@ -128,21 +123,6 @@ export const PostSelectors = {
   getSelectedPost: (state: any) => state.posts.selectedPost,
   getAllPostsLoading: (state: any) => state.posts.isAllPostsLoading,
   getSinglePostLoading: (state: any) => state.posts.isSinglePostLoading,
-  // getMyPostsLoading: (state: any) => state.posts.isMyPostsLoading,
-  getMyCards: (state: any, filter: any) => {
-    const cards = state.posts.myCardsList;
-    switch (filter) {
-      case "likedPosts":
-        return cards.filter((item: any) => item.likeStatus === "like");
-      case "dislikedPosts":
-        return cards.filter((item: any) => item.likeStatus === "dislike");
-      case "savedPosts":
-        return cards.filter((item: any) => item.saved);
-      case "allPosts":
-        return cards;
-      default:
-        return cards;
-    }
-  },
+ 
 
 };

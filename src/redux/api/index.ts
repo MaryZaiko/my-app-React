@@ -46,8 +46,8 @@ const getNewAccessToken = (refresh: string) => {
   return API.post("/auth/jwt/refresh/", { refresh });
 };
 const getMyPosts = (token: string) => {
-  return (
-    API.get("/blog/posts/my_posts/"),
+  return API.get(
+    "/blog/posts/my_posts/",
     {},
     {
       headers: {

@@ -41,7 +41,7 @@ function* getMyPostsWorker(action: PayloadAction<string>) {
   console.log(data  );
   
   if (status === 200) {
-    yield put(setMyPosts(data.results));
+    yield put(setMyPosts(data));
   }
   yield put(setAllPostsLoading(false));
 }
