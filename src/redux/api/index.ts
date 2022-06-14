@@ -9,8 +9,8 @@ type UserType = {
   email: string;
 };
 
-const getAllPostsApi = ({search = '', limit = 10, offset = 0}) => {
-  return API.get("/blog/posts/",{search, limit, offset});
+const getAllPostsApi = ({search = '', limit = 10, offset = 0, ordering = 'date'}) => {
+  return API.get("/blog/posts/",{search, limit, offset, ordering});
 };
 
 const getSinglePost = (id: string) => {

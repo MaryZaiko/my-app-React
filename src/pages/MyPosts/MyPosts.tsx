@@ -41,12 +41,18 @@ const MyPosts = ({ isPersonal }: any) => {
   const [limit, setLimit] = useState(2);
   const [page, setPage] = useState(1);
 
+  const [ordering, setOrdering] = useState("date");
+
   const pageCount = Math.floor(totalCount / limit);
 
   useEffect(() => {
-    const offset = page * limit
-    dispatch(isPersonal ? loadMyPosts({search, limit, offset}) : loadData({search, limit, offset}));
-  }, [isPersonal, search, page, limit]);
+    const offset = page * limit;
+    dispatch(
+      isPersonal
+        ? loadMyPosts({ search, limit, offset })
+        : loadData({ search, limit, offset, ordering })
+    );
+  }, [isPersonal, search, page, limit, ordering]);
 
   const TABS = [
     { tabName: "All", id: "allPosts" },
@@ -63,19 +69,25 @@ const MyPosts = ({ isPersonal }: any) => {
   };
   const onSearch = (event: any) => {
     setSearch(event.target.value);
-    setPage(1)
+    setPage(1);
+    // setOrder('date')
   };
 
   const onLimitChange = (event: any) => {
     setLimit(event.target.value);
-    setPage(1)
-
+    setPage(1);
+    // setOrder('date')
   };
   const onClickPrevious = () => {
     setPage(page - 1);
   };
   const onClickNext = () => {
     setPage(page + 1);
+  };
+  const onChangeSelect = (e: any) => {
+    setOrdering(e.target.value); //ругается при выборе даты 403
+    setPage(1);
+
   };
 
   return (
@@ -91,25 +103,42 @@ const MyPosts = ({ isPersonal }: any) => {
         <Button className={"btnAny"} btnContent={"+Add"} onClick={() => {}} />
       </div>
 
-      <Input value={search} name={""} type={"text"} onChange={onSearch} placeholder = 'Search' className="inputSearch"/>
+      <Input
+        value={search}
+        name={""}
+        type={"text"}
+        onChange={onSearch}
+        placeholder="Search"
+        className="inputSearch"
+      />
 
-      <div className="postsTabs">
-        {TABS.map((tab) => {
-          return (
-            <button
-              key={tab.id}
-              className={classnames(
-                isLightTheme ? "btnTab" : "btnTabDark",
-                "btnPostTab",
+      <div className="sortContainer">
+        <div>
+          {TABS.map((tab) => {
+            return (
+              <button
+                key={tab.id}
+                className={classnames(
+                  isLightTheme ? "btnTab" : "btnTabDark",
+                  "btnPostTab",
 
-                { ["btnTabActive"]: tab.id === activeTab }
-              )}
-              onClick={() => onTabClick(`${tab.id}`)}
-            >
-              {tab.tabName}
-            </button>
-          );
-        })}
+                  { ["btnTabActive"]: tab.id === activeTab }
+                )}
+                onClick={() => onTabClick(`${tab.id}`)}
+              >
+                {tab.tabName}
+              </button>
+            );
+          })}
+        </div>
+        <div>
+          <select onChange={onChangeSelect} name="sort" id="sort">
+            <option value="date">Date</option>
+            <option value="title">Title</option>
+            <option value="text">Text</option>
+            <option value="lesson_num">Lesson</option>
+          </select>
+        </div>
       </div>
       {allPostsLoading ? (
         <Lottie options={defaultOptions} height={400} width={400} />
@@ -117,20 +146,25 @@ const MyPosts = ({ isPersonal }: any) => {
         <>
           <PostsList data={cardsList} isPersonal />
           <div className="paginationContainer">
-          {page !== 1 && <div onClick={onClickPrevious}><i className="fa-solid fa-chevron-left"></i></div>}
-          <Input
-            type={"number"}
-            value={limit}
-            onChange={onLimitChange}
-            name={""}
-            className='inputLimit'
-          />
-          {pageCount !== page && <div onClick={onClickNext}><i className="fa-solid fa-chevron-right"></i></div>}
+            {page !== 1 && (
+              <div onClick={onClickPrevious}>
+                <i className="fa-solid fa-chevron-left"></i>
+              </div>
+            )}
+            <Input
+              type={"number"}
+              value={limit}
+              onChange={onLimitChange}
+              name={""}
+              className="inputLimit"
+            />
+            {pageCount !== page && (
+              <div onClick={onClickNext}>
+                <i className="fa-solid fa-chevron-right"></i>
+              </div>
+            )}
           </div>
-         <span className="pageNum">
-         {page}
-
-         </span>
+          <span className="pageNum">{page}</span>
         </>
       )}
 
