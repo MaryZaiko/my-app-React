@@ -15,6 +15,7 @@ import {
 } from "../../redux/reducers/postsReducer";
 import Lottie from "react-lottie";
 import animationData from "../../components/Lotties/Fireworks.json";
+import EmptyState from "../../components/EmptyState";
 
 const MyPosts = ({ isPersonal }: any) => {
   const { theme } = useThemeContext();
@@ -142,7 +143,7 @@ const MyPosts = ({ isPersonal }: any) => {
       </div>
       {allPostsLoading ? (
         <Lottie options={defaultOptions} height={400} width={400} />
-      ) : (
+      ) : cardsList.length > 0 ? (
         <>
           <PostsList data={cardsList} isPersonal />
           <div className="paginationContainer">
@@ -166,6 +167,8 @@ const MyPosts = ({ isPersonal }: any) => {
           </div>
           <span className="pageNum">{page}</span>
         </>
+      ) :(
+        <EmptyState />
       )}
 
       {selectedImage && (
