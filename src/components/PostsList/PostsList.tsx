@@ -5,9 +5,10 @@ import { Card } from "../../common/types";
 
 type PostsProps = {
   data: Card[];
+  isPersonal:boolean
 };
 
-const Posts: FC<PostsProps> = ({ data }) => {
+const Posts: FC<PostsProps> = ({ data, isPersonal }) => {
   const onClickCard = (id: string) => {
     window.location.href = `/cards-list/${id}`;
   };
@@ -23,6 +24,7 @@ const Posts: FC<PostsProps> = ({ data }) => {
         date={card.date}
         likeStatus={card.likeStatus}
         saved={card.saved}
+        isPersonal={isPersonal}
       />
        </div>
     );

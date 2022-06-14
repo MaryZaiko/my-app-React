@@ -1,6 +1,6 @@
 input {
   width: 234px;
-    height: 40px;
+  height: 40px;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 5px 15px;
@@ -8,5 +8,10 @@ input {
   border: solid 2px #4c394f;
   border-radius: 20px;
 }
-
-
+.inputLimit {
+  width: 70px;
+}
+.inputSearch {
+  display: block;
+  margin-left: 140px;
+}

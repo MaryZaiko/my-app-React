@@ -9,20 +9,21 @@ import {
   setAllPostsLoading,
   setSinglePostLoading,
   loadMyPosts,
-  // setMyPostsLoading,
   setMyPosts,
+  setTotalAllPostsCount,
+  setTotalMyPostsCount
 } from "../reducers/postsReducer";
 
-import { getPosts, getSinglePost, getMyPosts } from "../api";
+import { getAllPostsApi, getSinglePost, getMyPosts } from "../api";
 import { callCheckingAuth } from "./callCheckingAuth";
 
-
-function* postsSagaWorker() {
+function* getAllPostsWorker(action: any) {
   yield put(setAllPostsLoading(true));
-  const { data, status } = yield call(getPosts);
+  const { data, status } = yield call(getAllPostsApi, action.payload);
 
   if (status === 200) {
     yield put(setPosts(data.results));
+    yield put(setTotalAllPostsCount(data.count));
   }
   yield put(setAllPostsLoading(false));
 }
@@ -35,20 +36,22 @@ function* getSinglePostWorker(action: PayloadAction<string>) {
   }
   yield put(setSinglePostLoading(false));
 }
-function* getMyPostsWorker(action: PayloadAction<string>) {
+function* getMyPostsWorker() {
   yield put(setAllPostsLoading(true));
   const { data, status } = yield callCheckingAuth(getMyPosts);
-  console.log(data  );
-  
+  console.log(data);
+
   if (status === 200) {
     yield put(setMyPosts(data));
+    yield put(setTotalMyPostsCount(data.count));
+
   }
   yield put(setAllPostsLoading(false));
 }
 
 export default function* postWatcher() {
   yield all([
-    takeLatest(loadData, postsSagaWorker),
+    takeLatest(loadData, getAllPostsWorker),
     takeLatest(loadPost, getSinglePostWorker),
     takeLatest(loadMyPosts, getMyPostsWorker),
   ]);

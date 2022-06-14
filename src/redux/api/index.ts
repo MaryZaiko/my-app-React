@@ -9,8 +9,8 @@ type UserType = {
   email: string;
 };
 
-const getPosts = () => {
-  return API.get("/blog/posts/");
+const getAllPostsApi = ({search = '', limit = 10, offset = 0}) => {
+  return API.get("/blog/posts/",{search, limit, offset});
 };
 
 const getSinglePost = (id: string) => {
@@ -57,7 +57,7 @@ const getMyPosts = (token: string) => {
   );
 };
 export {
-  getPosts,
+  getAllPostsApi,
   getSinglePost,
   registerUserApi,
   userActivateApi,
