@@ -131,14 +131,14 @@ const MyPosts = ({ isPersonal }: any) => {
             );
           })}
         </div>
-        <div>
+        {!isPersonal && <div>
           <select onChange={onChangeSelect} name="sort" id="sort">
             <option value="date">Date</option>
             <option value="title">Title</option>
             <option value="text">Text</option>
             <option value="lesson_num">Lesson</option>
           </select>
-        </div>
+        </div>}
       </div>
       {allPostsLoading ? (
         <Lottie options={defaultOptions} height={400} width={400} />

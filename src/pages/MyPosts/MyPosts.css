@@ -27,10 +27,11 @@
   margin: 10px;
   font-weight: bold;
 }
-#sort{
+#sort {
   height: 40px;
   border: solid 2px #4c394f;
   border-radius: 20px;
   padding: 5px 15px;
   font-size: 16px;
+  background-color: #d5ddef99;
 }

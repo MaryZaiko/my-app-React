@@ -87,8 +87,8 @@ const PostCard: FC<PostCardProps> = ({
             className="fa-solid fa-eye"
           ></i>
         </div>
-        {}
-        <div>
+        {
+          !isBig && <div>
           <Button
             onClick={(e: any) => handleButtonClick(LikeStatus.Like, e)}
             className={classnames("btnIcon", "fa-regular", "fa-thumbs-up", {
@@ -113,6 +113,8 @@ const PostCard: FC<PostCardProps> = ({
             btnContent=""
           />
         </div>
+        }
+        
       </div>
     </div>
   );

@@ -7,8 +7,7 @@ input {
   font-size: 16px;
   border: solid 2px #2e1a1e;
   border-radius: 20px;
-background-color: #d5ddef99;
-
+  background-color: #d5ddef99;
 }
 .inputLimit {
   width: 70px;
@@ -17,12 +16,6 @@ background-color: #d5ddef99;
   display: block;
   margin-left: 140px;
 }
-.inputCreate{
+.inputCreate {
   width: 300px;
-}
-.lightInput{
-background-color: #d5ddef99;
-}
-.darkInput{
- background-color:  #c0b8bf;
 }
