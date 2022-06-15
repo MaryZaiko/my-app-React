@@ -11,10 +11,11 @@ import {
   loadMyPosts,
   setMyPosts,
   setTotalAllPostsCount,
-  setTotalMyPostsCount
+  setTotalMyPostsCount,
+  createPost
 } from "../reducers/postsReducer";
 
-import { getAllPostsApi, getSinglePost, getMyPosts } from "../api";
+import { getAllPostsApi, getSinglePost, getMyPosts,createPostApi } from "../api";
 import { callCheckingAuth } from "./callCheckingAuth";
 
 function* getAllPostsWorker(action: any) {
@@ -48,11 +49,25 @@ function* getMyPostsWorker() {
   }
   yield put(setAllPostsLoading(false));
 }
+function* createPostWorker(action:any) {
+  const { data, status } = yield callCheckingAuth(getMyPosts,action.payload);
+  console.log(status);
+  console.log(data);
+
+
+  if (status === 200) {
+    
+
+  }
+ 
+}
 
 export default function* postWatcher() {
   yield all([
     takeLatest(loadData, getAllPostsWorker),
     takeLatest(loadPost, getSinglePostWorker),
     takeLatest(loadMyPosts, getMyPostsWorker),
+    takeLatest(createPost, createPostWorker),
+
   ]);
 }

@@ -27,8 +27,10 @@ const authSlice = createSlice({
 
 export const { getUserInfo, setAuthUserName, setIsLoginUserLoading } =
   authSlice.actions;
+
 export default authSlice.reducer;
+
 export const UserSelector = {
-  getAuthUserName: (state: any) => state.auth.authUserName,
-  getIsLoginUserLoading: (state: any) => state.auth.isLoginUserLoading,
+  getAuthUserName: (state: any) => state.user.authUserName,
+  getIsLoginUserLoading: (state: any) => state.user.isLoginUserLoading,
 };

@@ -3,7 +3,7 @@ import "./Input.css";
 
 type InputProps = {
   value: string | number;
-  name: string;
+  name?: string;
   onChange?: (value: any) => void;
   type: string;
   className?: string;

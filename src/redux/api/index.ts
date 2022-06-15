@@ -56,6 +56,14 @@ const getMyPosts = (token: string) => {
     }
   );
 };
+
+const createPostApi = (token: any, postData: any) => {
+  return API.post("/blog/posts/", postData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
 export {
   getAllPostsApi,
   getSinglePost,
@@ -66,4 +74,5 @@ export {
   verifyToken,
   getNewAccessToken,
   getMyPosts,
+  createPostApi
 };

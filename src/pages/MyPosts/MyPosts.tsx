@@ -94,9 +94,8 @@ const MyPosts = ({ isPersonal }: any) => {
   return (
     <div
       className={classnames(
-        "myPosts",
-        { ["container"]: isLightTheme },
-        { ["darkContainer"]: !isLightTheme }
+        "myPosts", (isLightTheme ? "container" : "darkContainer")
+        
       )}
     >
       <div className="titlePostsContainer">

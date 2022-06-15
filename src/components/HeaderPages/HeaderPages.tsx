@@ -12,6 +12,8 @@ const HeaderPages = () => {
   const { theme } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
   const authUserName = useSelector(UserSelector.getAuthUserName)
+  console.log(authUserName);
+  
 
   return (
     <div>

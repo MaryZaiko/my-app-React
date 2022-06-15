@@ -5,8 +5,10 @@ input {
   margin-bottom: 10px;
   padding: 5px 15px;
   font-size: 16px;
-  border: solid 2px #4c394f;
+  border: solid 2px #2e1a1e;
   border-radius: 20px;
+background-color: #d5ddef99;
+
 }
 .inputLimit {
   width: 70px;
@@ -14,4 +16,13 @@ input {
 .inputSearch {
   display: block;
   margin-left: 140px;
+}
+.inputCreate{
+  width: 300px;
+}
+.lightInput{
+background-color: #d5ddef99;
+}
+.darkInput{
+ background-color:  #c0b8bf;
 }

@@ -96,7 +96,8 @@ const postsSlice = createSlice({
     },
     setTotalMyPostsCount:(state, action:PayloadAction<number>) =>{
       state.TotalMyPostsCount = action.payload
-    }
+    },
+    createPost:(state, action) => {},
   },
 });
 
@@ -115,7 +116,10 @@ export const {
   loadMyPosts,
   setMyPosts,
   setTotalAllPostsCount,
-  setTotalMyPostsCount
+  setTotalMyPostsCount,
+
+  createPost
+
 } = postsSlice.actions;
 
 export default postsSlice.reducer;

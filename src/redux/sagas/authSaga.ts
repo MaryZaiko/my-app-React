@@ -47,6 +47,8 @@ function* userActivateWorker(action: any) {
 function* loginUserWorker(action: any) {
   yield put( setIsLoginUserLoading(true));
   const userData = action.payload;
+  console.log(userData);
+  
   const { status, data, problem } = yield call(loginUserApi, userData);
   if (status === 200) {
     localStorage.setItem("jwtAccessToken", data.access);

@@ -32,14 +32,17 @@ export default (props: any) => {
         <NavLink className="menu-item" to="/cards-list">
           All posts
         </NavLink>
+        <NavLink  className="menu-item" to="/add-post">
+        Add post
+        </NavLink>
       </div>
       <div>
         <NavLink className="menu-item" to="/info">
           Information
         </NavLink>
-        <a className="menu-item" href="/cards-list-my">
+        <NavLink  className="menu-item" to="/cards-list-my">
         My posts
-        </a>
+        </NavLink>
       </div>
       <div>
         <NavLink className="menu-item" to="/" onClick={onLogOutClick}>

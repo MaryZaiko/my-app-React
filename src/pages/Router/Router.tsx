@@ -9,6 +9,7 @@ import Information from "../Information";
 import MyPosts from "../MyPosts";
 import { AuthSelector } from "../../redux/reducers/authReducer";
 import {getUserInfo } from "../../redux/reducers/userReducer";
+import AddPost from "../AddPost";
 
 
 const Router = () => {
@@ -29,6 +30,8 @@ const Router = () => {
             <Route path={"/cards-list-my/:id"} element={<ContentTitle />} />
 
             <Route path={"/cards-list/:id"} element={<ContentTitle />} />
+            <Route path={"/add-post"} element={<AddPost />} />
+          
             <Route path={"/info"} element={<Information />}></Route>
           </Route>
           <Route path={"*"} element={<Navigate to={"/cards-list"} replace />} />
