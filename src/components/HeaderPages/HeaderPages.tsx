@@ -5,10 +5,15 @@ import classnames from "classnames";
 import { Theme, useThemeContext } from "./../../context/themeModeContext";
 import ToggleSwitch from "../ToggleSwitch";
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { UserSelector } from "../../redux/reducers/userReducer";
 
 const HeaderPages = () => {
   const { theme } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
+  const authUserName = useSelector(UserSelector.getAuthUserName)
+  console.log(authUserName);
+  
 
   return (
     <div>
@@ -28,7 +33,7 @@ const HeaderPages = () => {
             <span>
               <i className="fa-solid fa-user headerItem"></i>
             </span>
-            <span className="headerItem">Username</span>
+            <span className="headerItem">{authUserName}</span>
           </div>
 
           <ToggleSwitch />

@@ -1,0 +1,45 @@
+.addPostContainer {
+  padding: 10px;
+  height: 100vh;
+}
+.addPostForm {
+  margin: 0px auto;
+  border: solid 2px #2e1a1e;
+  padding: 15px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 600px;
+  width: 380px;
+}
+.textareaCreate {
+  width: 300px;
+  padding: 5px 15px;
+  font-size: 16px;
+  border: solid 2px #2e1a1e;
+  border-radius: 20px;
+  height: 80px;
+  background-color: #d5ddef99;
+}
+.dragAndDrop {
+  flex: 1;
+  display: flex;
+  padding: 18px 0;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #d5ddef99;
+
+  border: 2px dashed #4c394f;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.dragAndDrop:hover {
+  cursor: pointer;
+  background: lightcyan;
+}
+.image {
+  width: 200px;
+  height: 200px;
+}

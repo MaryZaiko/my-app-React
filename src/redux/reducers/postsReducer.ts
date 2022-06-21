@@ -9,6 +9,11 @@ type PostState = {
   selectedPost: Card | null;
   isAllPostsLoading: boolean;
   isSinglePostLoading: boolean;
+  myCardsList: Card[];
+  totalAllPostsCount:number;
+  TotalMyPostsCount:number;
+
+
 
 };
 
@@ -20,6 +25,10 @@ const initialState: PostState = {
   selectedPost: null,
   isAllPostsLoading: false,
   isSinglePostLoading:false,
+  myCardsList:[],
+  totalAllPostsCount:0,
+  TotalMyPostsCount:0,
+
 };
 
 const postsSlice = createSlice({
@@ -38,7 +47,13 @@ const postsSlice = createSlice({
         };
       });
     },
-    setLikePost: (state: any, action) => {
+    setLikePost: (state: PostState, action: PayloadAction<{ id: any; action: any; }>
+      // , isPersonal: any
+      ) => {
+      // if(isPersonal){
+      // const card = state.myCardsList.find((c: any) => c.id === action.payload.id);
+
+      // }
       const card = state.cardsList.find((c: any) => c.id === action.payload.id);
       if (card) {
         card.likeStatus = action.payload.action;
@@ -64,6 +79,25 @@ const postsSlice = createSlice({
     setSinglePostLoading: (state, action) => {
       state.isSinglePostLoading = action.payload;
     },
+
+    loadMyPosts: (state, action) => {},
+    setMyPosts: (state, action: PayloadAction<Card[]>) => {
+      state.myCardsList = action.payload.map((card: Card) => {
+        return {
+          ...card,
+          likeStatus: null,
+          saved: false,
+        };
+      });
+    },
+    setTotalAllPostsCount:(state, action:PayloadAction<number>) => {
+      state.totalAllPostsCount = action.payload;
+
+    },
+    setTotalMyPostsCount:(state, action:PayloadAction<number>) =>{
+      state.TotalMyPostsCount = action.payload
+    },
+    createPost:(state, action) => {},
   },
 });
 
@@ -77,7 +111,15 @@ export const {
   loadData,
   setPost,
   setAllPostsLoading,
-  setSinglePostLoading
+  setSinglePostLoading,
+
+  loadMyPosts,
+  setMyPosts,
+  setTotalAllPostsCount,
+  setTotalMyPostsCount,
+
+  createPost
+
 } = postsSlice.actions;
 
 export default postsSlice.reducer;
@@ -85,8 +127,8 @@ export default postsSlice.reducer;
 export const PostSelectors = {
   getSelectedImage: (state: any) => state.posts.selectedImage,
   getPostsTab: (state: any) => state.posts.postsTab,
-  getCards: (state: any, filter: any) => {
-    const cards = state.posts.cardsList;
+  getCards: (state: any, filter: any, isPersonal: boolean) => {
+    const cards = isPersonal ? state.posts.myCardsList : state.posts.cardsList;
     switch (filter) {
       case "likedPosts":
         return cards.filter((item: any) => item.likeStatus === "like");
@@ -103,5 +145,7 @@ export const PostSelectors = {
   getSelectedPost: (state: any) => state.posts.selectedPost,
   getAllPostsLoading: (state: any) => state.posts.isAllPostsLoading,
   getSinglePostLoading: (state: any) => state.posts.isSinglePostLoading,
+  getTotalAllPostsCount:(state: any) => state.posts.totalAllPostsCount,
+  getTotalMyPostsCount:(state:any) => state.posts.TotalMyPostsCount
 
 };

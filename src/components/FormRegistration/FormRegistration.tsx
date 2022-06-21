@@ -18,22 +18,23 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
   const isLightTheme = theme === Theme.Light;
 
   const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
   const [userNameDirty, setUserNameDirty] = useState(false);
-  const [emailDirty, setEmailDirty] = useState(false);
-  const [passwordDirty, setPasswordDirty] = useState(false);
-  const [confirmPasswordDirty, setConfirmPasswordDirty] = useState(false);
-
   const [userNameErr, setUserNameErr] = useState(
     "This field must not be empty"
   );
+
+  const [email, setEmail] = useState("");
+  const [emailDirty, setEmailDirty] = useState(false);
   const [emailErr, setEmailErr] = useState("This field must not be empty");
+
+  const [password, setPassword] = useState("");
+  const [passwordDirty, setPasswordDirty] = useState(false);
   const [passwordErr, setPasswordErr] = useState(
     "This field must not be empty"
   );
+
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPasswordDirty, setConfirmPasswordDirty] = useState(false);
   const [confirmPasswordErr, setConfirmPasswordErr] = useState(
     "This field must not be empty"
   );
@@ -132,7 +133,6 @@ const FormRegistration: FC<FormRegistrationProps> = ({ onClick }) => {
       })
     );
   };
-
 
   return (
     <div

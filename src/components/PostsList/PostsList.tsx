@@ -7,7 +7,7 @@ type PostsProps = {
   data: Card[];
 };
 
-const Posts: FC<PostsProps> = ({ data }) => {
+const Posts: FC<PostsProps> = ({ data}) => {
   const onClickCard = (id: string) => {
     window.location.href = `/cards-list/${id}`;
   };
