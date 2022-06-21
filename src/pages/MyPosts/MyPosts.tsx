@@ -16,11 +16,13 @@ import {
 import Lottie from "react-lottie";
 import animationData from "../../components/Lotties/Fireworks.json";
 import EmptyState from "../../components/EmptyState";
+import { useNavigate } from "react-router-dom";
 
 const MyPosts = ({ isPersonal }: any) => {
   const { theme } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const selectedImage = useSelector(PostSelectors.getSelectedImage);
   const activeTab = useSelector(PostSelectors.getPostsTab);
   const cardsList = useSelector((state) =>
@@ -39,7 +41,7 @@ const MyPosts = ({ isPersonal }: any) => {
   };
 
   const [search, setSearch] = useState("");
-  const [limit, setLimit] = useState(2);
+  const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(1);
 
   const [ordering, setOrdering] = useState("date");
@@ -71,13 +73,11 @@ const MyPosts = ({ isPersonal }: any) => {
   const onSearch = (event: any) => {
     setSearch(event.target.value);
     setPage(1);
-    // setOrder('date')
   };
 
   const onLimitChange = (event: any) => {
     setLimit(event.target.value);
     setPage(1);
-    // setOrder('date')
   };
   const onClickPrevious = () => {
     setPage(page - 1);
@@ -86,21 +86,23 @@ const MyPosts = ({ isPersonal }: any) => {
     setPage(page + 1);
   };
   const onChangeSelect = (e: any) => {
-    setOrdering(e.target.value); //ругается при выборе даты 403
+    setOrdering(e.target.value);
     setPage(1);
-
+  };
+  const onAddTab = () => {
+    navigate("/add-post");
   };
 
   return (
     <div
       className={classnames(
-        "myPosts", (isLightTheme ? "container" : "darkContainer")
-        
+        "myPosts",
+        isLightTheme ? "container" : "darkContainer"
       )}
     >
       <div className="titlePostsContainer">
         <h1 className="headerTitle">{isPersonal ? "My Posts" : "All posts"}</h1>
-        <Button className={"btnAny"} btnContent={"+Add"} onClick={() => {}} />
+        <Button className={"btnAny"} btnContent={"+Add"} onClick={onAddTab} />
       </div>
 
       <Input
@@ -131,42 +133,49 @@ const MyPosts = ({ isPersonal }: any) => {
             );
           })}
         </div>
-        {!isPersonal && <div>
-          <select onChange={onChangeSelect} name="sort" id="sort">
-            <option value="date">Date</option>
-            <option value="title">Title</option>
-            <option value="text">Text</option>
-            <option value="lesson_num">Lesson</option>
-          </select>
-        </div>}
+        {!isPersonal && (
+          <div>
+            <select onChange={onLimitChange} name="sort" id="sort">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>
+          </div>
+        )}
+        {!isPersonal && (
+          <div>
+            <select onChange={onChangeSelect} name="sort" id="sort">
+              <option value="date">Date</option>
+              <option value="title">Title</option>
+              <option value="text">Text</option>
+              <option value="lesson_num">Lesson</option>
+            </select>
+          </div>
+        )}
       </div>
       {allPostsLoading ? (
         <Lottie options={defaultOptions} height={400} width={400} />
       ) : cardsList.length > 0 ? (
         <>
-          <PostsList data={cardsList} isPersonal />
+          <PostsList data={cardsList} />
           <div className="paginationContainer">
             {page !== 1 && (
               <div onClick={onClickPrevious}>
                 <i className="fa-solid fa-chevron-left"></i>
               </div>
             )}
-            <Input
-              type={"number"}
-              value={limit}
-              onChange={onLimitChange}
-              name={""}
-              className="inputLimit"
-            />
+
+            <span className="pageNum">{page}</span>
+
             {pageCount !== page && (
               <div onClick={onClickNext}>
                 <i className="fa-solid fa-chevron-right"></i>
               </div>
             )}
           </div>
-          <span className="pageNum">{page}</span>
         </>
-      ) :(
+      ) : (
         <EmptyState />
       )}
 

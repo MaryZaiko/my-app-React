@@ -74,7 +74,6 @@ const AddPost = () => {
     };
   };
 
-
   const titleHandler = (e: any) => {
     if (e.target.value.length === 0) {
       setErrTitle("This field must not be empty");
@@ -83,8 +82,7 @@ const AddPost = () => {
       setErrTitle("");
     }
   };
-  const textHandler= (e: any) => {
-   
+  const textHandler = (e: any) => {
     if (e.target.value.length === 0) {
       setErrText("This field must not be empty");
     } else {
@@ -93,19 +91,15 @@ const AddPost = () => {
     }
   };
   const lessonNumHandler = (e: any) => {
-    const re = /^(0|-?[1-9]\d{0,5})$/;
-    
     setLessonNum(e.target.value);
 
     if (e.target.value.length === 0) {
       setErrLessonNum("This field must not be empty");
-    } else if (!re.test(e.target.value)) {
-      setErrLessonNum("Value is not correct");
     } else {
       setErrLessonNum("");
     }
   };
-  
+
   const blurHandler = (e: any) => {
     switch (e.target.name) {
       case "title":
@@ -172,7 +166,7 @@ const AddPost = () => {
           <div>Lesson number:</div>
           <Input
             className={"inputCreate"}
-            type={"text"}
+            type={"number"}
             placeholder={"Post title"}
             value={lessonNum}
             name={"lessonNum"}

@@ -21,7 +21,6 @@ type PostCardProps = {
   onClick?: (e: any) => void;
   likeStatus?: LikeStatus | null;
   saved?: boolean;
-  isPersonal?:boolean
 };
 
 const PostCard: FC<PostCardProps> = ({
@@ -34,7 +33,6 @@ const PostCard: FC<PostCardProps> = ({
   onClick,
   likeStatus,
   saved,
-  isPersonal
 }) => {
   const imgPost =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5xPwQFMwqQNGPSrW3NBueZixbwKsnVSogOA&usqp=CAU";
@@ -58,7 +56,7 @@ const PostCard: FC<PostCardProps> = ({
           })
       );
     } else if (action === LikeStatus.Save || action === "unset") {
-      dispatch(setSavedPost({ id, action, isPersonal }));
+      dispatch(setSavedPost({ id, action }));
     }
   };
 
